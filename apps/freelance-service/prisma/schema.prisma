@@ -100,7 +100,96 @@ model Msgbroker {
   updatedAt DateTime @updatedAt
 }
 
+model User {
+  accessCodes               Json?
+  accounts                  Json?
+  allowDynamicBooking       Boolean?                 @default(true)
+  allowSEOIndexing          Boolean?                 @default(true)
+  apiKeys                   Json?
+  appTheme                  String?
+  availability              Json?
+  avatar                    String?
+  avatarUrl                 String?
+  away                      Boolean                  @default(false)
+  backupCodes               String?
+  bio                       String?
+  bookingRedirects          Json?
+  bookingRedirectsTo        Json?
+  bookings                  Json?
+  brandColor                String?
+  bufferTime                Int                      @default(0)
+  completedOnboarding       Boolean                  @default(false)
+  createdDate               DateTime                 @default(now()) @map(name: "created")
+  credentials               Json?
+  darkBrandColor            String?
+  defaultScheduleId         Int?
+  destinationCalendarId     Int?
+  disableImpersonation      Boolean                  @default(false)
+  email                     String
+  emailVerified             DateTime?
+  endTime                   Int                      @default(1440)
+  feedback                  Json?
+  hideBranding              Boolean                  @default(false)
+  hosts                     Json?
+  id                        Int                      @id @default(autoincrement())
+  identityProvider          EnumUserIdentityProvider @default(CAL)
+  identityProviderId        String?
+  impersonatedBy            Json?
+  impersonatedUsers         Json?
+  invitedTo                 Int?
+  locale                    String?
+  locked                    Boolean                  @default(false)
+  metadata                  Json?
+  movedToProfileId          Int?
+  name                      String?
+  organizationId            Int?
+  ownedEventTypes           Json?
+  passwordId                Int?
+  profiles                  Json?
+  receiveMonthlyDigestEmail Boolean?                 @default(true)
+  role                      EnumUserRole             @default(USER)
+  routingForms              Json?
+  schedules                 Json?
+  selectedCalendars         Json?
+  sessions                  Json?
+  startTime                 Int                      @default(0)
+  teams                     Json?
+  theme                     String?
+  timeFormat                Int?                     @default(12)
+  timeZone                  String                   @default("Europe/London")
+  trialEndsAt               DateTime?
+  twoFactorEnabled          Boolean                  @default(false)
+  twoFactorSecret           String?
+  username                  String?
+  verified                  Boolean?                 @default(false)
+  verifiedNumbers           Json?
+  webhooks                  Json?
+  weekStart                 String                   @default("Sunday")
+  workflows                 Json?
+
+  @@unique([email])
+  @@unique([email, username])
+  @@unique([username, organizationId])
+  @@unique([movedToProfileId])
+  @@index([username])
+  @@index([emailVerified])
+  @@index([identityProvider])
+  @@index([identityProviderId])
+  @@map(name: "users")
+}
+
 enum EnumUser1Role {
   CLIENT
   FREELANCER
+}
+
+enum EnumUserIdentityProvider {
+  CAL
+  GOOGLE
+  SAML
+}
+
+enum EnumUserRole {
+  USER
+  ADMIN
 }

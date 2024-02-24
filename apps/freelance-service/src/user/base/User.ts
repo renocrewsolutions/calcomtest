@@ -11,136 +11,33 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsJSONValue } from "../../validators";
+import { Bid } from "../../bid/base/Bid";
 import {
+  ValidateNested,
   IsOptional,
-  IsBoolean,
   IsString,
-  IsInt,
   IsDate,
+  IsInt,
   IsEnum,
 } from "class-validator";
-import { GraphQLJSON } from "graphql-type-json";
-import { JsonValue } from "type-fest";
 import { Type } from "class-transformer";
-import { EnumUserIdentityProvider } from "./EnumUserIdentityProvider";
+import { Job } from "../../job/base/Job";
+import { Message } from "../../message/base/Message";
+import { Review } from "../../review/base/Review";
 import { EnumUserRole } from "./EnumUserRole";
+import { Skill } from "../../skill/base/Skill";
+import { Transaction } from "../../transaction/base/Transaction";
 
 @ObjectType()
 class User {
   @ApiProperty({
     required: false,
+    type: () => [Bid],
   })
-  @IsJSONValue()
+  @ValidateNested()
+  @Type(() => Bid)
   @IsOptional()
-  @Field(() => GraphQLJSON, {
-    nullable: true,
-  })
-  accessCodes!: JsonValue;
-
-  @ApiProperty({
-    required: false,
-  })
-  @IsJSONValue()
-  @IsOptional()
-  @Field(() => GraphQLJSON, {
-    nullable: true,
-  })
-  accounts!: JsonValue;
-
-  @ApiProperty({
-    required: false,
-    type: Boolean,
-  })
-  @IsBoolean()
-  @IsOptional()
-  @Field(() => Boolean, {
-    nullable: true,
-  })
-  allowDynamicBooking!: boolean | null;
-
-  @ApiProperty({
-    required: false,
-    type: Boolean,
-  })
-  @IsBoolean()
-  @IsOptional()
-  @Field(() => Boolean, {
-    nullable: true,
-  })
-  allowSEOIndexing!: boolean | null;
-
-  @ApiProperty({
-    required: false,
-  })
-  @IsJSONValue()
-  @IsOptional()
-  @Field(() => GraphQLJSON, {
-    nullable: true,
-  })
-  apiKeys!: JsonValue;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  appTheme!: string | null;
-
-  @ApiProperty({
-    required: false,
-  })
-  @IsJSONValue()
-  @IsOptional()
-  @Field(() => GraphQLJSON, {
-    nullable: true,
-  })
-  availability!: JsonValue;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  avatar!: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  avatarUrl!: string | null;
-
-  @ApiProperty({
-    required: true,
-    type: Boolean,
-  })
-  @IsBoolean()
-  @Field(() => Boolean)
-  away!: boolean;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  backupCodes!: string | null;
+  bids?: Array<Bid>;
 
   @ApiProperty({
     required: false,
@@ -154,120 +51,12 @@ class User {
   bio!: string | null;
 
   @ApiProperty({
-    required: false,
-  })
-  @IsJSONValue()
-  @IsOptional()
-  @Field(() => GraphQLJSON, {
-    nullable: true,
-  })
-  bookingRedirects!: JsonValue;
-
-  @ApiProperty({
-    required: false,
-  })
-  @IsJSONValue()
-  @IsOptional()
-  @Field(() => GraphQLJSON, {
-    nullable: true,
-  })
-  bookingRedirectsTo!: JsonValue;
-
-  @ApiProperty({
-    required: false,
-  })
-  @IsJSONValue()
-  @IsOptional()
-  @Field(() => GraphQLJSON, {
-    nullable: true,
-  })
-  bookings!: JsonValue;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  brandColor!: string | null;
-
-  @ApiProperty({
-    required: true,
-    type: Number,
-  })
-  @IsInt()
-  @Field(() => Number)
-  bufferTime!: number;
-
-  @ApiProperty({
-    required: true,
-    type: Boolean,
-  })
-  @IsBoolean()
-  @Field(() => Boolean)
-  completedOnboarding!: boolean;
-
-  @ApiProperty({
     required: true,
   })
   @IsDate()
   @Type(() => Date)
   @Field(() => Date)
-  createdDate!: Date;
-
-  @ApiProperty({
-    required: false,
-  })
-  @IsJSONValue()
-  @IsOptional()
-  @Field(() => GraphQLJSON, {
-    nullable: true,
-  })
-  credentials!: JsonValue;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  darkBrandColor!: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: Number,
-  })
-  @IsInt()
-  @IsOptional()
-  @Field(() => Number, {
-    nullable: true,
-  })
-  defaultScheduleId!: number | null;
-
-  @ApiProperty({
-    required: false,
-    type: Number,
-  })
-  @IsInt()
-  @IsOptional()
-  @Field(() => Number, {
-    nullable: true,
-  })
-  destinationCalendarId!: number | null;
-
-  @ApiProperty({
-    required: true,
-    type: Boolean,
-  })
-  @IsBoolean()
-  @Field(() => Boolean)
-  disableImpersonation!: boolean;
+  createdAt!: Date;
 
   @ApiProperty({
     required: true,
@@ -278,53 +67,6 @@ class User {
   email!: string;
 
   @ApiProperty({
-    required: false,
-  })
-  @IsDate()
-  @Type(() => Date)
-  @IsOptional()
-  @Field(() => Date, {
-    nullable: true,
-  })
-  emailVerified!: Date | null;
-
-  @ApiProperty({
-    required: true,
-    type: Number,
-  })
-  @IsInt()
-  @Field(() => Number)
-  endTime!: number;
-
-  @ApiProperty({
-    required: false,
-  })
-  @IsJSONValue()
-  @IsOptional()
-  @Field(() => GraphQLJSON, {
-    nullable: true,
-  })
-  feedback!: JsonValue;
-
-  @ApiProperty({
-    required: true,
-    type: Boolean,
-  })
-  @IsBoolean()
-  @Field(() => Boolean)
-  hideBranding!: boolean;
-
-  @ApiProperty({
-    required: false,
-  })
-  @IsJSONValue()
-  @IsOptional()
-  @Field(() => GraphQLJSON, {
-    nullable: true,
-  })
-  hosts!: JsonValue;
-
-  @ApiProperty({
     required: true,
     type: Number,
   })
@@ -333,14 +75,13 @@ class User {
   id!: number;
 
   @ApiProperty({
-    required: true,
-    enum: EnumUserIdentityProvider,
+    required: false,
+    type: () => [Job],
   })
-  @IsEnum(EnumUserIdentityProvider)
-  @Field(() => EnumUserIdentityProvider, {
-    nullable: true,
-  })
-  identityProvider?: "CAL" | "GOOGLE" | "SAML";
+  @ValidateNested()
+  @Type(() => Job)
+  @IsOptional()
+  jobs?: Array<Job>;
 
   @ApiProperty({
     required: false,
@@ -351,78 +92,15 @@ class User {
   @Field(() => String, {
     nullable: true,
   })
-  identityProviderId!: string | null;
-
-  @ApiProperty({
-    required: false,
-  })
-  @IsJSONValue()
-  @IsOptional()
-  @Field(() => GraphQLJSON, {
-    nullable: true,
-  })
-  impersonatedBy!: JsonValue;
-
-  @ApiProperty({
-    required: false,
-  })
-  @IsJSONValue()
-  @IsOptional()
-  @Field(() => GraphQLJSON, {
-    nullable: true,
-  })
-  impersonatedUsers!: JsonValue;
-
-  @ApiProperty({
-    required: false,
-    type: Number,
-  })
-  @IsInt()
-  @IsOptional()
-  @Field(() => Number, {
-    nullable: true,
-  })
-  invitedTo!: number | null;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  locale!: string | null;
+  location!: string | null;
 
   @ApiProperty({
     required: true,
-    type: Boolean,
+    type: String,
   })
-  @IsBoolean()
-  @Field(() => Boolean)
-  locked!: boolean;
-
-  @ApiProperty({
-    required: false,
-  })
-  @IsJSONValue()
-  @IsOptional()
-  @Field(() => GraphQLJSON, {
-    nullable: true,
-  })
-  metadata!: JsonValue;
-
-  @ApiProperty({
-    required: false,
-    type: Number,
-  })
-  @IsInt()
-  @IsOptional()
-  @Field(() => Number, {
-    nullable: true,
-  })
-  movedToProfileId!: number | null;
+  @IsString()
+  @Field(() => String)
+  password!: string;
 
   @ApiProperty({
     required: false,
@@ -433,60 +111,34 @@ class User {
   @Field(() => String, {
     nullable: true,
   })
-  name!: string | null;
+  profileImage!: string | null;
 
   @ApiProperty({
     required: false,
-    type: Number,
+    type: () => [Message],
   })
-  @IsInt()
+  @ValidateNested()
+  @Type(() => Message)
   @IsOptional()
-  @Field(() => Number, {
-    nullable: true,
-  })
-  organizationId!: number | null;
+  receivedMessages?: Array<Message>;
 
   @ApiProperty({
     required: false,
+    type: () => [Review],
   })
-  @IsJSONValue()
+  @ValidateNested()
+  @Type(() => Review)
   @IsOptional()
-  @Field(() => GraphQLJSON, {
-    nullable: true,
-  })
-  ownedEventTypes!: JsonValue;
+  reviewsAsClient?: Array<Review>;
 
   @ApiProperty({
     required: false,
-    type: Number,
+    type: () => [Review],
   })
-  @IsInt()
+  @ValidateNested()
+  @Type(() => Review)
   @IsOptional()
-  @Field(() => Number, {
-    nullable: true,
-  })
-  passwordId!: number | null;
-
-  @ApiProperty({
-    required: false,
-  })
-  @IsJSONValue()
-  @IsOptional()
-  @Field(() => GraphQLJSON, {
-    nullable: true,
-  })
-  profiles!: JsonValue;
-
-  @ApiProperty({
-    required: false,
-    type: Boolean,
-  })
-  @IsBoolean()
-  @IsOptional()
-  @Field(() => Boolean, {
-    nullable: true,
-  })
-  receiveMonthlyDigestEmail!: boolean | null;
+  reviewsAsFreelancer?: Array<Review>;
 
   @ApiProperty({
     required: true,
@@ -496,87 +148,43 @@ class User {
   @Field(() => EnumUserRole, {
     nullable: true,
   })
-  role?: "USER" | "ADMIN";
+  role?: "CLIENT" | "FREELANCER";
 
   @ApiProperty({
     required: false,
+    type: () => [Message],
   })
-  @IsJSONValue()
+  @ValidateNested()
+  @Type(() => Message)
   @IsOptional()
-  @Field(() => GraphQLJSON, {
-    nullable: true,
-  })
-  routingForms!: JsonValue;
+  sentMessages?: Array<Message>;
 
   @ApiProperty({
     required: false,
+    type: () => [Skill],
   })
-  @IsJSONValue()
+  @ValidateNested()
+  @Type(() => Skill)
   @IsOptional()
-  @Field(() => GraphQLJSON, {
-    nullable: true,
-  })
-  schedules!: JsonValue;
+  skills?: Array<Skill>;
 
   @ApiProperty({
     required: false,
+    type: () => [Transaction],
   })
-  @IsJSONValue()
+  @ValidateNested()
+  @Type(() => Transaction)
   @IsOptional()
-  @Field(() => GraphQLJSON, {
-    nullable: true,
-  })
-  selectedCalendars!: JsonValue;
+  transactionsAsClient?: Array<Transaction>;
 
   @ApiProperty({
     required: false,
+    type: () => [Transaction],
   })
-  @IsJSONValue()
+  @ValidateNested()
+  @Type(() => Transaction)
   @IsOptional()
-  @Field(() => GraphQLJSON, {
-    nullable: true,
-  })
-  sessions!: JsonValue;
-
-  @ApiProperty({
-    required: true,
-    type: Number,
-  })
-  @IsInt()
-  @Field(() => Number)
-  startTime!: number;
-
-  @ApiProperty({
-    required: false,
-  })
-  @IsJSONValue()
-  @IsOptional()
-  @Field(() => GraphQLJSON, {
-    nullable: true,
-  })
-  teams!: JsonValue;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  theme!: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: Number,
-  })
-  @IsInt()
-  @IsOptional()
-  @Field(() => Number, {
-    nullable: true,
-  })
-  timeFormat!: number | null;
+  transactionsAsFreelancer?: Array<Transaction>;
 
   @ApiProperty({
     required: true,
@@ -584,97 +192,7 @@ class User {
   })
   @IsString()
   @Field(() => String)
-  timeZone!: string;
-
-  @ApiProperty({
-    required: false,
-  })
-  @IsDate()
-  @Type(() => Date)
-  @IsOptional()
-  @Field(() => Date, {
-    nullable: true,
-  })
-  trialEndsAt!: Date | null;
-
-  @ApiProperty({
-    required: true,
-    type: Boolean,
-  })
-  @IsBoolean()
-  @Field(() => Boolean)
-  twoFactorEnabled!: boolean;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  twoFactorSecret!: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  username!: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: Boolean,
-  })
-  @IsBoolean()
-  @IsOptional()
-  @Field(() => Boolean, {
-    nullable: true,
-  })
-  verified!: boolean | null;
-
-  @ApiProperty({
-    required: false,
-  })
-  @IsJSONValue()
-  @IsOptional()
-  @Field(() => GraphQLJSON, {
-    nullable: true,
-  })
-  verifiedNumbers!: JsonValue;
-
-  @ApiProperty({
-    required: false,
-  })
-  @IsJSONValue()
-  @IsOptional()
-  @Field(() => GraphQLJSON, {
-    nullable: true,
-  })
-  webhooks!: JsonValue;
-
-  @ApiProperty({
-    required: true,
-    type: String,
-  })
-  @IsString()
-  @Field(() => String)
-  weekStart!: string;
-
-  @ApiProperty({
-    required: false,
-  })
-  @IsJSONValue()
-  @IsOptional()
-  @Field(() => GraphQLJSON, {
-    nullable: true,
-  })
-  workflows!: JsonValue;
+  username!: string;
 }
 
 export { User as User };

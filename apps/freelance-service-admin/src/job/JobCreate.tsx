@@ -13,7 +13,7 @@ import {
 } from "react-admin";
 
 import { BidTitle } from "../bid/BidTitle";
-import { User1Title } from "../user1/User1Title";
+import { UserTitle } from "../user/UserTitle";
 import { ReviewTitle } from "../review/ReviewTitle";
 import { TransactionTitle } from "../transaction/TransactionTitle";
 
@@ -30,8 +30,8 @@ export const JobCreate = (props: CreateProps): React.ReactElement => {
           <SelectArrayInput optionText={BidTitle} />
         </ReferenceArrayInput>
         <NumberInput label="Budget" source="budget" />
-        <ReferenceInput source="client.id" reference="User1" label="Client">
-          <SelectInput optionText={User1Title} />
+        <ReferenceInput source="client.id" reference="User" label="Client">
+          <SelectInput optionText={UserTitle} />
         </ReferenceInput>
         <TextInput label="Description" source="description" />
         <ReferenceArrayInput

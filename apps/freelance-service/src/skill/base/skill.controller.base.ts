@@ -22,9 +22,6 @@ import { Skill } from "./Skill";
 import { SkillFindManyArgs } from "./SkillFindManyArgs";
 import { SkillWhereUniqueInput } from "./SkillWhereUniqueInput";
 import { SkillUpdateInput } from "./SkillUpdateInput";
-import { User1FindManyArgs } from "../../user1/base/User1FindManyArgs";
-import { User1 } from "../../user1/base/User1";
-import { User1WhereUniqueInput } from "../../user1/base/User1WhereUniqueInput";
 
 export class SkillControllerBase {
   constructor(protected readonly service: SkillService) {}
@@ -32,11 +29,25 @@ export class SkillControllerBase {
   @swagger.ApiCreatedResponse({ type: Skill })
   async createSkill(@common.Body() data: SkillCreateInput): Promise<Skill> {
     return await this.service.createSkill({
-      data: data,
+      data: {
+        ...data,
+
+        user: data.user
+          ? {
+              connect: data.user,
+            }
+          : undefined,
+      },
       select: {
         description: true,
         id: true,
         name: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
   }
@@ -52,6 +63,12 @@ export class SkillControllerBase {
         description: true,
         id: true,
         name: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
   }
@@ -68,6 +85,12 @@ export class SkillControllerBase {
         description: true,
         id: true,
         name: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
     if (result === null) {
@@ -88,11 +111,25 @@ export class SkillControllerBase {
     try {
       return await this.service.updateSkill({
         where: params,
-        data: data,
+        data: {
+          ...data,
+
+          user: data.user
+            ? {
+                connect: data.user,
+              }
+            : undefined,
+        },
         select: {
           description: true,
           id: true,
           name: true,
+
+          user: {
+            select: {
+              id: true,
+            },
+          },
         },
       });
     } catch (error) {
@@ -118,6 +155,12 @@ export class SkillControllerBase {
           description: true,
           id: true,
           name: true,
+
+          user: {
+            select: {
+              id: true,
+            },
+          },
         },
       });
     } catch (error) {
@@ -128,85 +171,5 @@ export class SkillControllerBase {
       }
       throw error;
     }
-  }
-
-  @common.Get("/:id/users")
-  @ApiNestedQuery(User1FindManyArgs)
-  async findUsers(
-    @common.Req() request: Request,
-    @common.Param() params: SkillWhereUniqueInput
-  ): Promise<User1[]> {
-    const query = plainToClass(User1FindManyArgs, request.query);
-    const results = await this.service.findUsers(params.id, {
-      ...query,
-      select: {
-        bio: true,
-        createdAt: true,
-        email: true,
-        id: true,
-        location: true,
-        password: true,
-        profileImage: true,
-        role: true,
-        username: true,
-      },
-    });
-    if (results === null) {
-      throw new errors.NotFoundException(
-        `No resource was found for ${JSON.stringify(params)}`
-      );
-    }
-    return results;
-  }
-
-  @common.Post("/:id/users")
-  async connectUsers(
-    @common.Param() params: SkillWhereUniqueInput,
-    @common.Body() body: User1WhereUniqueInput[]
-  ): Promise<void> {
-    const data = {
-      users: {
-        connect: body,
-      },
-    };
-    await this.service.updateSkill({
-      where: params,
-      data,
-      select: { id: true },
-    });
-  }
-
-  @common.Patch("/:id/users")
-  async updateUsers(
-    @common.Param() params: SkillWhereUniqueInput,
-    @common.Body() body: User1WhereUniqueInput[]
-  ): Promise<void> {
-    const data = {
-      users: {
-        set: body,
-      },
-    };
-    await this.service.updateSkill({
-      where: params,
-      data,
-      select: { id: true },
-    });
-  }
-
-  @common.Delete("/:id/users")
-  async disconnectUsers(
-    @common.Param() params: SkillWhereUniqueInput,
-    @common.Body() body: User1WhereUniqueInput[]
-  ): Promise<void> {
-    const data = {
-      users: {
-        disconnect: body,
-      },
-    };
-    await this.service.updateSkill({
-      where: params,
-      data,
-      select: { id: true },
-    });
   }
 }

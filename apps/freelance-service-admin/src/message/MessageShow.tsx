@@ -7,7 +7,7 @@ import {
   ReferenceField,
   DateField,
 } from "react-admin";
-import { USER1_TITLE_FIELD } from "../user1/User1Title";
+import { USER_TITLE_FIELD } from "../user/UserTitle";
 
 export const MessageShow = (props: ShowProps): React.ReactElement => {
   return (
@@ -15,11 +15,11 @@ export const MessageShow = (props: ShowProps): React.ReactElement => {
       <SimpleShowLayout>
         <TextField label="Content" source="content" />
         <TextField label="ID" source="id" />
-        <ReferenceField label="Receiver" source="user1.id" reference="User1">
-          <TextField source={USER1_TITLE_FIELD} />
+        <ReferenceField label="Receiver" source="user.id" reference="User">
+          <TextField source={USER_TITLE_FIELD} />
         </ReferenceField>
-        <ReferenceField label="Sender" source="user1.id" reference="User1">
-          <TextField source={USER1_TITLE_FIELD} />
+        <ReferenceField label="Sender" source="user.id" reference="User">
+          <TextField source={USER_TITLE_FIELD} />
         </ReferenceField>
         <DateField source="sentAt" label="Sent At" />
       </SimpleShowLayout>

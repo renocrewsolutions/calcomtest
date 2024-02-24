@@ -1,14 +1,14 @@
-import { User1WhereUniqueInput } from "../user1/User1WhereUniqueInput";
+import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 import { StringFilter } from "../../util/StringFilter";
 import { DateTimeFilter } from "../../util/DateTimeFilter";
 import { IntFilter } from "../../util/IntFilter";
 import { JobWhereUniqueInput } from "../job/JobWhereUniqueInput";
 
 export type ReviewWhereInput = {
-  client?: User1WhereUniqueInput;
+  client?: UserWhereUniqueInput;
   content?: StringFilter;
   createdAt?: DateTimeFilter;
-  freelancer?: User1WhereUniqueInput;
+  freelancer?: UserWhereUniqueInput;
   id?: IntFilter;
   job?: JobWhereUniqueInput;
   rating?: IntFilter;

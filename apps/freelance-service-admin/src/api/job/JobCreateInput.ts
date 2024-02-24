@@ -1,12 +1,12 @@
 import { BidCreateNestedManyWithoutJobsInput } from "./BidCreateNestedManyWithoutJobsInput";
-import { User1WhereUniqueInput } from "../user1/User1WhereUniqueInput";
+import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 import { ReviewCreateNestedManyWithoutJobsInput } from "./ReviewCreateNestedManyWithoutJobsInput";
 import { TransactionCreateNestedManyWithoutJobsInput } from "./TransactionCreateNestedManyWithoutJobsInput";
 
 export type JobCreateInput = {
   bids?: BidCreateNestedManyWithoutJobsInput;
   budget: number;
-  client: User1WhereUniqueInput;
+  client: UserWhereUniqueInput;
   description: string;
   reviews?: ReviewCreateNestedManyWithoutJobsInput;
   title: string;

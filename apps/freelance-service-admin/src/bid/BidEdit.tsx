@@ -10,7 +10,7 @@ import {
   TextInput,
 } from "react-admin";
 
-import { User1Title } from "../user1/User1Title";
+import { UserTitle } from "../user/UserTitle";
 import { JobTitle } from "../job/JobTitle";
 
 export const BidEdit = (props: EditProps): React.ReactElement => {
@@ -20,10 +20,10 @@ export const BidEdit = (props: EditProps): React.ReactElement => {
         <NumberInput label="Amount" source="amount" />
         <ReferenceInput
           source="freelancer.id"
-          reference="User1"
+          reference="User"
           label="Freelancer"
         >
-          <SelectInput optionText={User1Title} />
+          <SelectInput optionText={UserTitle} />
         </ReferenceInput>
         <ReferenceInput source="job.id" reference="Job" label="Job">
           <SelectInput optionText={JobTitle} />

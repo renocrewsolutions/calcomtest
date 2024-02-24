@@ -20,8 +20,7 @@ import { SkillFindUniqueArgs } from "./SkillFindUniqueArgs";
 import { CreateSkillArgs } from "./CreateSkillArgs";
 import { UpdateSkillArgs } from "./UpdateSkillArgs";
 import { DeleteSkillArgs } from "./DeleteSkillArgs";
-import { User1FindManyArgs } from "../../user1/base/User1FindManyArgs";
-import { User1 } from "../../user1/base/User1";
+import { User } from "../../user/base/User";
 import { SkillService } from "../skill.service";
 @graphql.Resolver(() => Skill)
 export class SkillResolverBase {
@@ -56,7 +55,15 @@ export class SkillResolverBase {
   async createSkill(@graphql.Args() args: CreateSkillArgs): Promise<Skill> {
     return await this.service.createSkill({
       ...args,
-      data: args.data,
+      data: {
+        ...args.data,
+
+        user: args.data.user
+          ? {
+              connect: args.data.user,
+            }
+          : undefined,
+      },
     });
   }
 
@@ -67,7 +74,15 @@ export class SkillResolverBase {
     try {
       return await this.service.updateSkill({
         ...args,
-        data: args.data,
+        data: {
+          ...args.data,
+
+          user: args.data.user
+            ? {
+                connect: args.data.user,
+              }
+            : undefined,
+        },
       });
     } catch (error) {
       if (isRecordNotFoundError(error)) {
@@ -95,17 +110,16 @@ export class SkillResolverBase {
     }
   }
 
-  @graphql.ResolveField(() => [User1], { name: "users" })
-  async findUsers(
-    @graphql.Parent() parent: Skill,
-    @graphql.Args() args: User1FindManyArgs
-  ): Promise<User1[]> {
-    const results = await this.service.findUsers(parent.id, args);
+  @graphql.ResolveField(() => User, {
+    nullable: true,
+    name: "user",
+  })
+  async getUser(@graphql.Parent() parent: Skill): Promise<User | null> {
+    const result = await this.service.getUser(parent.id);
 
-    if (!results) {
-      return [];
+    if (!result) {
+      return null;
     }
-
-    return results;
+    return result;
   }
 }

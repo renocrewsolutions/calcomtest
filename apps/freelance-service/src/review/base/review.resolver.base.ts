@@ -20,7 +20,7 @@ import { ReviewFindUniqueArgs } from "./ReviewFindUniqueArgs";
 import { CreateReviewArgs } from "./CreateReviewArgs";
 import { UpdateReviewArgs } from "./UpdateReviewArgs";
 import { DeleteReviewArgs } from "./DeleteReviewArgs";
-import { User1 } from "../../user1/base/User1";
+import { User } from "../../user/base/User";
 import { Job } from "../../job/base/Job";
 import { ReviewService } from "../review.service";
 @graphql.Resolver(() => Review)
@@ -123,11 +123,11 @@ export class ReviewResolverBase {
     }
   }
 
-  @graphql.ResolveField(() => User1, {
+  @graphql.ResolveField(() => User, {
     nullable: true,
     name: "client",
   })
-  async getClient(@graphql.Parent() parent: Review): Promise<User1 | null> {
+  async getClient(@graphql.Parent() parent: Review): Promise<User | null> {
     const result = await this.service.getClient(parent.id);
 
     if (!result) {
@@ -136,11 +136,11 @@ export class ReviewResolverBase {
     return result;
   }
 
-  @graphql.ResolveField(() => User1, {
+  @graphql.ResolveField(() => User, {
     nullable: true,
     name: "freelancer",
   })
-  async getFreelancer(@graphql.Parent() parent: Review): Promise<User1 | null> {
+  async getFreelancer(@graphql.Parent() parent: Review): Promise<User | null> {
     const result = await this.service.getFreelancer(parent.id);
 
     if (!result) {

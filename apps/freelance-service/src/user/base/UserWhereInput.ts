@@ -11,142 +11,33 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { JsonFilter } from "../../util/JsonFilter";
+import { BidListRelationFilter } from "../../bid/base/BidListRelationFilter";
+import { ValidateNested, IsOptional, IsEnum } from "class-validator";
 import { Type } from "class-transformer";
-import { IsOptional, IsEnum } from "class-validator";
-import { BooleanNullableFilter } from "../../util/BooleanNullableFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
-import { BooleanFilter } from "../../util/BooleanFilter";
-import { IntFilter } from "../../util/IntFilter";
 import { DateTimeFilter } from "../../util/DateTimeFilter";
-import { IntNullableFilter } from "../../util/IntNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
-import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
-import { EnumUserIdentityProvider } from "./EnumUserIdentityProvider";
+import { IntFilter } from "../../util/IntFilter";
+import { JobListRelationFilter } from "../../job/base/JobListRelationFilter";
+import { MessageListRelationFilter } from "../../message/base/MessageListRelationFilter";
+import { ReviewListRelationFilter } from "../../review/base/ReviewListRelationFilter";
 import { EnumUserRole } from "./EnumUserRole";
+import { SkillListRelationFilter } from "../../skill/base/SkillListRelationFilter";
+import { TransactionListRelationFilter } from "../../transaction/base/TransactionListRelationFilter";
 
 @InputType()
 class UserWhereInput {
   @ApiProperty({
     required: false,
-    type: JsonFilter,
+    type: () => BidListRelationFilter,
   })
-  @Type(() => JsonFilter)
+  @ValidateNested()
+  @Type(() => BidListRelationFilter)
   @IsOptional()
-  @Field(() => JsonFilter, {
+  @Field(() => BidListRelationFilter, {
     nullable: true,
   })
-  accessCodes?: JsonFilter;
-
-  @ApiProperty({
-    required: false,
-    type: JsonFilter,
-  })
-  @Type(() => JsonFilter)
-  @IsOptional()
-  @Field(() => JsonFilter, {
-    nullable: true,
-  })
-  accounts?: JsonFilter;
-
-  @ApiProperty({
-    required: false,
-    type: BooleanNullableFilter,
-  })
-  @Type(() => BooleanNullableFilter)
-  @IsOptional()
-  @Field(() => BooleanNullableFilter, {
-    nullable: true,
-  })
-  allowDynamicBooking?: BooleanNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: BooleanNullableFilter,
-  })
-  @Type(() => BooleanNullableFilter)
-  @IsOptional()
-  @Field(() => BooleanNullableFilter, {
-    nullable: true,
-  })
-  allowSEOIndexing?: BooleanNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: JsonFilter,
-  })
-  @Type(() => JsonFilter)
-  @IsOptional()
-  @Field(() => JsonFilter, {
-    nullable: true,
-  })
-  apiKeys?: JsonFilter;
-
-  @ApiProperty({
-    required: false,
-    type: StringNullableFilter,
-  })
-  @Type(() => StringNullableFilter)
-  @IsOptional()
-  @Field(() => StringNullableFilter, {
-    nullable: true,
-  })
-  appTheme?: StringNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: JsonFilter,
-  })
-  @Type(() => JsonFilter)
-  @IsOptional()
-  @Field(() => JsonFilter, {
-    nullable: true,
-  })
-  availability?: JsonFilter;
-
-  @ApiProperty({
-    required: false,
-    type: StringNullableFilter,
-  })
-  @Type(() => StringNullableFilter)
-  @IsOptional()
-  @Field(() => StringNullableFilter, {
-    nullable: true,
-  })
-  avatar?: StringNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: StringNullableFilter,
-  })
-  @Type(() => StringNullableFilter)
-  @IsOptional()
-  @Field(() => StringNullableFilter, {
-    nullable: true,
-  })
-  avatarUrl?: StringNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: BooleanFilter,
-  })
-  @Type(() => BooleanFilter)
-  @IsOptional()
-  @Field(() => BooleanFilter, {
-    nullable: true,
-  })
-  away?: BooleanFilter;
-
-  @ApiProperty({
-    required: false,
-    type: StringNullableFilter,
-  })
-  @Type(() => StringNullableFilter)
-  @IsOptional()
-  @Field(() => StringNullableFilter, {
-    nullable: true,
-  })
-  backupCodes?: StringNullableFilter;
+  bids?: BidListRelationFilter;
 
   @ApiProperty({
     required: false,
@@ -161,72 +52,6 @@ class UserWhereInput {
 
   @ApiProperty({
     required: false,
-    type: JsonFilter,
-  })
-  @Type(() => JsonFilter)
-  @IsOptional()
-  @Field(() => JsonFilter, {
-    nullable: true,
-  })
-  bookingRedirects?: JsonFilter;
-
-  @ApiProperty({
-    required: false,
-    type: JsonFilter,
-  })
-  @Type(() => JsonFilter)
-  @IsOptional()
-  @Field(() => JsonFilter, {
-    nullable: true,
-  })
-  bookingRedirectsTo?: JsonFilter;
-
-  @ApiProperty({
-    required: false,
-    type: JsonFilter,
-  })
-  @Type(() => JsonFilter)
-  @IsOptional()
-  @Field(() => JsonFilter, {
-    nullable: true,
-  })
-  bookings?: JsonFilter;
-
-  @ApiProperty({
-    required: false,
-    type: StringNullableFilter,
-  })
-  @Type(() => StringNullableFilter)
-  @IsOptional()
-  @Field(() => StringNullableFilter, {
-    nullable: true,
-  })
-  brandColor?: StringNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: IntFilter,
-  })
-  @Type(() => IntFilter)
-  @IsOptional()
-  @Field(() => IntFilter, {
-    nullable: true,
-  })
-  bufferTime?: IntFilter;
-
-  @ApiProperty({
-    required: false,
-    type: BooleanFilter,
-  })
-  @Type(() => BooleanFilter)
-  @IsOptional()
-  @Field(() => BooleanFilter, {
-    nullable: true,
-  })
-  completedOnboarding?: BooleanFilter;
-
-  @ApiProperty({
-    required: false,
     type: DateTimeFilter,
   })
   @Type(() => DateTimeFilter)
@@ -234,62 +59,7 @@ class UserWhereInput {
   @Field(() => DateTimeFilter, {
     nullable: true,
   })
-  createdDate?: DateTimeFilter;
-
-  @ApiProperty({
-    required: false,
-    type: JsonFilter,
-  })
-  @Type(() => JsonFilter)
-  @IsOptional()
-  @Field(() => JsonFilter, {
-    nullable: true,
-  })
-  credentials?: JsonFilter;
-
-  @ApiProperty({
-    required: false,
-    type: StringNullableFilter,
-  })
-  @Type(() => StringNullableFilter)
-  @IsOptional()
-  @Field(() => StringNullableFilter, {
-    nullable: true,
-  })
-  darkBrandColor?: StringNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: IntNullableFilter,
-  })
-  @Type(() => IntNullableFilter)
-  @IsOptional()
-  @Field(() => IntNullableFilter, {
-    nullable: true,
-  })
-  defaultScheduleId?: IntNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: IntNullableFilter,
-  })
-  @Type(() => IntNullableFilter)
-  @IsOptional()
-  @Field(() => IntNullableFilter, {
-    nullable: true,
-  })
-  destinationCalendarId?: IntNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: BooleanFilter,
-  })
-  @Type(() => BooleanFilter)
-  @IsOptional()
-  @Field(() => BooleanFilter, {
-    nullable: true,
-  })
-  disableImpersonation?: BooleanFilter;
+  createdAt?: DateTimeFilter;
 
   @ApiProperty({
     required: false,
@@ -304,61 +74,6 @@ class UserWhereInput {
 
   @ApiProperty({
     required: false,
-    type: DateTimeNullableFilter,
-  })
-  @Type(() => DateTimeNullableFilter)
-  @IsOptional()
-  @Field(() => DateTimeNullableFilter, {
-    nullable: true,
-  })
-  emailVerified?: DateTimeNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: IntFilter,
-  })
-  @Type(() => IntFilter)
-  @IsOptional()
-  @Field(() => IntFilter, {
-    nullable: true,
-  })
-  endTime?: IntFilter;
-
-  @ApiProperty({
-    required: false,
-    type: JsonFilter,
-  })
-  @Type(() => JsonFilter)
-  @IsOptional()
-  @Field(() => JsonFilter, {
-    nullable: true,
-  })
-  feedback?: JsonFilter;
-
-  @ApiProperty({
-    required: false,
-    type: BooleanFilter,
-  })
-  @Type(() => BooleanFilter)
-  @IsOptional()
-  @Field(() => BooleanFilter, {
-    nullable: true,
-  })
-  hideBranding?: BooleanFilter;
-
-  @ApiProperty({
-    required: false,
-    type: JsonFilter,
-  })
-  @Type(() => JsonFilter)
-  @IsOptional()
-  @Field(() => JsonFilter, {
-    nullable: true,
-  })
-  hosts?: JsonFilter;
-
-  @ApiProperty({
-    required: false,
     type: IntFilter,
   })
   @Type(() => IntFilter)
@@ -370,14 +85,15 @@ class UserWhereInput {
 
   @ApiProperty({
     required: false,
-    enum: EnumUserIdentityProvider,
+    type: () => JobListRelationFilter,
   })
-  @IsEnum(EnumUserIdentityProvider)
+  @ValidateNested()
+  @Type(() => JobListRelationFilter)
   @IsOptional()
-  @Field(() => EnumUserIdentityProvider, {
+  @Field(() => JobListRelationFilter, {
     nullable: true,
   })
-  identityProvider?: "CAL" | "GOOGLE" | "SAML";
+  jobs?: JobListRelationFilter;
 
   @ApiProperty({
     required: false,
@@ -388,40 +104,18 @@ class UserWhereInput {
   @Field(() => StringNullableFilter, {
     nullable: true,
   })
-  identityProviderId?: StringNullableFilter;
+  location?: StringNullableFilter;
 
   @ApiProperty({
     required: false,
-    type: JsonFilter,
+    type: StringFilter,
   })
-  @Type(() => JsonFilter)
+  @Type(() => StringFilter)
   @IsOptional()
-  @Field(() => JsonFilter, {
+  @Field(() => StringFilter, {
     nullable: true,
   })
-  impersonatedBy?: JsonFilter;
-
-  @ApiProperty({
-    required: false,
-    type: JsonFilter,
-  })
-  @Type(() => JsonFilter)
-  @IsOptional()
-  @Field(() => JsonFilter, {
-    nullable: true,
-  })
-  impersonatedUsers?: JsonFilter;
-
-  @ApiProperty({
-    required: false,
-    type: IntNullableFilter,
-  })
-  @Type(() => IntNullableFilter)
-  @IsOptional()
-  @Field(() => IntNullableFilter, {
-    nullable: true,
-  })
-  invitedTo?: IntNullableFilter;
+  password?: StringFilter;
 
   @ApiProperty({
     required: false,
@@ -432,106 +126,43 @@ class UserWhereInput {
   @Field(() => StringNullableFilter, {
     nullable: true,
   })
-  locale?: StringNullableFilter;
+  profileImage?: StringNullableFilter;
 
   @ApiProperty({
     required: false,
-    type: BooleanFilter,
+    type: () => MessageListRelationFilter,
   })
-  @Type(() => BooleanFilter)
+  @ValidateNested()
+  @Type(() => MessageListRelationFilter)
   @IsOptional()
-  @Field(() => BooleanFilter, {
+  @Field(() => MessageListRelationFilter, {
     nullable: true,
   })
-  locked?: BooleanFilter;
+  receivedMessages?: MessageListRelationFilter;
 
   @ApiProperty({
     required: false,
-    type: JsonFilter,
+    type: () => ReviewListRelationFilter,
   })
-  @Type(() => JsonFilter)
+  @ValidateNested()
+  @Type(() => ReviewListRelationFilter)
   @IsOptional()
-  @Field(() => JsonFilter, {
+  @Field(() => ReviewListRelationFilter, {
     nullable: true,
   })
-  metadata?: JsonFilter;
+  reviewsAsClient?: ReviewListRelationFilter;
 
   @ApiProperty({
     required: false,
-    type: IntNullableFilter,
+    type: () => ReviewListRelationFilter,
   })
-  @Type(() => IntNullableFilter)
+  @ValidateNested()
+  @Type(() => ReviewListRelationFilter)
   @IsOptional()
-  @Field(() => IntNullableFilter, {
+  @Field(() => ReviewListRelationFilter, {
     nullable: true,
   })
-  movedToProfileId?: IntNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: StringNullableFilter,
-  })
-  @Type(() => StringNullableFilter)
-  @IsOptional()
-  @Field(() => StringNullableFilter, {
-    nullable: true,
-  })
-  name?: StringNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: IntNullableFilter,
-  })
-  @Type(() => IntNullableFilter)
-  @IsOptional()
-  @Field(() => IntNullableFilter, {
-    nullable: true,
-  })
-  organizationId?: IntNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: JsonFilter,
-  })
-  @Type(() => JsonFilter)
-  @IsOptional()
-  @Field(() => JsonFilter, {
-    nullable: true,
-  })
-  ownedEventTypes?: JsonFilter;
-
-  @ApiProperty({
-    required: false,
-    type: IntNullableFilter,
-  })
-  @Type(() => IntNullableFilter)
-  @IsOptional()
-  @Field(() => IntNullableFilter, {
-    nullable: true,
-  })
-  passwordId?: IntNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: JsonFilter,
-  })
-  @Type(() => JsonFilter)
-  @IsOptional()
-  @Field(() => JsonFilter, {
-    nullable: true,
-  })
-  profiles?: JsonFilter;
-
-  @ApiProperty({
-    required: false,
-    type: BooleanNullableFilter,
-  })
-  @Type(() => BooleanNullableFilter)
-  @IsOptional()
-  @Field(() => BooleanNullableFilter, {
-    nullable: true,
-  })
-  receiveMonthlyDigestEmail?: BooleanNullableFilter;
+  reviewsAsFreelancer?: ReviewListRelationFilter;
 
   @ApiProperty({
     required: false,
@@ -542,95 +173,55 @@ class UserWhereInput {
   @Field(() => EnumUserRole, {
     nullable: true,
   })
-  role?: "USER" | "ADMIN";
+  role?: "CLIENT" | "FREELANCER";
 
   @ApiProperty({
     required: false,
-    type: JsonFilter,
+    type: () => MessageListRelationFilter,
   })
-  @Type(() => JsonFilter)
+  @ValidateNested()
+  @Type(() => MessageListRelationFilter)
   @IsOptional()
-  @Field(() => JsonFilter, {
+  @Field(() => MessageListRelationFilter, {
     nullable: true,
   })
-  routingForms?: JsonFilter;
+  sentMessages?: MessageListRelationFilter;
 
   @ApiProperty({
     required: false,
-    type: JsonFilter,
+    type: () => SkillListRelationFilter,
   })
-  @Type(() => JsonFilter)
+  @ValidateNested()
+  @Type(() => SkillListRelationFilter)
   @IsOptional()
-  @Field(() => JsonFilter, {
+  @Field(() => SkillListRelationFilter, {
     nullable: true,
   })
-  schedules?: JsonFilter;
+  skills?: SkillListRelationFilter;
 
   @ApiProperty({
     required: false,
-    type: JsonFilter,
+    type: () => TransactionListRelationFilter,
   })
-  @Type(() => JsonFilter)
+  @ValidateNested()
+  @Type(() => TransactionListRelationFilter)
   @IsOptional()
-  @Field(() => JsonFilter, {
+  @Field(() => TransactionListRelationFilter, {
     nullable: true,
   })
-  selectedCalendars?: JsonFilter;
+  transactionsAsClient?: TransactionListRelationFilter;
 
   @ApiProperty({
     required: false,
-    type: JsonFilter,
+    type: () => TransactionListRelationFilter,
   })
-  @Type(() => JsonFilter)
+  @ValidateNested()
+  @Type(() => TransactionListRelationFilter)
   @IsOptional()
-  @Field(() => JsonFilter, {
+  @Field(() => TransactionListRelationFilter, {
     nullable: true,
   })
-  sessions?: JsonFilter;
-
-  @ApiProperty({
-    required: false,
-    type: IntFilter,
-  })
-  @Type(() => IntFilter)
-  @IsOptional()
-  @Field(() => IntFilter, {
-    nullable: true,
-  })
-  startTime?: IntFilter;
-
-  @ApiProperty({
-    required: false,
-    type: JsonFilter,
-  })
-  @Type(() => JsonFilter)
-  @IsOptional()
-  @Field(() => JsonFilter, {
-    nullable: true,
-  })
-  teams?: JsonFilter;
-
-  @ApiProperty({
-    required: false,
-    type: StringNullableFilter,
-  })
-  @Type(() => StringNullableFilter)
-  @IsOptional()
-  @Field(() => StringNullableFilter, {
-    nullable: true,
-  })
-  theme?: StringNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: IntNullableFilter,
-  })
-  @Type(() => IntNullableFilter)
-  @IsOptional()
-  @Field(() => IntNullableFilter, {
-    nullable: true,
-  })
-  timeFormat?: IntNullableFilter;
+  transactionsAsFreelancer?: TransactionListRelationFilter;
 
   @ApiProperty({
     required: false,
@@ -641,106 +232,7 @@ class UserWhereInput {
   @Field(() => StringFilter, {
     nullable: true,
   })
-  timeZone?: StringFilter;
-
-  @ApiProperty({
-    required: false,
-    type: DateTimeNullableFilter,
-  })
-  @Type(() => DateTimeNullableFilter)
-  @IsOptional()
-  @Field(() => DateTimeNullableFilter, {
-    nullable: true,
-  })
-  trialEndsAt?: DateTimeNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: BooleanFilter,
-  })
-  @Type(() => BooleanFilter)
-  @IsOptional()
-  @Field(() => BooleanFilter, {
-    nullable: true,
-  })
-  twoFactorEnabled?: BooleanFilter;
-
-  @ApiProperty({
-    required: false,
-    type: StringNullableFilter,
-  })
-  @Type(() => StringNullableFilter)
-  @IsOptional()
-  @Field(() => StringNullableFilter, {
-    nullable: true,
-  })
-  twoFactorSecret?: StringNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: StringNullableFilter,
-  })
-  @Type(() => StringNullableFilter)
-  @IsOptional()
-  @Field(() => StringNullableFilter, {
-    nullable: true,
-  })
-  username?: StringNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: BooleanNullableFilter,
-  })
-  @Type(() => BooleanNullableFilter)
-  @IsOptional()
-  @Field(() => BooleanNullableFilter, {
-    nullable: true,
-  })
-  verified?: BooleanNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: JsonFilter,
-  })
-  @Type(() => JsonFilter)
-  @IsOptional()
-  @Field(() => JsonFilter, {
-    nullable: true,
-  })
-  verifiedNumbers?: JsonFilter;
-
-  @ApiProperty({
-    required: false,
-    type: JsonFilter,
-  })
-  @Type(() => JsonFilter)
-  @IsOptional()
-  @Field(() => JsonFilter, {
-    nullable: true,
-  })
-  webhooks?: JsonFilter;
-
-  @ApiProperty({
-    required: false,
-    type: StringFilter,
-  })
-  @Type(() => StringFilter)
-  @IsOptional()
-  @Field(() => StringFilter, {
-    nullable: true,
-  })
-  weekStart?: StringFilter;
-
-  @ApiProperty({
-    required: false,
-    type: JsonFilter,
-  })
-  @Type(() => JsonFilter)
-  @IsOptional()
-  @Field(() => JsonFilter, {
-    nullable: true,
-  })
-  workflows?: JsonFilter;
+  username?: StringFilter;
 }
 
 export { UserWhereInput as UserWhereInput };

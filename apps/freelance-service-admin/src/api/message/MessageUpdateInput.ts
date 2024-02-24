@@ -1,7 +1,7 @@
-import { User1WhereUniqueInput } from "../user1/User1WhereUniqueInput";
+import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 
 export type MessageUpdateInput = {
   content?: string;
-  receiver?: User1WhereUniqueInput;
-  sender?: User1WhereUniqueInput;
+  receiver?: UserWhereUniqueInput;
+  sender?: UserWhereUniqueInput;
 };

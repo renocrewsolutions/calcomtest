@@ -10,7 +10,17 @@ https://docs.amplication.com/how-to/custom-code
 ------------------------------------------------------------------------------
   */
 import { PrismaService } from "../../prisma/prisma.service";
-import { Prisma, User } from "@prisma/client";
+
+import {
+  Prisma,
+  User, // @ts-ignore
+  Bid, // @ts-ignore
+  Job, // @ts-ignore
+  Message, // @ts-ignore
+  Review, // @ts-ignore
+  Skill, // @ts-ignore
+  Transaction,
+} from "@prisma/client";
 
 export class UserServiceBase {
   constructor(protected readonly prisma: PrismaService) {}
@@ -45,5 +55,104 @@ export class UserServiceBase {
     args: Prisma.SelectSubset<T, Prisma.UserDeleteArgs>
   ): Promise<User> {
     return this.prisma.user.delete(args);
+  }
+
+  async findBids(
+    parentId: number,
+    args: Prisma.BidFindManyArgs
+  ): Promise<Bid[]> {
+    return this.prisma.user
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .bids(args);
+  }
+
+  async findJobs(
+    parentId: number,
+    args: Prisma.JobFindManyArgs
+  ): Promise<Job[]> {
+    return this.prisma.user
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .jobs(args);
+  }
+
+  async findReceivedMessages(
+    parentId: number,
+    args: Prisma.MessageFindManyArgs
+  ): Promise<Message[]> {
+    return this.prisma.user
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .receivedMessages(args);
+  }
+
+  async findReviewsAsClient(
+    parentId: number,
+    args: Prisma.ReviewFindManyArgs
+  ): Promise<Review[]> {
+    return this.prisma.user
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .reviewsAsClient(args);
+  }
+
+  async findReviewsAsFreelancer(
+    parentId: number,
+    args: Prisma.ReviewFindManyArgs
+  ): Promise<Review[]> {
+    return this.prisma.user
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .reviewsAsFreelancer(args);
+  }
+
+  async findSentMessages(
+    parentId: number,
+    args: Prisma.MessageFindManyArgs
+  ): Promise<Message[]> {
+    return this.prisma.user
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .sentMessages(args);
+  }
+
+  async findSkills(
+    parentId: number,
+    args: Prisma.SkillFindManyArgs
+  ): Promise<Skill[]> {
+    return this.prisma.user
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .skills(args);
+  }
+
+  async findTransactionsAsClient(
+    parentId: number,
+    args: Prisma.TransactionFindManyArgs
+  ): Promise<Transaction[]> {
+    return this.prisma.user
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .transactionsAsClient(args);
+  }
+
+  async findTransactionsAsFreelancer(
+    parentId: number,
+    args: Prisma.TransactionFindManyArgs
+  ): Promise<Transaction[]> {
+    return this.prisma.user
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .transactionsAsFreelancer(args);
   }
 }

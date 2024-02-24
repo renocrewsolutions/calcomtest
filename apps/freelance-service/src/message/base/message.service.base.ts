@@ -14,7 +14,7 @@ import { PrismaService } from "../../prisma/prisma.service";
 import {
   Prisma,
   Message, // @ts-ignore
-  User1,
+  User,
 } from "@prisma/client";
 
 export class MessageServiceBase {
@@ -52,7 +52,7 @@ export class MessageServiceBase {
     return this.prisma.message.delete(args);
   }
 
-  async getReceiver(parentId: number): Promise<User1 | null> {
+  async getReceiver(parentId: number): Promise<User | null> {
     return this.prisma.message
       .findUnique({
         where: { id: parentId },
@@ -60,7 +60,7 @@ export class MessageServiceBase {
       .receiver();
   }
 
-  async getSender(parentId: number): Promise<User1 | null> {
+  async getSender(parentId: number): Promise<User | null> {
     return this.prisma.message
       .findUnique({
         where: { id: parentId },

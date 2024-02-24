@@ -8,7 +8,7 @@ import {
   DateField,
 } from "react-admin";
 import Pagination from "../Components/Pagination";
-import { USER1_TITLE_FIELD } from "../user1/User1Title";
+import { USER_TITLE_FIELD } from "../user/UserTitle";
 
 export const MessageList = (props: ListProps): React.ReactElement => {
   return (
@@ -22,11 +22,11 @@ export const MessageList = (props: ListProps): React.ReactElement => {
       <Datagrid rowClick="show">
         <TextField label="Content" source="content" />
         <TextField label="ID" source="id" />
-        <ReferenceField label="Receiver" source="user1.id" reference="User1">
-          <TextField source={USER1_TITLE_FIELD} />
+        <ReferenceField label="Receiver" source="user.id" reference="User">
+          <TextField source={USER_TITLE_FIELD} />
         </ReferenceField>
-        <ReferenceField label="Sender" source="user1.id" reference="User1">
-          <TextField source={USER1_TITLE_FIELD} />
+        <ReferenceField label="Sender" source="user.id" reference="User">
+          <TextField source={USER_TITLE_FIELD} />
         </ReferenceField>
         <DateField source="sentAt" label="Sent At" />
       </Datagrid>

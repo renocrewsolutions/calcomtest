@@ -12,7 +12,7 @@ https://docs.amplication.com/how-to/custom-code
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { IsNumber, ValidateNested, IsInt, IsDate } from "class-validator";
-import { User1 } from "../../user1/base/User1";
+import { User } from "../../user/base/User";
 import { Type } from "class-transformer";
 import { Job } from "../../job/base/Job";
 
@@ -28,19 +28,19 @@ class Transaction {
 
   @ApiProperty({
     required: true,
-    type: () => User1,
+    type: () => User,
   })
   @ValidateNested()
-  @Type(() => User1)
-  client?: User1;
+  @Type(() => User)
+  client?: User;
 
   @ApiProperty({
     required: true,
-    type: () => User1,
+    type: () => User,
   })
   @ValidateNested()
-  @Type(() => User1)
-  freelancer?: User1;
+  @Type(() => User)
+  freelancer?: User;
 
   @ApiProperty({
     required: true,

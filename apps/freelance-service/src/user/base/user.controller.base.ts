@@ -22,6 +22,24 @@ import { User } from "./User";
 import { UserFindManyArgs } from "./UserFindManyArgs";
 import { UserWhereUniqueInput } from "./UserWhereUniqueInput";
 import { UserUpdateInput } from "./UserUpdateInput";
+import { BidFindManyArgs } from "../../bid/base/BidFindManyArgs";
+import { Bid } from "../../bid/base/Bid";
+import { BidWhereUniqueInput } from "../../bid/base/BidWhereUniqueInput";
+import { JobFindManyArgs } from "../../job/base/JobFindManyArgs";
+import { Job } from "../../job/base/Job";
+import { JobWhereUniqueInput } from "../../job/base/JobWhereUniqueInput";
+import { MessageFindManyArgs } from "../../message/base/MessageFindManyArgs";
+import { Message } from "../../message/base/Message";
+import { MessageWhereUniqueInput } from "../../message/base/MessageWhereUniqueInput";
+import { ReviewFindManyArgs } from "../../review/base/ReviewFindManyArgs";
+import { Review } from "../../review/base/Review";
+import { ReviewWhereUniqueInput } from "../../review/base/ReviewWhereUniqueInput";
+import { SkillFindManyArgs } from "../../skill/base/SkillFindManyArgs";
+import { Skill } from "../../skill/base/Skill";
+import { SkillWhereUniqueInput } from "../../skill/base/SkillWhereUniqueInput";
+import { TransactionFindManyArgs } from "../../transaction/base/TransactionFindManyArgs";
+import { Transaction } from "../../transaction/base/Transaction";
+import { TransactionWhereUniqueInput } from "../../transaction/base/TransactionWhereUniqueInput";
 
 export class UserControllerBase {
   constructor(protected readonly service: UserService) {}
@@ -31,71 +49,15 @@ export class UserControllerBase {
     return await this.service.createUser({
       data: data,
       select: {
-        accessCodes: true,
-        accounts: true,
-        allowDynamicBooking: true,
-        allowSEOIndexing: true,
-        apiKeys: true,
-        appTheme: true,
-        availability: true,
-        avatar: true,
-        avatarUrl: true,
-        away: true,
-        backupCodes: true,
         bio: true,
-        bookingRedirects: true,
-        bookingRedirectsTo: true,
-        bookings: true,
-        brandColor: true,
-        bufferTime: true,
-        completedOnboarding: true,
-        createdDate: true,
-        credentials: true,
-        darkBrandColor: true,
-        defaultScheduleId: true,
-        destinationCalendarId: true,
-        disableImpersonation: true,
+        createdAt: true,
         email: true,
-        emailVerified: true,
-        endTime: true,
-        feedback: true,
-        hideBranding: true,
-        hosts: true,
         id: true,
-        identityProvider: true,
-        identityProviderId: true,
-        impersonatedBy: true,
-        impersonatedUsers: true,
-        invitedTo: true,
-        locale: true,
-        locked: true,
-        metadata: true,
-        movedToProfileId: true,
-        name: true,
-        organizationId: true,
-        ownedEventTypes: true,
-        passwordId: true,
-        profiles: true,
-        receiveMonthlyDigestEmail: true,
+        location: true,
+        password: true,
+        profileImage: true,
         role: true,
-        routingForms: true,
-        schedules: true,
-        selectedCalendars: true,
-        sessions: true,
-        startTime: true,
-        teams: true,
-        theme: true,
-        timeFormat: true,
-        timeZone: true,
-        trialEndsAt: true,
-        twoFactorEnabled: true,
-        twoFactorSecret: true,
         username: true,
-        verified: true,
-        verifiedNumbers: true,
-        webhooks: true,
-        weekStart: true,
-        workflows: true,
       },
     });
   }
@@ -108,71 +70,15 @@ export class UserControllerBase {
     return this.service.users({
       ...args,
       select: {
-        accessCodes: true,
-        accounts: true,
-        allowDynamicBooking: true,
-        allowSEOIndexing: true,
-        apiKeys: true,
-        appTheme: true,
-        availability: true,
-        avatar: true,
-        avatarUrl: true,
-        away: true,
-        backupCodes: true,
         bio: true,
-        bookingRedirects: true,
-        bookingRedirectsTo: true,
-        bookings: true,
-        brandColor: true,
-        bufferTime: true,
-        completedOnboarding: true,
-        createdDate: true,
-        credentials: true,
-        darkBrandColor: true,
-        defaultScheduleId: true,
-        destinationCalendarId: true,
-        disableImpersonation: true,
+        createdAt: true,
         email: true,
-        emailVerified: true,
-        endTime: true,
-        feedback: true,
-        hideBranding: true,
-        hosts: true,
         id: true,
-        identityProvider: true,
-        identityProviderId: true,
-        impersonatedBy: true,
-        impersonatedUsers: true,
-        invitedTo: true,
-        locale: true,
-        locked: true,
-        metadata: true,
-        movedToProfileId: true,
-        name: true,
-        organizationId: true,
-        ownedEventTypes: true,
-        passwordId: true,
-        profiles: true,
-        receiveMonthlyDigestEmail: true,
+        location: true,
+        password: true,
+        profileImage: true,
         role: true,
-        routingForms: true,
-        schedules: true,
-        selectedCalendars: true,
-        sessions: true,
-        startTime: true,
-        teams: true,
-        theme: true,
-        timeFormat: true,
-        timeZone: true,
-        trialEndsAt: true,
-        twoFactorEnabled: true,
-        twoFactorSecret: true,
         username: true,
-        verified: true,
-        verifiedNumbers: true,
-        webhooks: true,
-        weekStart: true,
-        workflows: true,
       },
     });
   }
@@ -186,71 +92,15 @@ export class UserControllerBase {
     const result = await this.service.user({
       where: params,
       select: {
-        accessCodes: true,
-        accounts: true,
-        allowDynamicBooking: true,
-        allowSEOIndexing: true,
-        apiKeys: true,
-        appTheme: true,
-        availability: true,
-        avatar: true,
-        avatarUrl: true,
-        away: true,
-        backupCodes: true,
         bio: true,
-        bookingRedirects: true,
-        bookingRedirectsTo: true,
-        bookings: true,
-        brandColor: true,
-        bufferTime: true,
-        completedOnboarding: true,
-        createdDate: true,
-        credentials: true,
-        darkBrandColor: true,
-        defaultScheduleId: true,
-        destinationCalendarId: true,
-        disableImpersonation: true,
+        createdAt: true,
         email: true,
-        emailVerified: true,
-        endTime: true,
-        feedback: true,
-        hideBranding: true,
-        hosts: true,
         id: true,
-        identityProvider: true,
-        identityProviderId: true,
-        impersonatedBy: true,
-        impersonatedUsers: true,
-        invitedTo: true,
-        locale: true,
-        locked: true,
-        metadata: true,
-        movedToProfileId: true,
-        name: true,
-        organizationId: true,
-        ownedEventTypes: true,
-        passwordId: true,
-        profiles: true,
-        receiveMonthlyDigestEmail: true,
+        location: true,
+        password: true,
+        profileImage: true,
         role: true,
-        routingForms: true,
-        schedules: true,
-        selectedCalendars: true,
-        sessions: true,
-        startTime: true,
-        teams: true,
-        theme: true,
-        timeFormat: true,
-        timeZone: true,
-        trialEndsAt: true,
-        twoFactorEnabled: true,
-        twoFactorSecret: true,
         username: true,
-        verified: true,
-        verifiedNumbers: true,
-        webhooks: true,
-        weekStart: true,
-        workflows: true,
       },
     });
     if (result === null) {
@@ -273,71 +123,15 @@ export class UserControllerBase {
         where: params,
         data: data,
         select: {
-          accessCodes: true,
-          accounts: true,
-          allowDynamicBooking: true,
-          allowSEOIndexing: true,
-          apiKeys: true,
-          appTheme: true,
-          availability: true,
-          avatar: true,
-          avatarUrl: true,
-          away: true,
-          backupCodes: true,
           bio: true,
-          bookingRedirects: true,
-          bookingRedirectsTo: true,
-          bookings: true,
-          brandColor: true,
-          bufferTime: true,
-          completedOnboarding: true,
-          createdDate: true,
-          credentials: true,
-          darkBrandColor: true,
-          defaultScheduleId: true,
-          destinationCalendarId: true,
-          disableImpersonation: true,
+          createdAt: true,
           email: true,
-          emailVerified: true,
-          endTime: true,
-          feedback: true,
-          hideBranding: true,
-          hosts: true,
           id: true,
-          identityProvider: true,
-          identityProviderId: true,
-          impersonatedBy: true,
-          impersonatedUsers: true,
-          invitedTo: true,
-          locale: true,
-          locked: true,
-          metadata: true,
-          movedToProfileId: true,
-          name: true,
-          organizationId: true,
-          ownedEventTypes: true,
-          passwordId: true,
-          profiles: true,
-          receiveMonthlyDigestEmail: true,
+          location: true,
+          password: true,
+          profileImage: true,
           role: true,
-          routingForms: true,
-          schedules: true,
-          selectedCalendars: true,
-          sessions: true,
-          startTime: true,
-          teams: true,
-          theme: true,
-          timeFormat: true,
-          timeZone: true,
-          trialEndsAt: true,
-          twoFactorEnabled: true,
-          twoFactorSecret: true,
           username: true,
-          verified: true,
-          verifiedNumbers: true,
-          webhooks: true,
-          weekStart: true,
-          workflows: true,
         },
       });
     } catch (error) {
@@ -360,71 +154,15 @@ export class UserControllerBase {
       return await this.service.deleteUser({
         where: params,
         select: {
-          accessCodes: true,
-          accounts: true,
-          allowDynamicBooking: true,
-          allowSEOIndexing: true,
-          apiKeys: true,
-          appTheme: true,
-          availability: true,
-          avatar: true,
-          avatarUrl: true,
-          away: true,
-          backupCodes: true,
           bio: true,
-          bookingRedirects: true,
-          bookingRedirectsTo: true,
-          bookings: true,
-          brandColor: true,
-          bufferTime: true,
-          completedOnboarding: true,
-          createdDate: true,
-          credentials: true,
-          darkBrandColor: true,
-          defaultScheduleId: true,
-          destinationCalendarId: true,
-          disableImpersonation: true,
+          createdAt: true,
           email: true,
-          emailVerified: true,
-          endTime: true,
-          feedback: true,
-          hideBranding: true,
-          hosts: true,
           id: true,
-          identityProvider: true,
-          identityProviderId: true,
-          impersonatedBy: true,
-          impersonatedUsers: true,
-          invitedTo: true,
-          locale: true,
-          locked: true,
-          metadata: true,
-          movedToProfileId: true,
-          name: true,
-          organizationId: true,
-          ownedEventTypes: true,
-          passwordId: true,
-          profiles: true,
-          receiveMonthlyDigestEmail: true,
+          location: true,
+          password: true,
+          profileImage: true,
           role: true,
-          routingForms: true,
-          schedules: true,
-          selectedCalendars: true,
-          sessions: true,
-          startTime: true,
-          teams: true,
-          theme: true,
-          timeFormat: true,
-          timeZone: true,
-          trialEndsAt: true,
-          twoFactorEnabled: true,
-          twoFactorSecret: true,
           username: true,
-          verified: true,
-          verifiedNumbers: true,
-          webhooks: true,
-          weekStart: true,
-          workflows: true,
         },
       });
     } catch (error) {
@@ -435,5 +173,809 @@ export class UserControllerBase {
       }
       throw error;
     }
+  }
+
+  @common.Get("/:id/bids")
+  @ApiNestedQuery(BidFindManyArgs)
+  async findBids(
+    @common.Req() request: Request,
+    @common.Param() params: UserWhereUniqueInput
+  ): Promise<Bid[]> {
+    const query = plainToClass(BidFindManyArgs, request.query);
+    const results = await this.service.findBids(params.id, {
+      ...query,
+      select: {
+        amount: true,
+        createdAt: true,
+
+        freelancer: {
+          select: {
+            id: true,
+          },
+        },
+
+        id: true,
+
+        job: {
+          select: {
+            id: true,
+          },
+        },
+
+        proposal: true,
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/bids")
+  async connectBids(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: BidWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      bids: {
+        connect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/bids")
+  async updateBids(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: BidWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      bids: {
+        set: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/bids")
+  async disconnectBids(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: BidWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      bids: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Get("/:id/jobs")
+  @ApiNestedQuery(JobFindManyArgs)
+  async findJobs(
+    @common.Req() request: Request,
+    @common.Param() params: UserWhereUniqueInput
+  ): Promise<Job[]> {
+    const query = plainToClass(JobFindManyArgs, request.query);
+    const results = await this.service.findJobs(params.id, {
+      ...query,
+      select: {
+        budget: true,
+
+        client: {
+          select: {
+            id: true,
+          },
+        },
+
+        createdAt: true,
+        description: true,
+        id: true,
+        title: true,
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/jobs")
+  async connectJobs(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: JobWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      jobs: {
+        connect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/jobs")
+  async updateJobs(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: JobWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      jobs: {
+        set: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/jobs")
+  async disconnectJobs(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: JobWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      jobs: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Get("/:id/receivedMessages")
+  @ApiNestedQuery(MessageFindManyArgs)
+  async findReceivedMessages(
+    @common.Req() request: Request,
+    @common.Param() params: UserWhereUniqueInput
+  ): Promise<Message[]> {
+    const query = plainToClass(MessageFindManyArgs, request.query);
+    const results = await this.service.findReceivedMessages(params.id, {
+      ...query,
+      select: {
+        content: true,
+        id: true,
+
+        receiver: {
+          select: {
+            id: true,
+          },
+        },
+
+        sender: {
+          select: {
+            id: true,
+          },
+        },
+
+        sentAt: true,
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/receivedMessages")
+  async connectReceivedMessages(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: MessageWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      receivedMessages: {
+        connect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/receivedMessages")
+  async updateReceivedMessages(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: MessageWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      receivedMessages: {
+        set: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/receivedMessages")
+  async disconnectReceivedMessages(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: MessageWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      receivedMessages: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Get("/:id/reviewsAsClient")
+  @ApiNestedQuery(ReviewFindManyArgs)
+  async findReviewsAsClient(
+    @common.Req() request: Request,
+    @common.Param() params: UserWhereUniqueInput
+  ): Promise<Review[]> {
+    const query = plainToClass(ReviewFindManyArgs, request.query);
+    const results = await this.service.findReviewsAsClient(params.id, {
+      ...query,
+      select: {
+        client: {
+          select: {
+            id: true,
+          },
+        },
+
+        content: true,
+        createdAt: true,
+
+        freelancer: {
+          select: {
+            id: true,
+          },
+        },
+
+        id: true,
+
+        job: {
+          select: {
+            id: true,
+          },
+        },
+
+        rating: true,
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/reviewsAsClient")
+  async connectReviewsAsClient(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: ReviewWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      reviewsAsClient: {
+        connect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/reviewsAsClient")
+  async updateReviewsAsClient(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: ReviewWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      reviewsAsClient: {
+        set: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/reviewsAsClient")
+  async disconnectReviewsAsClient(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: ReviewWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      reviewsAsClient: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Get("/:id/reviewsAsFreelancer")
+  @ApiNestedQuery(ReviewFindManyArgs)
+  async findReviewsAsFreelancer(
+    @common.Req() request: Request,
+    @common.Param() params: UserWhereUniqueInput
+  ): Promise<Review[]> {
+    const query = plainToClass(ReviewFindManyArgs, request.query);
+    const results = await this.service.findReviewsAsFreelancer(params.id, {
+      ...query,
+      select: {
+        client: {
+          select: {
+            id: true,
+          },
+        },
+
+        content: true,
+        createdAt: true,
+
+        freelancer: {
+          select: {
+            id: true,
+          },
+        },
+
+        id: true,
+
+        job: {
+          select: {
+            id: true,
+          },
+        },
+
+        rating: true,
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/reviewsAsFreelancer")
+  async connectReviewsAsFreelancer(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: ReviewWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      reviewsAsFreelancer: {
+        connect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/reviewsAsFreelancer")
+  async updateReviewsAsFreelancer(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: ReviewWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      reviewsAsFreelancer: {
+        set: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/reviewsAsFreelancer")
+  async disconnectReviewsAsFreelancer(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: ReviewWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      reviewsAsFreelancer: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Get("/:id/sentMessages")
+  @ApiNestedQuery(MessageFindManyArgs)
+  async findSentMessages(
+    @common.Req() request: Request,
+    @common.Param() params: UserWhereUniqueInput
+  ): Promise<Message[]> {
+    const query = plainToClass(MessageFindManyArgs, request.query);
+    const results = await this.service.findSentMessages(params.id, {
+      ...query,
+      select: {
+        content: true,
+        id: true,
+
+        receiver: {
+          select: {
+            id: true,
+          },
+        },
+
+        sender: {
+          select: {
+            id: true,
+          },
+        },
+
+        sentAt: true,
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/sentMessages")
+  async connectSentMessages(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: MessageWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      sentMessages: {
+        connect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/sentMessages")
+  async updateSentMessages(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: MessageWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      sentMessages: {
+        set: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/sentMessages")
+  async disconnectSentMessages(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: MessageWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      sentMessages: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Get("/:id/skills")
+  @ApiNestedQuery(SkillFindManyArgs)
+  async findSkills(
+    @common.Req() request: Request,
+    @common.Param() params: UserWhereUniqueInput
+  ): Promise<Skill[]> {
+    const query = plainToClass(SkillFindManyArgs, request.query);
+    const results = await this.service.findSkills(params.id, {
+      ...query,
+      select: {
+        description: true,
+        id: true,
+        name: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/skills")
+  async connectSkills(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: SkillWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      skills: {
+        connect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/skills")
+  async updateSkills(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: SkillWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      skills: {
+        set: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/skills")
+  async disconnectSkills(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: SkillWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      skills: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Get("/:id/transactionsAsClient")
+  @ApiNestedQuery(TransactionFindManyArgs)
+  async findTransactionsAsClient(
+    @common.Req() request: Request,
+    @common.Param() params: UserWhereUniqueInput
+  ): Promise<Transaction[]> {
+    const query = plainToClass(TransactionFindManyArgs, request.query);
+    const results = await this.service.findTransactionsAsClient(params.id, {
+      ...query,
+      select: {
+        amount: true,
+
+        client: {
+          select: {
+            id: true,
+          },
+        },
+
+        freelancer: {
+          select: {
+            id: true,
+          },
+        },
+
+        id: true,
+
+        job: {
+          select: {
+            id: true,
+          },
+        },
+
+        transactionDate: true,
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/transactionsAsClient")
+  async connectTransactionsAsClient(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: TransactionWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      transactionsAsClient: {
+        connect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/transactionsAsClient")
+  async updateTransactionsAsClient(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: TransactionWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      transactionsAsClient: {
+        set: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/transactionsAsClient")
+  async disconnectTransactionsAsClient(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: TransactionWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      transactionsAsClient: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Get("/:id/transactionsAsFreelancer")
+  @ApiNestedQuery(TransactionFindManyArgs)
+  async findTransactionsAsFreelancer(
+    @common.Req() request: Request,
+    @common.Param() params: UserWhereUniqueInput
+  ): Promise<Transaction[]> {
+    const query = plainToClass(TransactionFindManyArgs, request.query);
+    const results = await this.service.findTransactionsAsFreelancer(params.id, {
+      ...query,
+      select: {
+        amount: true,
+
+        client: {
+          select: {
+            id: true,
+          },
+        },
+
+        freelancer: {
+          select: {
+            id: true,
+          },
+        },
+
+        id: true,
+
+        job: {
+          select: {
+            id: true,
+          },
+        },
+
+        transactionDate: true,
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/transactionsAsFreelancer")
+  async connectTransactionsAsFreelancer(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: TransactionWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      transactionsAsFreelancer: {
+        connect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/transactionsAsFreelancer")
+  async updateTransactionsAsFreelancer(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: TransactionWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      transactionsAsFreelancer: {
+        set: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/transactionsAsFreelancer")
+  async disconnectTransactionsAsFreelancer(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: TransactionWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      transactionsAsFreelancer: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
   }
 }

@@ -26,7 +26,7 @@ import { ReviewFindManyArgs } from "../../review/base/ReviewFindManyArgs";
 import { Review } from "../../review/base/Review";
 import { TransactionFindManyArgs } from "../../transaction/base/TransactionFindManyArgs";
 import { Transaction } from "../../transaction/base/Transaction";
-import { User1 } from "../../user1/base/User1";
+import { User } from "../../user/base/User";
 import { JobService } from "../job.service";
 @graphql.Resolver(() => Job)
 export class JobResolverBase {
@@ -148,11 +148,11 @@ export class JobResolverBase {
     return results;
   }
 
-  @graphql.ResolveField(() => User1, {
+  @graphql.ResolveField(() => User, {
     nullable: true,
     name: "client",
   })
-  async getClient(@graphql.Parent() parent: Job): Promise<User1 | null> {
+  async getClient(@graphql.Parent() parent: Job): Promise<User | null> {
     const result = await this.service.getClient(parent.id);
 
     if (!result) {

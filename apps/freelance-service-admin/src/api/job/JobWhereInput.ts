@@ -1,6 +1,6 @@
 import { BidListRelationFilter } from "../bid/BidListRelationFilter";
 import { FloatFilter } from "../../util/FloatFilter";
-import { User1WhereUniqueInput } from "../user1/User1WhereUniqueInput";
+import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 import { DateTimeFilter } from "../../util/DateTimeFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { IntFilter } from "../../util/IntFilter";
@@ -10,7 +10,7 @@ import { TransactionListRelationFilter } from "../transaction/TransactionListRel
 export type JobWhereInput = {
   bids?: BidListRelationFilter;
   budget?: FloatFilter;
-  client?: User1WhereUniqueInput;
+  client?: UserWhereUniqueInput;
   createdAt?: DateTimeFilter;
   description?: StringFilter;
   id?: IntFilter;

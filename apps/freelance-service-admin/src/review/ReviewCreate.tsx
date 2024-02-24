@@ -10,23 +10,23 @@ import {
   NumberInput,
 } from "react-admin";
 
-import { User1Title } from "../user1/User1Title";
+import { UserTitle } from "../user/UserTitle";
 import { JobTitle } from "../job/JobTitle";
 
 export const ReviewCreate = (props: CreateProps): React.ReactElement => {
   return (
     <Create {...props}>
       <SimpleForm>
-        <ReferenceInput source="client.id" reference="User1" label="Client">
-          <SelectInput optionText={User1Title} />
+        <ReferenceInput source="client.id" reference="User" label="Client">
+          <SelectInput optionText={UserTitle} />
         </ReferenceInput>
         <TextInput label="Content" source="content" />
         <ReferenceInput
           source="freelancer.id"
-          reference="User1"
+          reference="User"
           label="Freelancer"
         >
-          <SelectInput optionText={User1Title} />
+          <SelectInput optionText={UserTitle} />
         </ReferenceInput>
         <ReferenceInput source="job.id" reference="Job" label="Job">
           <SelectInput optionText={JobTitle} />

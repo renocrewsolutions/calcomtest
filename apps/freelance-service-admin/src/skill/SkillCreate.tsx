@@ -1,15 +1,13 @@
 import * as React from "react";
-
 import {
   Create,
   SimpleForm,
   CreateProps,
   TextInput,
-  ReferenceArrayInput,
-  SelectArrayInput,
+  ReferenceInput,
+  SelectInput,
 } from "react-admin";
-
-import { User1Title } from "../user1/User1Title";
+import { UserTitle } from "../user/UserTitle";
 
 export const SkillCreate = (props: CreateProps): React.ReactElement => {
   return (
@@ -17,14 +15,9 @@ export const SkillCreate = (props: CreateProps): React.ReactElement => {
       <SimpleForm>
         <TextInput label="Description" source="description" />
         <TextInput label="Name" source="name" />
-        <ReferenceArrayInput
-          source="users"
-          reference="User1"
-          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
-          format={(value: any) => value && value.map((v: any) => v.id)}
-        >
-          <SelectArrayInput optionText={User1Title} />
-        </ReferenceArrayInput>
+        <ReferenceInput source="user.id" reference="User" label="User">
+          <SelectInput optionText={UserTitle} />
+        </ReferenceInput>
       </SimpleForm>
     </Create>
   );

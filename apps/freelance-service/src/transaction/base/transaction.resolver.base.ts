@@ -20,7 +20,7 @@ import { TransactionFindUniqueArgs } from "./TransactionFindUniqueArgs";
 import { CreateTransactionArgs } from "./CreateTransactionArgs";
 import { UpdateTransactionArgs } from "./UpdateTransactionArgs";
 import { DeleteTransactionArgs } from "./DeleteTransactionArgs";
-import { User1 } from "../../user1/base/User1";
+import { User } from "../../user/base/User";
 import { Job } from "../../job/base/Job";
 import { TransactionService } from "../transaction.service";
 @graphql.Resolver(() => Transaction)
@@ -127,13 +127,11 @@ export class TransactionResolverBase {
     }
   }
 
-  @graphql.ResolveField(() => User1, {
+  @graphql.ResolveField(() => User, {
     nullable: true,
     name: "client",
   })
-  async getClient(
-    @graphql.Parent() parent: Transaction
-  ): Promise<User1 | null> {
+  async getClient(@graphql.Parent() parent: Transaction): Promise<User | null> {
     const result = await this.service.getClient(parent.id);
 
     if (!result) {
@@ -142,13 +140,13 @@ export class TransactionResolverBase {
     return result;
   }
 
-  @graphql.ResolveField(() => User1, {
+  @graphql.ResolveField(() => User, {
     nullable: true,
     name: "freelancer",
   })
   async getFreelancer(
     @graphql.Parent() parent: Transaction
-  ): Promise<User1 | null> {
+  ): Promise<User | null> {
     const result = await this.service.getFreelancer(parent.id);
 
     if (!result) {

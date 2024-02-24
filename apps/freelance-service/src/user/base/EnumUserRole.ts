@@ -9,12 +9,11 @@ https://docs.amplication.com/how-to/custom-code
 
 ------------------------------------------------------------------------------
   */
-import { User } from "./User";
 import { registerEnumType } from "@nestjs/graphql";
 
 export enum EnumUserRole {
-  User = "USER",
-  Admin = "ADMIN",
+  Client = "CLIENT",
+  Freelancer = "FREELANCER",
 }
 
 registerEnumType(EnumUserRole, {

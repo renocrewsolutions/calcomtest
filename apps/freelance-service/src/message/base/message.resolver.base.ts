@@ -20,7 +20,7 @@ import { MessageFindUniqueArgs } from "./MessageFindUniqueArgs";
 import { CreateMessageArgs } from "./CreateMessageArgs";
 import { UpdateMessageArgs } from "./UpdateMessageArgs";
 import { DeleteMessageArgs } from "./DeleteMessageArgs";
-import { User1 } from "../../user1/base/User1";
+import { User } from "../../user/base/User";
 import { MessageService } from "../message.service";
 @graphql.Resolver(() => Message)
 export class MessageResolverBase {
@@ -118,11 +118,11 @@ export class MessageResolverBase {
     }
   }
 
-  @graphql.ResolveField(() => User1, {
+  @graphql.ResolveField(() => User, {
     nullable: true,
     name: "receiver",
   })
-  async getReceiver(@graphql.Parent() parent: Message): Promise<User1 | null> {
+  async getReceiver(@graphql.Parent() parent: Message): Promise<User | null> {
     const result = await this.service.getReceiver(parent.id);
 
     if (!result) {
@@ -131,11 +131,11 @@ export class MessageResolverBase {
     return result;
   }
 
-  @graphql.ResolveField(() => User1, {
+  @graphql.ResolveField(() => User, {
     nullable: true,
     name: "sender",
   })
-  async getSender(@graphql.Parent() parent: Message): Promise<User1 | null> {
+  async getSender(@graphql.Parent() parent: Message): Promise<User | null> {
     const result = await this.service.getSender(parent.id);
 
     if (!result) {

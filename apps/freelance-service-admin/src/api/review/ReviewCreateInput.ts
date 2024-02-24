@@ -1,10 +1,10 @@
-import { User1WhereUniqueInput } from "../user1/User1WhereUniqueInput";
+import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 import { JobWhereUniqueInput } from "../job/JobWhereUniqueInput";
 
 export type ReviewCreateInput = {
-  client: User1WhereUniqueInput;
+  client: UserWhereUniqueInput;
   content: string;
-  freelancer: User1WhereUniqueInput;
+  freelancer: UserWhereUniqueInput;
   job: JobWhereUniqueInput;
   rating: number;
 };

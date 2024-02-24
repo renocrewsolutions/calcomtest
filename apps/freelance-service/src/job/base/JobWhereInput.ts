@@ -15,7 +15,7 @@ import { BidListRelationFilter } from "../../bid/base/BidListRelationFilter";
 import { ValidateNested, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
 import { FloatFilter } from "../../util/FloatFilter";
-import { User1WhereUniqueInput } from "../../user1/base/User1WhereUniqueInput";
+import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { DateTimeFilter } from "../../util/DateTimeFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { IntFilter } from "../../util/IntFilter";
@@ -49,15 +49,15 @@ class JobWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => User1WhereUniqueInput,
+    type: () => UserWhereUniqueInput,
   })
   @ValidateNested()
-  @Type(() => User1WhereUniqueInput)
+  @Type(() => UserWhereUniqueInput)
   @IsOptional()
-  @Field(() => User1WhereUniqueInput, {
+  @Field(() => UserWhereUniqueInput, {
     nullable: true,
   })
-  client?: User1WhereUniqueInput;
+  client?: UserWhereUniqueInput;
 
   @ApiProperty({
     required: false,

@@ -23,7 +23,6 @@ import { DeleteAppRoutingFormsFormArgs } from "./DeleteAppRoutingFormsFormArgs";
 import { AppRoutingFormsFormResponseFindManyArgs } from "../../appRoutingFormsFormResponse/base/AppRoutingFormsFormResponseFindManyArgs";
 import { AppRoutingFormsFormResponse } from "../../appRoutingFormsFormResponse/base/AppRoutingFormsFormResponse";
 import { Team } from "../../team/base/Team";
-import { User } from "../../user/base/User";
 import { AppRoutingFormsFormService } from "../appRoutingFormsForm.service";
 @graphql.Resolver(() => AppRoutingFormsForm)
 export class AppRoutingFormsFormResolverBase {
@@ -70,10 +69,6 @@ export class AppRoutingFormsFormResolverBase {
               connect: args.data.team,
             }
           : undefined,
-
-        user: {
-          connect: args.data.user,
-        },
       },
     });
   }
@@ -93,10 +88,6 @@ export class AppRoutingFormsFormResolverBase {
                 connect: args.data.team,
               }
             : undefined,
-
-          user: {
-            connect: args.data.user,
-          },
         },
       });
     } catch (error) {
@@ -149,21 +140,6 @@ export class AppRoutingFormsFormResolverBase {
     @graphql.Parent() parent: AppRoutingFormsForm
   ): Promise<Team | null> {
     const result = await this.service.getTeam(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return result;
-  }
-
-  @graphql.ResolveField(() => User, {
-    nullable: true,
-    name: "user",
-  })
-  async getUser(
-    @graphql.Parent() parent: AppRoutingFormsForm
-  ): Promise<User | null> {
-    const result = await this.service.getUser(parent.id);
 
     if (!result) {
       return null;

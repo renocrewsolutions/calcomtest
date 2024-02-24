@@ -45,12 +45,6 @@ export class AccessCodeControllerBase {
               connect: data.team,
             }
           : undefined,
-
-        user: data.user
-          ? {
-              connect: data.user,
-            }
-          : undefined,
       },
       select: {
         client: {
@@ -70,11 +64,7 @@ export class AccessCodeControllerBase {
           },
         },
 
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
   }
@@ -104,11 +94,7 @@ export class AccessCodeControllerBase {
           },
         },
 
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
   }
@@ -139,11 +125,7 @@ export class AccessCodeControllerBase {
           },
         },
 
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
     if (result === null) {
@@ -178,12 +160,6 @@ export class AccessCodeControllerBase {
                 connect: data.team,
               }
             : undefined,
-
-          user: data.user
-            ? {
-                connect: data.user,
-              }
-            : undefined,
         },
         select: {
           client: {
@@ -203,11 +179,7 @@ export class AccessCodeControllerBase {
             },
           },
 
-          user: {
-            select: {
-              id: true,
-            },
-          },
+          userId: true,
         },
       });
     } catch (error) {
@@ -247,11 +219,7 @@ export class AccessCodeControllerBase {
             },
           },
 
-          user: {
-            select: {
-              id: true,
-            },
-          },
+          userId: true,
         },
       });
     } catch (error) {

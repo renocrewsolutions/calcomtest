@@ -18,7 +18,7 @@ import { StringFilter } from "../../util/StringFilter";
 import { DateTimeFilter } from "../../util/DateTimeFilter";
 import { IntFilter } from "../../util/IntFilter";
 import { TeamWhereUniqueInput } from "../../team/base/TeamWhereUniqueInput";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
+import { IntNullableFilter } from "../../util/IntNullableFilter";
 
 @InputType()
 class AccessCodeWhereInput {
@@ -81,15 +81,14 @@ class AccessCodeWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => UserWhereUniqueInput,
+    type: IntNullableFilter,
   })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
+  @Type(() => IntNullableFilter)
   @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
+  @Field(() => IntNullableFilter, {
     nullable: true,
   })
-  user?: UserWhereUniqueInput;
+  userId?: IntNullableFilter;
 }
 
 export { AccessCodeWhereInput as AccessCodeWhereInput };

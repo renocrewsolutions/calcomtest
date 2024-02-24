@@ -32,7 +32,6 @@ import { PaymentUpdateManyWithoutBookingsInput } from "./PaymentUpdateManyWithou
 import { BookingReferenceUpdateManyWithoutBookingsInput } from "./BookingReferenceUpdateManyWithoutBookingsInput";
 import { BookingSeatUpdateManyWithoutBookingsInput } from "./BookingSeatUpdateManyWithoutBookingsInput";
 import { EnumBookingStatus } from "./EnumBookingStatus";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { WorkflowReminderUpdateManyWithoutBookingsInput } from "./WorkflowReminderUpdateManyWithoutBookingsInput";
 
 @InputType()
@@ -384,15 +383,14 @@ class BookingUpdateInput {
 
   @ApiProperty({
     required: false,
-    type: () => UserWhereUniqueInput,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
+  @IsInt()
   @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
+  @Field(() => Number, {
     nullable: true,
   })
-  user?: UserWhereUniqueInput | null;
+  userId?: number | null;
 
   @ApiProperty({
     required: false,

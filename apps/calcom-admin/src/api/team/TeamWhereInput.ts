@@ -13,7 +13,6 @@ import { MembershipListRelationFilter } from "../membership/MembershipListRelati
 import { JsonFilter } from "../../util/JsonFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { ProfileListRelationFilter } from "../profile/ProfileListRelationFilter";
-import { UserListRelationFilter } from "../user/UserListRelationFilter";
 import { TeamWhereUniqueInput } from "./TeamWhereUniqueInput";
 import { AppRoutingFormsFormListRelationFilter } from "../appRoutingFormsForm/AppRoutingFormsFormListRelationFilter";
 import { IntNullableFilter } from "../../util/IntNullableFilter";
@@ -46,7 +45,7 @@ export type TeamWhereInput = {
   metadata?: JsonFilter;
   name?: StringFilter;
   orgProfiles?: ProfileListRelationFilter;
-  orgUsers?: UserListRelationFilter;
+  orgUsers?: JsonFilter;
   parent?: TeamWhereUniqueInput;
   pendingPayment?: BooleanFilter;
   routingForms?: AppRoutingFormsFormListRelationFilter;

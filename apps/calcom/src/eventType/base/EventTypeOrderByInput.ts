@@ -281,7 +281,7 @@ class EventTypeOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  userId?: SortOrder;
+  ownerId?: SortOrder;
 
   @ApiProperty({
     required: false,

@@ -34,7 +34,6 @@ import { WorkflowsOnEventTypeFindManyArgs } from "../../workflowsOnEventType/bas
 import { WorkflowsOnEventType } from "../../workflowsOnEventType/base/WorkflowsOnEventType";
 import { DestinationCalendar } from "../../destinationCalendar/base/DestinationCalendar";
 import { HashedLink } from "../../hashedLink/base/HashedLink";
-import { User } from "../../user/base/User";
 import { Profile } from "../../profile/base/Profile";
 import { Schedule } from "../../schedule/base/Schedule";
 import { Team } from "../../team/base/Team";
@@ -91,12 +90,6 @@ export class EventTypeResolverBase {
             }
           : undefined,
 
-        owner: args.data.owner
-          ? {
-              connect: args.data.owner,
-            }
-          : undefined,
-
         parent: args.data.parent
           ? {
               connect: args.data.parent,
@@ -143,12 +136,6 @@ export class EventTypeResolverBase {
           hashedLink: args.data.hashedLink
             ? {
                 connect: args.data.hashedLink,
-              }
-            : undefined,
-
-          owner: args.data.owner
-            ? {
-                connect: args.data.owner,
               }
             : undefined,
 
@@ -324,19 +311,6 @@ export class EventTypeResolverBase {
     @graphql.Parent() parent: EventType
   ): Promise<HashedLink | null> {
     const result = await this.service.getHashedLink(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return result;
-  }
-
-  @graphql.ResolveField(() => User, {
-    nullable: true,
-    name: "owner",
-  })
-  async getOwner(@graphql.Parent() parent: EventType): Promise<User | null> {
-    const result = await this.service.getOwner(parent.id);
 
     if (!result) {
       return null;

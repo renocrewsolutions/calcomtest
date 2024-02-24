@@ -21,7 +21,6 @@ import { TeamWhereUniqueInput } from "../../team/base/TeamWhereUniqueInput";
 import { IntNullableFilter } from "../../util/IntNullableFilter";
 import { EnumWorkflowTimeUnit } from "./EnumWorkflowTimeUnit";
 import { EnumWorkflowTrigger } from "./EnumWorkflowTrigger";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
 class WorkflowWhereInput {
@@ -134,15 +133,14 @@ class WorkflowWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => UserWhereUniqueInput,
+    type: IntNullableFilter,
   })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
+  @Type(() => IntNullableFilter)
   @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
+  @Field(() => IntNullableFilter, {
     nullable: true,
   })
-  user?: UserWhereUniqueInput;
+  userId?: IntNullableFilter;
 }
 
 export { WorkflowWhereInput as WorkflowWhereInput };

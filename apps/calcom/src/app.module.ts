@@ -4,7 +4,6 @@ import { EventTypeModule } from "./eventType/eventType.module";
 import { CredentialModule } from "./credential/credential.module";
 import { DestinationCalendarModule } from "./destinationCalendar/destinationCalendar.module";
 import { UserPasswordModule } from "./userPassword/userPassword.module";
-import { UserModule } from "./user/user.module";
 import { ProfileModule } from "./profile/profile.module";
 import { TeamModule } from "./team/team.module";
 import { MembershipModule } from "./membership/membership.module";
@@ -65,7 +64,6 @@ import { ApolloDriver, ApolloDriverConfig } from "@nestjs/apollo";
     CredentialModule,
     DestinationCalendarModule,
     UserPasswordModule,
-    UserModule,
     ProfileModule,
     TeamModule,
     MembershipModule,

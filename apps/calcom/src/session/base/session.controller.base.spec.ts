@@ -21,23 +21,27 @@ const CREATE_INPUT = {
   expires: new Date(),
   id: "exampleId",
   sessionToken: "exampleSessionToken",
+  userId: 42,
 };
 const CREATE_RESULT = {
   expires: new Date(),
   id: "exampleId",
   sessionToken: "exampleSessionToken",
+  userId: 42,
 };
 const FIND_MANY_RESULT = [
   {
     expires: new Date(),
     id: "exampleId",
     sessionToken: "exampleSessionToken",
+    userId: 42,
   },
 ];
 const FIND_ONE_RESULT = {
   expires: new Date(),
   id: "exampleId",
   sessionToken: "exampleSessionToken",
+  userId: 42,
 };
 
 const service = {

@@ -14,7 +14,6 @@ import { ApiProperty } from "@nestjs/swagger";
 import { IsInt, IsString, ValidateNested, IsOptional } from "class-validator";
 import { Team } from "../../team/base/Team";
 import { Type } from "class-transformer";
-import { User } from "../../user/base/User";
 
 @ObjectType()
 class VerifiedNumber {
@@ -45,12 +44,14 @@ class VerifiedNumber {
 
   @ApiProperty({
     required: false,
-    type: () => User,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => User)
+  @IsInt()
   @IsOptional()
-  user?: User | null;
+  @Field(() => Number, {
+    nullable: true,
+  })
+  userId!: number | null;
 }
 
 export { VerifiedNumber as VerifiedNumber };

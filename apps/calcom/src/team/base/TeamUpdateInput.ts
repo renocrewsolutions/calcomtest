@@ -31,7 +31,6 @@ import { IsJSONValue } from "../../validators";
 import { GraphQLJSON } from "graphql-type-json";
 import { InputJsonValue } from "../../types";
 import { ProfileUpdateManyWithoutTeamsInput } from "./ProfileUpdateManyWithoutTeamsInput";
-import { UserUpdateManyWithoutTeamsInput } from "./UserUpdateManyWithoutTeamsInput";
 import { TeamWhereUniqueInput } from "./TeamWhereUniqueInput";
 import { AppRoutingFormsFormUpdateManyWithoutTeamsInput } from "./AppRoutingFormsFormUpdateManyWithoutTeamsInput";
 import { VerifiedNumberUpdateManyWithoutTeamsInput } from "./VerifiedNumberUpdateManyWithoutTeamsInput";
@@ -292,15 +291,13 @@ class TeamUpdateInput {
 
   @ApiProperty({
     required: false,
-    type: () => UserUpdateManyWithoutTeamsInput,
   })
-  @ValidateNested()
-  @Type(() => UserUpdateManyWithoutTeamsInput)
+  @IsJSONValue()
   @IsOptional()
-  @Field(() => UserUpdateManyWithoutTeamsInput, {
+  @Field(() => GraphQLJSON, {
     nullable: true,
   })
-  orgUsers?: UserUpdateManyWithoutTeamsInput;
+  orgUsers?: InputJsonValue;
 
   @ApiProperty({
     required: false,

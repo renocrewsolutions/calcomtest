@@ -15,7 +15,6 @@ import { IsBoolean, IsInt, IsEnum, ValidateNested } from "class-validator";
 import { EnumMembershipRole } from "./EnumMembershipRole";
 import { Team } from "../../team/base/Team";
 import { Type } from "class-transformer";
-import { User } from "../../user/base/User";
 
 @ObjectType()
 class Membership {
@@ -63,11 +62,11 @@ class Membership {
 
   @ApiProperty({
     required: true,
-    type: () => User,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => User)
-  user?: User;
+  @IsInt()
+  @Field(() => Number)
+  userId!: number;
 }
 
 export { Membership as Membership };

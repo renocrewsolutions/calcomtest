@@ -23,6 +23,7 @@ const CREATE_INPUT = {
   endTime: new Date(),
   id: 42,
   startTime: new Date(),
+  userId: 42,
 };
 const CREATE_RESULT = {
   date: new Date(),
@@ -30,6 +31,7 @@ const CREATE_RESULT = {
   endTime: new Date(),
   id: 42,
   startTime: new Date(),
+  userId: 42,
 };
 const FIND_MANY_RESULT = [
   {
@@ -38,6 +40,7 @@ const FIND_MANY_RESULT = [
     endTime: new Date(),
     id: 42,
     startTime: new Date(),
+    userId: 42,
   },
 ];
 const FIND_ONE_RESULT = {
@@ -46,6 +49,7 @@ const FIND_ONE_RESULT = {
   endTime: new Date(),
   id: 42,
   startTime: new Date(),
+  userId: 42,
 };
 
 const service = {

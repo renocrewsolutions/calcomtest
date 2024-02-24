@@ -1,4 +1,3 @@
-import { User } from "../user/User";
 import { Team } from "../team/Team";
 
 export enum EnumTempOrgRedirectType {

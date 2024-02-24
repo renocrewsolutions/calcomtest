@@ -17,7 +17,6 @@ import { Type } from "class-transformer";
 import { IntFilter } from "../../util/IntFilter";
 import { BooleanFilter } from "../../util/BooleanFilter";
 import { IntNullableFilter } from "../../util/IntNullableFilter";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
 class HostWhereInput {
@@ -68,15 +67,14 @@ class HostWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => UserWhereUniqueInput,
+    type: IntFilter,
   })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
+  @Type(() => IntFilter)
   @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
+  @Field(() => IntFilter, {
     nullable: true,
   })
-  user?: UserWhereUniqueInput;
+  userId?: IntFilter;
 }
 
 export { HostWhereInput as HostWhereInput };

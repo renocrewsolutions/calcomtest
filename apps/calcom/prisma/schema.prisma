@@ -13,7 +13,6 @@ model Host {
   id          Int       @id @default(autoincrement())
   isFixed     Boolean   @default(false)
   priority    Int?
-  user        User      @relation(fields: [userId], references: [id])
   userId      Int
 
   @@index([userId])
@@ -49,8 +48,7 @@ model EventType {
   minimumBookingNotice                 Int                          @default(120)
   offsetStart                          Int                          @default(0)
   onlyShowFirstAvailableSlot           Boolean                      @default(false)
-  owner                                User?                        @relation(fields: [userId], references: [id])
-  userId                               Int?
+  ownerId                              Int?
   parent                               EventType?                   @relation(name: "EventTypeChildrenEventTypeParent", fields: [parentId], references: [id])
   parentId                             Int?
   periodCountCalendarDays              Boolean?
@@ -105,7 +103,6 @@ model Credential {
   team                 Team?                 @relation(fields: [teamId], references: [id])
   teamId               Int?
   typeField            String                @map("type")
-  user                 User?                 @relation(fields: [userId], references: [id])
   userId               Int?
 
   @@index([userId])
@@ -123,8 +120,7 @@ model DestinationCalendar {
   id           Int         @id @default(autoincrement())
   integration  String
   primaryEmail String?
-  user         User?       @relation(fields: [userId], references: [id])
-  userId       Int?        @unique
+  userId       Int?
 
   @@index([userId])
   @@index([eventTypeId])
@@ -134,102 +130,20 @@ model DestinationCalendar {
 model UserPassword {
   hash   String
   id     Int    @id @unique @default(autoincrement()) @map("userId")
-  user   User   @relation(fields: [userId], references: [id])
-  userId Int    @unique
-}
-
-model User {
-  accessCodes               AccessCode[]
-  accounts                  Account[]
-  allowDynamicBooking       Boolean?                 @default(true)
-  allowSEOIndexing          Boolean?                 @default(true)
-  apiKeys                   ApiKey[]
-  appTheme                  String?
-  availability              Availability[]
-  avatar                    String?
-  avatarUrl                 String?
-  away                      Boolean                  @default(false)
-  backupCodes               String?
-  bio                       String?
-  bookingRedirects          OutOfOfficeEntry[]       @relation(name: "bookingRedirects")
-  bookingRedirectsTo        OutOfOfficeEntry[]       @relation(name: "bookingRedirectsTo")
-  bookings                  Booking[]
-  brandColor                String?
-  bufferTime                Int                      @default(0)
-  completedOnboarding       Boolean                  @default(false)
-  createdDate               DateTime                 @default(now()) @map(name: "created")
-  credentials               Credential[]
-  darkBrandColor            String?
-  defaultScheduleId         Int?
-  destinationCalendar       DestinationCalendar?
-  disableImpersonation      Boolean                  @default(false)
-  email                     String
-  emailVerified             DateTime?
-  endTime                   Int                      @default(1440)
-  feedback                  Feedback[]
-  hideBranding              Boolean                  @default(false)
-  hosts                     Host[]
-  id                        Int                      @id @default(autoincrement())
-  identityProvider          EnumUserIdentityProvider @default(CAL)
-  identityProviderId        String?
-  impersonatedBy            Impersonation[]          @relation(name: "ImpersonationImpersonatedByUserImpersonatedBy")
-  impersonatedUsers         Impersonation[]          @relation(name: "impersonatedUser")
-  invitedTo                 Int?
-  locale                    String?
-  locked                    Boolean                  @default(false)
-  metadata                  Json?
-  movedToProfile            Profile?                 @relation(name: "movedFromUser", fields: [movedToProfileId], references: [id])
-  movedToProfileId          Int?                     @unique
-  name                      String?
-  organization              Team?                    @relation(fields: [organizationId], references: [id])
-  organizationId            Int?
-  ownedEventTypes           EventType[]
-  password                  UserPassword?
-  profiles                  Profile[]                @relation(name: "ProfilesOnUser")
-  receiveMonthlyDigestEmail Boolean?                 @default(true)
-  role                      EnumUserRole             @default(USER)
-  routingForms              AppRoutingFormsForm[]
-  schedules                 Schedule[]
-  selectedCalendars         SelectedCalendar[]
-  sessions                  Session[]
-  startTime                 Int                      @default(0)
-  teams                     Membership[]
-  theme                     String?
-  timeFormat                Int?                     @default(12)
-  timeZone                  String                   @default("Europe/London")
-  trialEndsAt               DateTime?
-  twoFactorEnabled          Boolean                  @default(false)
-  twoFactorSecret           String?
-  username                  String?
-  verified                  Boolean?                 @default(false)
-  verifiedNumbers           VerifiedNumber[]
-  webhooks                  Webhook[]
-  weekStart                 String                   @default("Sunday")
-  workflows                 Workflow[]
-
-  @@unique([email])
-  @@unique([email, username])
-  @@unique([username, organizationId])
-  @@unique([movedToProfileId])
-  @@index([username])
-  @@index([emailVerified])
-  @@index([identityProvider])
-  @@index([identityProviderId])
-  @@map(name: "users")
+  userId Int
 }
 
 model Profile {
-  createdAt      DateTime    @default(now())
-  eventTypes     EventType[]
-  id             Int         @id @default(autoincrement())
-  movedFromUser  User?       @relation(name: "movedFromUser")
-  organization   Team        @relation(fields: [organizationId], references: [id])
-  organizationId Int
-  uid            String
-  updatedAt      DateTime    @updatedAt
-  user           User        @relation(name: "ProfilesOnUser", fields: [userId], references: [id])
-  userId         Int
-  username       String
+  createdAt       DateTime    @default(now())
+  eventTypes      EventType[]
+  id              Int         @id @default(autoincrement())
+  movedFromUserId Int?
+  organization    Team        @relation(fields: [organizationId], references: [id])
+  organizationId  Int
+  uid             String
+  updatedAt       DateTime    @updatedAt
+  userId          Int
+  username        String
 
   @@unique([userId, organizationId])
   @@index([uid])
@@ -262,7 +176,7 @@ model Team {
   metadata             Json?
   name                 String
   orgProfiles          Profile[]
-  orgUsers             User[]
+  orgUsers             Json?
   parent               Team?                 @relation(name: "TeamChildrenTeamParent", fields: [parentId], references: [id])
   parentId             Int?
   pendingPayment       Boolean               @default(false)
@@ -286,7 +200,6 @@ model Membership {
   role                 EnumMembershipRole
   team                 Team               @relation(fields: [teamId], references: [id])
   teamId               Int
-  user                 User               @relation(fields: [userId], references: [id])
   userId               Int
 
   @@unique([userId, teamId])
@@ -394,7 +307,6 @@ model Booking {
   title                 String
   uid                   String               @unique
   updatedAt             DateTime?
-  user                  User?                @relation(fields: [userId], references: [id])
   userId                Int?
   userPrimaryEmail      String?
   workflowReminders     WorkflowReminder[]
@@ -414,7 +326,6 @@ model Schedule {
   id           Int            @id @default(autoincrement())
   name         String
   timeZone     String?
-  user         User           @relation(fields: [userId], references: [id])
   userId       Int
 
   @@index([userId])
@@ -430,7 +341,6 @@ model Availability {
   schedule    Schedule?  @relation(fields: [scheduleId], references: [id])
   scheduleId  Int?
   startTime   DateTime   @db.Time
-  user        User?      @relation(fields: [userId], references: [id])
   userId      Int?
 
   @@index([userId])
@@ -444,7 +354,6 @@ model SelectedCalendar {
   externalId   String
   id           Int         @id @default(autoincrement())
   integration  String
-  user         User        @relation(fields: [userId], references: [id])
   userId       Int
 
   @@index([userId])
@@ -518,7 +427,6 @@ model Webhook {
   subscriberUrl   String
   team            Team?                      @relation(fields: [teamId], references: [id])
   teamId          Int?
-  user            User?                      @relation(fields: [userId], references: [id])
   userId          Int?
 
   @@unique([userId, subscriberUrl], name: "courseIdentifier")
@@ -527,9 +435,7 @@ model Webhook {
 model Impersonation {
   createdAt          DateTime @default(now())
   id                 Int      @id @default(autoincrement())
-  impersonatedBy     User     @relation(name: "ImpersonationImpersonatedByUserImpersonatedBy", fields: [impersonatedById], references: [id])
   impersonatedById   Int
-  impersonatedUser   User     @relation(name: "impersonatedUser", fields: [impersonatedUserId], references: [id])
   impersonatedUserId Int
 
   @@map("Impersonations")
@@ -546,7 +452,6 @@ model ApiKey {
   note       String?
   team       Team?     @relation(fields: [teamId], references: [id])
   teamId     Int?
-  user       User?     @relation(fields: [userId], references: [id])
   userId     Int?
 
   @@index([userId])
@@ -571,7 +476,6 @@ model Account {
   sessionState      String? @map("session_state")
   tokenType         String? @map("token_type")
   typeField         String  @map("type")
-  user              User?   @relation(fields: [userId], references: [id])
   userId            Int?
 
   @@unique([provider, providerAccountId])
@@ -583,7 +487,6 @@ model Session {
   expires      DateTime
   id           String   @id @default(cuid())
   sessionToken String   @unique
-  user         User?    @relation(fields: [userId], references: [id])
   userId       Int?
 
   @@index([userId])
@@ -620,7 +523,6 @@ model AppRoutingFormsForm {
   team        Team?                         @relation(fields: [teamId], references: [id])
   teamId      Int?
   updatedAt   DateTime                      @updatedAt
-  user        User                          @relation(fields: [userId], references: [id])
   userId      Int
 
   @@index([userId])
@@ -647,7 +549,6 @@ model Feedback {
   date    DateTime @default(now())
   id      Int      @id @default(autoincrement())
   rating  String
-  user    User     @relation(fields: [userId], references: [id])
   userId  Int
 
   @@index([userId])
@@ -684,7 +585,6 @@ model Workflow {
   time     Int?
   timeUnit EnumWorkflowTimeUnit?
   trigger  EnumWorkflowTrigger
-  user     User?                  @relation(fields: [userId], references: [id])
   userId   Int?
 
   @@index([userId])
@@ -763,7 +663,6 @@ model VerifiedNumber {
   phoneNumber String
   team        Team?  @relation(fields: [teamId], references: [id])
   teamId      Int?
-  user        User?  @relation(fields: [userId], references: [id])
   userId      Int?
 
   @@index([userId])
@@ -817,7 +716,6 @@ model AccessCode {
   scopes    EnumAccessCodeScopes[]
   team      Team?                  @relation(fields: [teamId], references: [id])
   teamId    Int?
-  user      User?                  @relation(fields: [userId], references: [id])
   userId    Int?
 }
 
@@ -858,10 +756,8 @@ model OutOfOfficeEntry {
   end       DateTime
   id        Int      @id @default(autoincrement())
   start     DateTime
-  toUser    User?    @relation(name: "bookingRedirectsTo", fields: [toUserId], references: [id])
   toUserId  Int?
   updatedAt DateTime @updatedAt
-  user      User     @relation(name: "bookingRedirects", fields: [userId], references: [id])
   userId    Int
   uuid      String   @unique
 
@@ -881,17 +777,6 @@ enum EnumEventTypeSchedulingType {
   ROUND_ROBIN
   COLLECTIVE
   MANAGED
-}
-
-enum EnumUserIdentityProvider {
-  CAL
-  GOOGLE
-  SAML
-}
-
-enum EnumUserRole {
-  USER
-  ADMIN
 }
 
 enum EnumMembershipRole {

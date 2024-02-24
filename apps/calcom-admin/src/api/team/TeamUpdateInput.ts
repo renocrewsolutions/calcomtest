@@ -8,7 +8,6 @@ import { VerificationTokenUpdateManyWithoutTeamsInput } from "./VerificationToke
 import { MembershipUpdateManyWithoutTeamsInput } from "./MembershipUpdateManyWithoutTeamsInput";
 import { InputJsonValue } from "../../types";
 import { ProfileUpdateManyWithoutTeamsInput } from "./ProfileUpdateManyWithoutTeamsInput";
-import { UserUpdateManyWithoutTeamsInput } from "./UserUpdateManyWithoutTeamsInput";
 import { TeamWhereUniqueInput } from "./TeamWhereUniqueInput";
 import { AppRoutingFormsFormUpdateManyWithoutTeamsInput } from "./AppRoutingFormsFormUpdateManyWithoutTeamsInput";
 import { VerifiedNumberUpdateManyWithoutTeamsInput } from "./VerifiedNumberUpdateManyWithoutTeamsInput";
@@ -38,7 +37,7 @@ export type TeamUpdateInput = {
   metadata?: InputJsonValue;
   name?: string;
   orgProfiles?: ProfileUpdateManyWithoutTeamsInput;
-  orgUsers?: UserUpdateManyWithoutTeamsInput;
+  orgUsers?: InputJsonValue;
   parent?: TeamWhereUniqueInput | null;
   pendingPayment?: boolean;
   routingForms?: AppRoutingFormsFormUpdateManyWithoutTeamsInput;

@@ -14,8 +14,7 @@ import { PrismaService } from "../../prisma/prisma.service";
 import {
   Prisma,
   SelectedCalendar, // @ts-ignore
-  Credential, // @ts-ignore
-  User,
+  Credential,
 } from "@prisma/client";
 
 export class SelectedCalendarServiceBase {
@@ -59,13 +58,5 @@ export class SelectedCalendarServiceBase {
         where: { id: parentId },
       })
       .credential();
-  }
-
-  async getUser(parentId: number): Promise<User | null> {
-    return this.prisma.selectedCalendar
-      .findUnique({
-        where: { id: parentId },
-      })
-      .user();
   }
 }

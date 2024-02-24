@@ -11,9 +11,8 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsDate, IsOptional, ValidateNested, IsString } from "class-validator";
+import { IsDate, IsOptional, IsInt, IsString } from "class-validator";
 import { Type } from "class-transformer";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
 class OutOfOfficeEntryUpdateInput {
@@ -41,27 +40,25 @@ class OutOfOfficeEntryUpdateInput {
 
   @ApiProperty({
     required: false,
-    type: () => UserWhereUniqueInput,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
+  @IsInt()
   @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
+  @Field(() => Number, {
     nullable: true,
   })
-  toUser?: UserWhereUniqueInput | null;
+  toUserId?: number | null;
 
   @ApiProperty({
     required: false,
-    type: () => UserWhereUniqueInput,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
+  @IsInt()
   @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
+  @Field(() => Number, {
     nullable: true,
   })
-  user?: UserWhereUniqueInput;
+  userId?: number;
 
   @ApiProperty({
     required: false,

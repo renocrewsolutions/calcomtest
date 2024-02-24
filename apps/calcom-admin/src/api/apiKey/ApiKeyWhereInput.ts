@@ -4,7 +4,7 @@ import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { TeamWhereUniqueInput } from "../team/TeamWhereUniqueInput";
-import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
+import { IntNullableFilter } from "../../util/IntNullableFilter";
 
 export type ApiKeyWhereInput = {
   appField?: AppModelWhereUniqueInput;
@@ -15,5 +15,5 @@ export type ApiKeyWhereInput = {
   lastUsedAt?: DateTimeNullableFilter;
   note?: StringNullableFilter;
   team?: TeamWhereUniqueInput;
-  user?: UserWhereUniqueInput;
+  userId?: IntNullableFilter;
 };

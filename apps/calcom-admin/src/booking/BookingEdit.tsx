@@ -21,7 +21,6 @@ import { InstantMeetingTokenTitle } from "../instantMeetingToken/InstantMeetingT
 import { PaymentTitle } from "../payment/PaymentTitle";
 import { BookingReferenceTitle } from "../bookingReference/BookingReferenceTitle";
 import { BookingSeatTitle } from "../bookingSeat/BookingSeatTitle";
-import { UserTitle } from "../user/UserTitle";
 import { WorkflowReminderTitle } from "../workflowReminder/WorkflowReminderTitle";
 
 export const BookingEdit = (props: EditProps): React.ReactElement => {
@@ -123,9 +122,7 @@ export const BookingEdit = (props: EditProps): React.ReactElement => {
         <TextInput label="Title" source="title" />
         <TextInput label="Uid" source="uid" />
         <DateTimeInput label="Updated At" source="updatedAt" />
-        <ReferenceInput source="user.id" reference="User" label="User">
-          <SelectInput optionText={UserTitle} />
-        </ReferenceInput>
+        <NumberInput step={1} label="User ID" source="userId" />
         <TextInput label="User Primary Email" source="userPrimaryEmail" />
         <ReferenceArrayInput
           source="workflowReminders"

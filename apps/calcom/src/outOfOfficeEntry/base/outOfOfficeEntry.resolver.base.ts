@@ -20,7 +20,6 @@ import { OutOfOfficeEntryFindUniqueArgs } from "./OutOfOfficeEntryFindUniqueArgs
 import { CreateOutOfOfficeEntryArgs } from "./CreateOutOfOfficeEntryArgs";
 import { UpdateOutOfOfficeEntryArgs } from "./UpdateOutOfOfficeEntryArgs";
 import { DeleteOutOfOfficeEntryArgs } from "./DeleteOutOfOfficeEntryArgs";
-import { User } from "../../user/base/User";
 import { OutOfOfficeEntryService } from "../outOfOfficeEntry.service";
 @graphql.Resolver(() => OutOfOfficeEntry)
 export class OutOfOfficeEntryResolverBase {
@@ -59,19 +58,7 @@ export class OutOfOfficeEntryResolverBase {
   ): Promise<OutOfOfficeEntry> {
     return await this.service.createOutOfOfficeEntry({
       ...args,
-      data: {
-        ...args.data,
-
-        toUser: args.data.toUser
-          ? {
-              connect: args.data.toUser,
-            }
-          : undefined,
-
-        user: {
-          connect: args.data.user,
-        },
-      },
+      data: args.data,
     });
   }
 
@@ -82,19 +69,7 @@ export class OutOfOfficeEntryResolverBase {
     try {
       return await this.service.updateOutOfOfficeEntry({
         ...args,
-        data: {
-          ...args.data,
-
-          toUser: args.data.toUser
-            ? {
-                connect: args.data.toUser,
-              }
-            : undefined,
-
-          user: {
-            connect: args.data.user,
-          },
-        },
+        data: args.data,
       });
     } catch (error) {
       if (isRecordNotFoundError(error)) {
@@ -120,35 +95,5 @@ export class OutOfOfficeEntryResolverBase {
       }
       throw error;
     }
-  }
-
-  @graphql.ResolveField(() => User, {
-    nullable: true,
-    name: "toUser",
-  })
-  async getToUser(
-    @graphql.Parent() parent: OutOfOfficeEntry
-  ): Promise<User | null> {
-    const result = await this.service.getToUser(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return result;
-  }
-
-  @graphql.ResolveField(() => User, {
-    nullable: true,
-    name: "user",
-  })
-  async getUser(
-    @graphql.Parent() parent: OutOfOfficeEntry
-  ): Promise<User | null> {
-    const result = await this.service.getUser(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return result;
   }
 }

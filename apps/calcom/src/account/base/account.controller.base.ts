@@ -31,15 +31,7 @@ export class AccountControllerBase {
     @common.Body() data: AccountCreateInput
   ): Promise<Account> {
     return await this.service.createAccount({
-      data: {
-        ...data,
-
-        user: data.user
-          ? {
-              connect: data.user,
-            }
-          : undefined,
-      },
+      data: data,
       select: {
         accessToken: true,
         expiresAt: true,
@@ -52,12 +44,7 @@ export class AccountControllerBase {
         sessionState: true,
         tokenType: true,
         typeField: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
   }
@@ -81,12 +68,7 @@ export class AccountControllerBase {
         sessionState: true,
         tokenType: true,
         typeField: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
   }
@@ -111,12 +93,7 @@ export class AccountControllerBase {
         sessionState: true,
         tokenType: true,
         typeField: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
     if (result === null) {
@@ -137,15 +114,7 @@ export class AccountControllerBase {
     try {
       return await this.service.updateAccount({
         where: params,
-        data: {
-          ...data,
-
-          user: data.user
-            ? {
-                connect: data.user,
-              }
-            : undefined,
-        },
+        data: data,
         select: {
           accessToken: true,
           expiresAt: true,
@@ -158,12 +127,7 @@ export class AccountControllerBase {
           sessionState: true,
           tokenType: true,
           typeField: true,
-
-          user: {
-            select: {
-              id: true,
-            },
-          },
+          userId: true,
         },
       });
     } catch (error) {
@@ -197,12 +161,7 @@ export class AccountControllerBase {
           sessionState: true,
           tokenType: true,
           typeField: true,
-
-          user: {
-            select: {
-              id: true,
-            },
-          },
+          userId: true,
         },
       });
     } catch (error) {

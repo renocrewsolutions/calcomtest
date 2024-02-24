@@ -9,12 +9,12 @@ import {
   ReferenceInput,
   SelectInput,
   TextInput,
+  NumberInput,
 } from "react-admin";
 
 import { BookingTitle } from "../booking/BookingTitle";
 import { CredentialTitle } from "../credential/CredentialTitle";
 import { EventTypeTitle } from "../eventType/EventTypeTitle";
-import { UserTitle } from "../user/UserTitle";
 
 export const DestinationCalendarEdit = (
   props: EditProps
@@ -47,9 +47,7 @@ export const DestinationCalendarEdit = (
         <TextInput label="External Id" source="externalId" />
         <TextInput label="Integration" source="integration" />
         <TextInput label="Primary Email" source="primaryEmail" />
-        <ReferenceInput source="user.id" reference="User" label="User">
-          <SelectInput optionText={UserTitle} />
-        </ReferenceInput>
+        <NumberInput step={1} label="User ID" source="userId" />
       </SimpleForm>
     </Edit>
   );

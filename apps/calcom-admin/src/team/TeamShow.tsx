@@ -14,7 +14,6 @@ import {
 
 import { OAUTHCLIENT_TITLE_FIELD } from "../oAuthClient/OAuthClientTitle";
 import { TEAM_TITLE_FIELD } from "./TeamTitle";
-import { USER_TITLE_FIELD } from "../user/UserTitle";
 import { APPMODEL_TITLE_FIELD } from "../appModel/AppModelTitle";
 import { DESTINATIONCALENDAR_TITLE_FIELD } from "../destinationCalendar/DestinationCalendarTitle";
 import { HASHEDLINK_TITLE_FIELD } from "../hashedLink/HashedLinkTitle";
@@ -22,7 +21,6 @@ import { EVENTTYPE_TITLE_FIELD } from "../eventType/EventTypeTitle";
 import { PROFILE_TITLE_FIELD } from "../profile/ProfileTitle";
 import { SCHEDULE_TITLE_FIELD } from "../schedule/ScheduleTitle";
 import { BOOKING_TITLE_FIELD } from "../booking/BookingTitle";
-import { USERPASSWORD_TITLE_FIELD } from "../userPassword/UserPasswordTitle";
 
 export const TeamShow = (props: ShowProps): React.ReactElement => {
   return (
@@ -46,6 +44,7 @@ export const TeamShow = (props: ShowProps): React.ReactElement => {
         <TextField label="Logo Url" source="logoUrl" />
         <TextField label="Metadata" source="metadata" />
         <TextField label="Name" source="name" />
+        <TextField label="Org Users" source="orgUsers" />
         <ReferenceField label="Parent" source="team.id" reference="Team">
           <TextField source={TEAM_TITLE_FIELD} />
         </ReferenceField>
@@ -75,9 +74,7 @@ export const TeamShow = (props: ShowProps): React.ReactElement => {
             <ReferenceField label="Team" source="team.id" reference="Team">
               <TextField source={TEAM_TITLE_FIELD} />
             </ReferenceField>
-            <ReferenceField label="User" source="user.id" reference="User">
-              <TextField source={USER_TITLE_FIELD} />
-            </ReferenceField>
+            <TextField label="User ID" source="userId" />
           </Datagrid>
         </ReferenceManyField>
         <ReferenceManyField reference="ApiKey" target="teamId" label="ApiKeys">
@@ -98,9 +95,7 @@ export const TeamShow = (props: ShowProps): React.ReactElement => {
             <ReferenceField label="Team" source="team.id" reference="Team">
               <TextField source={TEAM_TITLE_FIELD} />
             </ReferenceField>
-            <ReferenceField label="User" source="user.id" reference="User">
-              <TextField source={USER_TITLE_FIELD} />
-            </ReferenceField>
+            <TextField label="User ID" source="userId" />
           </Datagrid>
         </ReferenceManyField>
         <ReferenceManyField reference="Team" target="parentId" label="Teams">
@@ -123,6 +118,7 @@ export const TeamShow = (props: ShowProps): React.ReactElement => {
             <TextField label="Logo Url" source="logoUrl" />
             <TextField label="Metadata" source="metadata" />
             <TextField label="Name" source="name" />
+            <TextField label="Org Users" source="orgUsers" />
             <ReferenceField label="Parent" source="team.id" reference="Team">
               <TextField source={TEAM_TITLE_FIELD} />
             </ReferenceField>
@@ -157,9 +153,7 @@ export const TeamShow = (props: ShowProps): React.ReactElement => {
               <TextField source={TEAM_TITLE_FIELD} />
             </ReferenceField>
             <TextField label="Type Field" source="typeField" />
-            <ReferenceField label="User" source="user.id" reference="User">
-              <TextField source={USER_TITLE_FIELD} />
-            </ReferenceField>
+            <TextField label="User ID" source="userId" />
           </Datagrid>
         </ReferenceManyField>
         <ReferenceManyField
@@ -218,9 +212,7 @@ export const TeamShow = (props: ShowProps): React.ReactElement => {
               label="Only Show First Available Slot"
               source="onlyShowFirstAvailableSlot"
             />
-            <ReferenceField label="Owner" source="user.id" reference="User">
-              <TextField source={USER_TITLE_FIELD} />
-            </ReferenceField>
+            <TextField label="Owner ID" source="ownerId" />
             <ReferenceField
               label="Parent"
               source="eventtype.id"
@@ -345,9 +337,7 @@ export const TeamShow = (props: ShowProps): React.ReactElement => {
             <ReferenceField label="Team" source="team.id" reference="Team">
               <TextField source={TEAM_TITLE_FIELD} />
             </ReferenceField>
-            <ReferenceField label="User" source="user.id" reference="User">
-              <TextField source={USER_TITLE_FIELD} />
-            </ReferenceField>
+            <TextField label="User ID" source="userId" />
           </Datagrid>
         </ReferenceManyField>
         <ReferenceManyField
@@ -358,13 +348,7 @@ export const TeamShow = (props: ShowProps): React.ReactElement => {
           <Datagrid rowClick="show">
             <DateField source="createdAt" label="Created At" />
             <TextField label="ID" source="id" />
-            <ReferenceField
-              label="Moved From User"
-              source="user.id"
-              reference="User"
-            >
-              <TextField source={USER_TITLE_FIELD} />
-            </ReferenceField>
+            <TextField label="Moved From User ID" source="movedFromUserId" />
             <ReferenceField
               label="Organization"
               source="team.id"
@@ -374,106 +358,8 @@ export const TeamShow = (props: ShowProps): React.ReactElement => {
             </ReferenceField>
             <TextField label="Uid" source="uid" />
             <DateField source="updatedAt" label="Updated At" />
-            <ReferenceField label="User" source="user.id" reference="User">
-              <TextField source={USER_TITLE_FIELD} />
-            </ReferenceField>
+            <TextField label="User ID" source="userId" />
             <TextField label="Username" source="username" />
-          </Datagrid>
-        </ReferenceManyField>
-        <ReferenceManyField
-          reference="User"
-          target="organizationId"
-          label="Users"
-        >
-          <Datagrid rowClick="show">
-            <BooleanField
-              label="Allow Dynamic Booking"
-              source="allowDynamicBooking"
-            />
-            <BooleanField
-              label="Allow Seo Indexing"
-              source="allowSEOIndexing"
-            />
-            <TextField label="App Theme" source="appTheme" />
-            <TextField label="Avatar" source="avatar" />
-            <TextField label="Avatar Url" source="avatarUrl" />
-            <BooleanField label="Away" source="away" />
-            <TextField label="Backup Codes" source="backupCodes" />
-            <TextField label="Bio" source="bio" />
-            <TextField label="Brand Color" source="brandColor" />
-            <TextField label="Buffer Time" source="bufferTime" />
-            <BooleanField
-              label="Completed Onboarding"
-              source="completedOnboarding"
-            />
-            <DateField source="createdDate" label="Created Date" />
-            <TextField label="Dark Brand Color" source="darkBrandColor" />
-            <TextField label="Default Schedule Id" source="defaultScheduleId" />
-            <ReferenceField
-              label="Destination Calendar"
-              source="destinationcalendar.id"
-              reference="DestinationCalendar"
-            >
-              <TextField source={DESTINATIONCALENDAR_TITLE_FIELD} />
-            </ReferenceField>
-            <BooleanField
-              label="Disable Impersonation"
-              source="disableImpersonation"
-            />
-            <TextField label="Email" source="email" />
-            <TextField label="Email Verified" source="emailVerified" />
-            <TextField label="End Time" source="endTime" />
-            <BooleanField label="Hide Branding" source="hideBranding" />
-            <TextField label="ID" source="id" />
-            <TextField label="Identity Provider" source="identityProvider" />
-            <TextField
-              label="Identity Provider Id"
-              source="identityProviderId"
-            />
-            <TextField label="Invited To" source="invitedTo" />
-            <TextField label="Locale" source="locale" />
-            <BooleanField label="Locked" source="locked" />
-            <TextField label="Metadata" source="metadata" />
-            <ReferenceField
-              label="Moved To Profile"
-              source="profile.id"
-              reference="Profile"
-            >
-              <TextField source={PROFILE_TITLE_FIELD} />
-            </ReferenceField>
-            <TextField label="Name" source="name" />
-            <ReferenceField
-              label="Organization"
-              source="team.id"
-              reference="Team"
-            >
-              <TextField source={TEAM_TITLE_FIELD} />
-            </ReferenceField>
-            <ReferenceField
-              label="Password"
-              source="userpassword.id"
-              reference="UserPassword"
-            >
-              <TextField source={USERPASSWORD_TITLE_FIELD} />
-            </ReferenceField>
-            <BooleanField
-              label="Receive Monthly Digest Email"
-              source="receiveMonthlyDigestEmail"
-            />
-            <TextField label="Role" source="role" />
-            <TextField label="Start Time" source="startTime" />
-            <TextField label="Theme" source="theme" />
-            <TextField label="Time Format" source="timeFormat" />
-            <TextField label="Time Zone" source="timeZone" />
-            <TextField label="Trial Ends At" source="trialEndsAt" />
-            <BooleanField
-              label="Two Factor Enabled"
-              source="twoFactorEnabled"
-            />
-            <TextField label="Two Factor Secret" source="twoFactorSecret" />
-            <TextField label="Username" source="username" />
-            <BooleanField label="Verified" source="verified" />
-            <TextField label="Week Start" source="weekStart" />
           </Datagrid>
         </ReferenceManyField>
         <ReferenceManyField
@@ -495,9 +381,7 @@ export const TeamShow = (props: ShowProps): React.ReactElement => {
               <TextField source={TEAM_TITLE_FIELD} />
             </ReferenceField>
             <DateField source="updatedAt" label="Updated At" />
-            <ReferenceField label="User" source="user.id" reference="User">
-              <TextField source={USER_TITLE_FIELD} />
-            </ReferenceField>
+            <TextField label="User ID" source="userId" />
           </Datagrid>
         </ReferenceManyField>
         <ReferenceManyField
@@ -511,9 +395,7 @@ export const TeamShow = (props: ShowProps): React.ReactElement => {
             <ReferenceField label="Team" source="team.id" reference="Team">
               <TextField source={TEAM_TITLE_FIELD} />
             </ReferenceField>
-            <ReferenceField label="User" source="user.id" reference="User">
-              <TextField source={USER_TITLE_FIELD} />
-            </ReferenceField>
+            <TextField label="User ID" source="userId" />
           </Datagrid>
         </ReferenceManyField>
         <ReferenceManyField
@@ -546,9 +428,7 @@ export const TeamShow = (props: ShowProps): React.ReactElement => {
             <ReferenceField label="Team" source="team.id" reference="Team">
               <TextField source={TEAM_TITLE_FIELD} />
             </ReferenceField>
-            <ReferenceField label="User" source="user.id" reference="User">
-              <TextField source={USER_TITLE_FIELD} />
-            </ReferenceField>
+            <TextField label="User ID" source="userId" />
           </Datagrid>
         </ReferenceManyField>
         <ReferenceManyField
@@ -566,9 +446,7 @@ export const TeamShow = (props: ShowProps): React.ReactElement => {
             <TextField label="Time" source="time" />
             <TextField label="Time Unit" source="timeUnit" />
             <TextField label="Trigger" source="trigger" />
-            <ReferenceField label="User" source="user.id" reference="User">
-              <TextField source={USER_TITLE_FIELD} />
-            </ReferenceField>
+            <TextField label="User ID" source="userId" />
           </Datagrid>
         </ReferenceManyField>
       </SimpleShowLayout>

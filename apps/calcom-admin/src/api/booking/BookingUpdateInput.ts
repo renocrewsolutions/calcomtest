@@ -6,7 +6,6 @@ import { InstantMeetingTokenWhereUniqueInput } from "../instantMeetingToken/Inst
 import { PaymentUpdateManyWithoutBookingsInput } from "./PaymentUpdateManyWithoutBookingsInput";
 import { BookingReferenceUpdateManyWithoutBookingsInput } from "./BookingReferenceUpdateManyWithoutBookingsInput";
 import { BookingSeatUpdateManyWithoutBookingsInput } from "./BookingSeatUpdateManyWithoutBookingsInput";
-import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 import { WorkflowReminderUpdateManyWithoutBookingsInput } from "./WorkflowReminderUpdateManyWithoutBookingsInput";
 
 export type BookingUpdateInput = {
@@ -41,7 +40,7 @@ export type BookingUpdateInput = {
   title?: string;
   uid?: string;
   updatedAt?: Date | null;
-  user?: UserWhereUniqueInput | null;
+  userId?: number | null;
   userPrimaryEmail?: string | null;
   workflowReminders?: WorkflowReminderUpdateManyWithoutBookingsInput;
 };

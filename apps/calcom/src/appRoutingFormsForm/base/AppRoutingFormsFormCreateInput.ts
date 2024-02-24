@@ -24,7 +24,6 @@ import { InputJsonValue } from "../../types";
 import { AppRoutingFormsFormResponseCreateNestedManyWithoutAppRoutingFormsFormsInput } from "./AppRoutingFormsFormResponseCreateNestedManyWithoutAppRoutingFormsFormsInput";
 import { Type } from "class-transformer";
 import { TeamWhereUniqueInput } from "../../team/base/TeamWhereUniqueInput";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
 class AppRoutingFormsFormCreateInput {
@@ -127,12 +126,11 @@ class AppRoutingFormsFormCreateInput {
 
   @ApiProperty({
     required: true,
-    type: () => UserWhereUniqueInput,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
-  @Field(() => UserWhereUniqueInput)
-  user!: UserWhereUniqueInput;
+  @IsInt()
+  @Field(() => Number)
+  userId!: number;
 }
 
 export { AppRoutingFormsFormCreateInput as AppRoutingFormsFormCreateInput };

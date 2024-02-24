@@ -19,7 +19,7 @@ import { EventTypeWhereUniqueInput } from "../../eventType/base/EventTypeWhereUn
 import { StringFilter } from "../../util/StringFilter";
 import { IntFilter } from "../../util/IntFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
+import { IntNullableFilter } from "../../util/IntNullableFilter";
 
 @InputType()
 class DestinationCalendarWhereInput {
@@ -105,15 +105,14 @@ class DestinationCalendarWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => UserWhereUniqueInput,
+    type: IntNullableFilter,
   })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
+  @Type(() => IntNullableFilter)
   @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
+  @Field(() => IntNullableFilter, {
     nullable: true,
   })
-  user?: UserWhereUniqueInput;
+  userId?: IntNullableFilter;
 }
 
 export { DestinationCalendarWhereInput as DestinationCalendarWhereInput };

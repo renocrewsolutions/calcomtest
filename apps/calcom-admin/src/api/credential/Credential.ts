@@ -4,7 +4,6 @@ import { DestinationCalendar } from "../destinationCalendar/DestinationCalendar"
 import { JsonValue } from "type-fest";
 import { SelectedCalendar } from "../selectedCalendar/SelectedCalendar";
 import { Team } from "../team/Team";
-import { User } from "../user/User";
 
 export type Credential = {
   appField?: AppModel | null;
@@ -19,5 +18,5 @@ export type Credential = {
   subscriptionId: string | null;
   team?: Team | null;
   typeField: string;
-  user?: User | null;
+  userId: number | null;
 };

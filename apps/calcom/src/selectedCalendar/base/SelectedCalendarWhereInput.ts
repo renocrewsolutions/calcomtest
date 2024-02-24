@@ -16,7 +16,6 @@ import { ValidateNested, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
 import { StringFilter } from "../../util/StringFilter";
 import { IntFilter } from "../../util/IntFilter";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
 class SelectedCalendarWhereInput {
@@ -67,15 +66,14 @@ class SelectedCalendarWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => UserWhereUniqueInput,
+    type: IntFilter,
   })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
+  @Type(() => IntFilter)
   @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
+  @Field(() => IntFilter, {
     nullable: true,
   })
-  user?: UserWhereUniqueInput;
+  userId?: IntFilter;
 }
 
 export { SelectedCalendarWhereInput as SelectedCalendarWhereInput };

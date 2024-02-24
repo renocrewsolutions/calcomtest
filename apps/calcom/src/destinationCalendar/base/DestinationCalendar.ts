@@ -16,7 +16,6 @@ import { ValidateNested, IsOptional, IsString, IsInt } from "class-validator";
 import { Type } from "class-transformer";
 import { Credential } from "../../credential/base/Credential";
 import { EventType } from "../../eventType/base/EventType";
-import { User } from "../../user/base/User";
 
 @ObjectType()
 class DestinationCalendar {
@@ -84,12 +83,14 @@ class DestinationCalendar {
 
   @ApiProperty({
     required: false,
-    type: () => User,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => User)
+  @IsInt()
   @IsOptional()
-  user?: User | null;
+  @Field(() => Number, {
+    nullable: true,
+  })
+  userId!: number | null;
 }
 
 export { DestinationCalendar as DestinationCalendar };

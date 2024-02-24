@@ -30,7 +30,6 @@ import { EventTypeCustomInput } from "../../eventTypeCustomInput/base/EventTypeC
 import { DestinationCalendar } from "../../destinationCalendar/base/DestinationCalendar";
 import { HashedLink } from "../../hashedLink/base/HashedLink";
 import { Host } from "../../host/base/Host";
-import { User } from "../../user/base/User";
 import { EnumEventTypePeriodType } from "./EnumEventTypePeriodType";
 import { Profile } from "../../profile/base/Profile";
 import { Schedule } from "../../schedule/base/Schedule";
@@ -290,12 +289,14 @@ class EventType {
 
   @ApiProperty({
     required: false,
-    type: () => User,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => User)
+  @IsInt()
   @IsOptional()
-  owner?: User | null;
+  @Field(() => Number, {
+    nullable: true,
+  })
+  ownerId!: number | null;
 
   @ApiProperty({
     required: false,

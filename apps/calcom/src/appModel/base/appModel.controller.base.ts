@@ -190,11 +190,7 @@ export class AppModelControllerBase {
           },
         },
 
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
     if (results === null) {
@@ -286,12 +282,7 @@ export class AppModelControllerBase {
         },
 
         typeField: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
     if (results === null) {
@@ -485,11 +476,7 @@ export class AppModelControllerBase {
           },
         },
 
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
     if (results === null) {

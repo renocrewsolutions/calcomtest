@@ -51,12 +51,6 @@ export class WebhookControllerBase {
               connect: data.team,
             }
           : undefined,
-
-        user: data.user
-          ? {
-              connect: data.user,
-            }
-          : undefined,
       },
       select: {
         active: true,
@@ -87,11 +81,7 @@ export class WebhookControllerBase {
           },
         },
 
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
   }
@@ -132,11 +122,7 @@ export class WebhookControllerBase {
           },
         },
 
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
   }
@@ -178,11 +164,7 @@ export class WebhookControllerBase {
           },
         },
 
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
     if (result === null) {
@@ -223,12 +205,6 @@ export class WebhookControllerBase {
                 connect: data.team,
               }
             : undefined,
-
-          user: data.user
-            ? {
-                connect: data.user,
-              }
-            : undefined,
         },
         select: {
           active: true,
@@ -259,11 +235,7 @@ export class WebhookControllerBase {
             },
           },
 
-          user: {
-            select: {
-              id: true,
-            },
-          },
+          userId: true,
         },
       });
     } catch (error) {
@@ -314,11 +286,7 @@ export class WebhookControllerBase {
             },
           },
 
-          user: {
-            select: {
-              id: true,
-            },
-          },
+          userId: true,
         },
       });
     } catch (error) {

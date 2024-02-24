@@ -46,9 +46,6 @@ import { MembershipWhereUniqueInput } from "../../membership/base/MembershipWher
 import { ProfileFindManyArgs } from "../../profile/base/ProfileFindManyArgs";
 import { Profile } from "../../profile/base/Profile";
 import { ProfileWhereUniqueInput } from "../../profile/base/ProfileWhereUniqueInput";
-import { UserFindManyArgs } from "../../user/base/UserFindManyArgs";
-import { User } from "../../user/base/User";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { AppRoutingFormsFormFindManyArgs } from "../../appRoutingFormsForm/base/AppRoutingFormsFormFindManyArgs";
 import { AppRoutingFormsForm } from "../../appRoutingFormsForm/base/AppRoutingFormsForm";
 import { AppRoutingFormsFormWhereUniqueInput } from "../../appRoutingFormsForm/base/AppRoutingFormsFormWhereUniqueInput";
@@ -93,6 +90,7 @@ export class TeamControllerBase {
         logoUrl: true,
         metadata: true,
         name: true,
+        orgUsers: true,
 
         parent: {
           select: {
@@ -133,6 +131,7 @@ export class TeamControllerBase {
         logoUrl: true,
         metadata: true,
         name: true,
+        orgUsers: true,
 
         parent: {
           select: {
@@ -174,6 +173,7 @@ export class TeamControllerBase {
         logoUrl: true,
         metadata: true,
         name: true,
+        orgUsers: true,
 
         parent: {
           select: {
@@ -232,6 +232,7 @@ export class TeamControllerBase {
           logoUrl: true,
           metadata: true,
           name: true,
+          orgUsers: true,
 
           parent: {
             select: {
@@ -282,6 +283,7 @@ export class TeamControllerBase {
           logoUrl: true,
           metadata: true,
           name: true,
+          orgUsers: true,
 
           parent: {
             select: {
@@ -334,11 +336,7 @@ export class TeamControllerBase {
           },
         },
 
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
     if (results === null) {
@@ -429,11 +427,7 @@ export class TeamControllerBase {
           },
         },
 
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
     if (results === null) {
@@ -520,6 +514,7 @@ export class TeamControllerBase {
         logoUrl: true,
         metadata: true,
         name: true,
+        orgUsers: true,
 
         parent: {
           select: {
@@ -624,12 +619,7 @@ export class TeamControllerBase {
         },
 
         typeField: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
     if (results === null) {
@@ -736,12 +726,7 @@ export class TeamControllerBase {
         minimumBookingNotice: true,
         offsetStart: true,
         onlyShowFirstAvailableSlot: true,
-
-        owner: {
-          select: {
-            id: true,
-          },
-        },
+        ownerId: true,
 
         parent: {
           select: {
@@ -1046,11 +1031,7 @@ export class TeamControllerBase {
           },
         },
 
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
     if (results === null) {
@@ -1124,12 +1105,7 @@ export class TeamControllerBase {
       select: {
         createdAt: true,
         id: true,
-
-        movedFromUser: {
-          select: {
-            id: true,
-          },
-        },
+        movedFromUserId: true,
 
         organization: {
           select: {
@@ -1139,13 +1115,7 @@ export class TeamControllerBase {
 
         uid: true,
         updatedAt: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
-
+        userId: true,
         username: true,
       },
     });
@@ -1208,143 +1178,6 @@ export class TeamControllerBase {
     });
   }
 
-  @common.Get("/:id/orgUsers")
-  @ApiNestedQuery(UserFindManyArgs)
-  async findOrgUsers(
-    @common.Req() request: Request,
-    @common.Param() params: TeamWhereUniqueInput
-  ): Promise<User[]> {
-    const query = plainToClass(UserFindManyArgs, request.query);
-    const results = await this.service.findOrgUsers(params.id, {
-      ...query,
-      select: {
-        allowDynamicBooking: true,
-        allowSEOIndexing: true,
-        appTheme: true,
-        avatar: true,
-        avatarUrl: true,
-        away: true,
-        backupCodes: true,
-        bio: true,
-        brandColor: true,
-        bufferTime: true,
-        completedOnboarding: true,
-        createdDate: true,
-        darkBrandColor: true,
-        defaultScheduleId: true,
-
-        destinationCalendar: {
-          select: {
-            id: true,
-          },
-        },
-
-        disableImpersonation: true,
-        email: true,
-        emailVerified: true,
-        endTime: true,
-        hideBranding: true,
-        id: true,
-        identityProvider: true,
-        identityProviderId: true,
-        invitedTo: true,
-        locale: true,
-        locked: true,
-        metadata: true,
-
-        movedToProfile: {
-          select: {
-            id: true,
-          },
-        },
-
-        name: true,
-
-        organization: {
-          select: {
-            id: true,
-          },
-        },
-
-        password: {
-          select: {
-            id: true,
-          },
-        },
-
-        receiveMonthlyDigestEmail: true,
-        role: true,
-        startTime: true,
-        theme: true,
-        timeFormat: true,
-        timeZone: true,
-        trialEndsAt: true,
-        twoFactorEnabled: true,
-        twoFactorSecret: true,
-        username: true,
-        verified: true,
-        weekStart: true,
-      },
-    });
-    if (results === null) {
-      throw new errors.NotFoundException(
-        `No resource was found for ${JSON.stringify(params)}`
-      );
-    }
-    return results;
-  }
-
-  @common.Post("/:id/orgUsers")
-  async connectOrgUsers(
-    @common.Param() params: TeamWhereUniqueInput,
-    @common.Body() body: UserWhereUniqueInput[]
-  ): Promise<void> {
-    const data = {
-      orgUsers: {
-        connect: body,
-      },
-    };
-    await this.service.updateTeam({
-      where: params,
-      data,
-      select: { id: true },
-    });
-  }
-
-  @common.Patch("/:id/orgUsers")
-  async updateOrgUsers(
-    @common.Param() params: TeamWhereUniqueInput,
-    @common.Body() body: UserWhereUniqueInput[]
-  ): Promise<void> {
-    const data = {
-      orgUsers: {
-        set: body,
-      },
-    };
-    await this.service.updateTeam({
-      where: params,
-      data,
-      select: { id: true },
-    });
-  }
-
-  @common.Delete("/:id/orgUsers")
-  async disconnectOrgUsers(
-    @common.Param() params: TeamWhereUniqueInput,
-    @common.Body() body: UserWhereUniqueInput[]
-  ): Promise<void> {
-    const data = {
-      orgUsers: {
-        disconnect: body,
-      },
-    };
-    await this.service.updateTeam({
-      where: params,
-      data,
-      select: { id: true },
-    });
-  }
-
   @common.Get("/:id/routingForms")
   @ApiNestedQuery(AppRoutingFormsFormFindManyArgs)
   async findRoutingForms(
@@ -1372,12 +1205,7 @@ export class TeamControllerBase {
         },
 
         updatedAt: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
     if (results === null) {
@@ -1458,11 +1286,7 @@ export class TeamControllerBase {
           },
         },
 
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
     if (results === null) {
@@ -1562,11 +1386,7 @@ export class TeamControllerBase {
           },
         },
 
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
     if (results === null) {
@@ -1651,12 +1471,7 @@ export class TeamControllerBase {
         time: true,
         timeUnit: true,
         trigger: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
     if (results === null) {

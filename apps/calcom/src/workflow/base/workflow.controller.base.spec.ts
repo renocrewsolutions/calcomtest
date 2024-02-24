@@ -22,12 +22,14 @@ const CREATE_INPUT = {
   name: "exampleName",
   position: 42,
   time: 42,
+  userId: 42,
 };
 const CREATE_RESULT = {
   id: 42,
   name: "exampleName",
   position: 42,
   time: 42,
+  userId: 42,
 };
 const FIND_MANY_RESULT = [
   {
@@ -35,6 +37,7 @@ const FIND_MANY_RESULT = [
     name: "exampleName",
     position: 42,
     time: 42,
+    userId: 42,
   },
 ];
 const FIND_ONE_RESULT = {
@@ -42,6 +45,7 @@ const FIND_ONE_RESULT = {
   name: "exampleName",
   position: 42,
   time: 42,
+  userId: 42,
 };
 
 const service = {

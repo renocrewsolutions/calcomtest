@@ -21,7 +21,6 @@ import { CreateSelectedCalendarArgs } from "./CreateSelectedCalendarArgs";
 import { UpdateSelectedCalendarArgs } from "./UpdateSelectedCalendarArgs";
 import { DeleteSelectedCalendarArgs } from "./DeleteSelectedCalendarArgs";
 import { Credential } from "../../credential/base/Credential";
-import { User } from "../../user/base/User";
 import { SelectedCalendarService } from "../selectedCalendar.service";
 @graphql.Resolver(() => SelectedCalendar)
 export class SelectedCalendarResolverBase {
@@ -68,10 +67,6 @@ export class SelectedCalendarResolverBase {
               connect: args.data.credential,
             }
           : undefined,
-
-        user: {
-          connect: args.data.user,
-        },
       },
     });
   }
@@ -91,10 +86,6 @@ export class SelectedCalendarResolverBase {
                 connect: args.data.credential,
               }
             : undefined,
-
-          user: {
-            connect: args.data.user,
-          },
         },
       });
     } catch (error) {
@@ -131,21 +122,6 @@ export class SelectedCalendarResolverBase {
     @graphql.Parent() parent: SelectedCalendar
   ): Promise<Credential | null> {
     const result = await this.service.getCredential(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return result;
-  }
-
-  @graphql.ResolveField(() => User, {
-    nullable: true,
-    name: "user",
-  })
-  async getUser(
-    @graphql.Parent() parent: SelectedCalendar
-  ): Promise<User | null> {
-    const result = await this.service.getUser(parent.id);
 
     if (!result) {
       return null;

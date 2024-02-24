@@ -18,7 +18,6 @@ import { EventTypeListRelationFilter } from "../../eventType/base/EventTypeListR
 import { IntFilter } from "../../util/IntFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
 class ScheduleWhereInput {
@@ -81,15 +80,14 @@ class ScheduleWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => UserWhereUniqueInput,
+    type: IntFilter,
   })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
+  @Type(() => IntFilter)
   @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
+  @Field(() => IntFilter, {
     nullable: true,
   })
-  user?: UserWhereUniqueInput;
+  userId?: IntFilter;
 }
 
 export { ScheduleWhereInput as ScheduleWhereInput };

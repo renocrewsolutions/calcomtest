@@ -17,13 +17,13 @@ import {
   IsOptional,
   IsEnum,
   IsString,
+  IsInt,
 } from "class-validator";
 import { AppModelWhereUniqueInput } from "../../appModel/base/AppModelWhereUniqueInput";
 import { Type } from "class-transformer";
 import { EnumWebhookEventTriggers } from "./EnumWebhookEventTriggers";
 import { EventTypeWhereUniqueInput } from "../../eventType/base/EventTypeWhereUniqueInput";
 import { TeamWhereUniqueInput } from "../../team/base/TeamWhereUniqueInput";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
 class WebhookCreateInput {
@@ -130,15 +130,14 @@ class WebhookCreateInput {
 
   @ApiProperty({
     required: false,
-    type: () => UserWhereUniqueInput,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
+  @IsInt()
   @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
+  @Field(() => Number, {
     nullable: true,
   })
-  user?: UserWhereUniqueInput | null;
+  userId?: number | null;
 }
 
 export { WebhookCreateInput as WebhookCreateInput };

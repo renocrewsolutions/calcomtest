@@ -21,23 +21,27 @@ const CREATE_INPUT = {
   code: "exampleCode",
   expiresAt: new Date(),
   id: 42,
+  userId: 42,
 };
 const CREATE_RESULT = {
   code: "exampleCode",
   expiresAt: new Date(),
   id: 42,
+  userId: 42,
 };
 const FIND_MANY_RESULT = [
   {
     code: "exampleCode",
     expiresAt: new Date(),
     id: 42,
+    userId: 42,
   },
 ];
 const FIND_ONE_RESULT = {
   code: "exampleCode",
   expiresAt: new Date(),
   id: 42,
+  userId: 42,
 };
 
 const service = {

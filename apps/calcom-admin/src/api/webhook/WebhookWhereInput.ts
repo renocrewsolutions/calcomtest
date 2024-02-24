@@ -5,7 +5,7 @@ import { EventTypeWhereUniqueInput } from "../eventType/EventTypeWhereUniqueInpu
 import { StringFilter } from "../../util/StringFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { TeamWhereUniqueInput } from "../team/TeamWhereUniqueInput";
-import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
+import { IntNullableFilter } from "../../util/IntNullableFilter";
 
 export type WebhookWhereInput = {
   active?: BooleanFilter;
@@ -17,5 +17,5 @@ export type WebhookWhereInput = {
   secret?: StringNullableFilter;
   subscriberUrl?: StringFilter;
   team?: TeamWhereUniqueInput;
-  user?: UserWhereUniqueInput;
+  userId?: IntNullableFilter;
 };

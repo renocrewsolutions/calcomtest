@@ -18,7 +18,7 @@ import { IntFilter } from "../../util/IntFilter";
 import { DateTimeFilter } from "../../util/DateTimeFilter";
 import { EventTypeWhereUniqueInput } from "../../eventType/base/EventTypeWhereUniqueInput";
 import { ScheduleWhereUniqueInput } from "../../schedule/base/ScheduleWhereUniqueInput";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
+import { IntNullableFilter } from "../../util/IntNullableFilter";
 
 @InputType()
 class AvailabilityWhereInput {
@@ -103,15 +103,14 @@ class AvailabilityWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => UserWhereUniqueInput,
+    type: IntNullableFilter,
   })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
+  @Type(() => IntNullableFilter)
   @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
+  @Field(() => IntNullableFilter, {
     nullable: true,
   })
-  user?: UserWhereUniqueInput;
+  userId?: IntNullableFilter;
 }
 
 export { AvailabilityWhereInput as AvailabilityWhereInput };

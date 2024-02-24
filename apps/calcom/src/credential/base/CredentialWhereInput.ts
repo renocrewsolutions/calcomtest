@@ -24,7 +24,6 @@ import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { SelectedCalendarListRelationFilter } from "../../selectedCalendar/base/SelectedCalendarListRelationFilter";
 import { TeamWhereUniqueInput } from "../../team/base/TeamWhereUniqueInput";
 import { StringFilter } from "../../util/StringFilter";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
 class CredentialWhereInput {
@@ -167,15 +166,14 @@ class CredentialWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => UserWhereUniqueInput,
+    type: IntNullableFilter,
   })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
+  @Type(() => IntNullableFilter)
   @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
+  @Field(() => IntNullableFilter, {
     nullable: true,
   })
-  user?: UserWhereUniqueInput;
+  userId?: IntNullableFilter;
 }
 
 export { CredentialWhereInput as CredentialWhereInput };

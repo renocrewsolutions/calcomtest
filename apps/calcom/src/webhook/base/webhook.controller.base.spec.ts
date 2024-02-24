@@ -24,6 +24,7 @@ const CREATE_INPUT = {
   payloadTemplate: "examplePayloadTemplate",
   secret: "exampleSecret",
   subscriberUrl: "exampleSubscriberUrl",
+  userId: 42,
 };
 const CREATE_RESULT = {
   active: "true",
@@ -32,6 +33,7 @@ const CREATE_RESULT = {
   payloadTemplate: "examplePayloadTemplate",
   secret: "exampleSecret",
   subscriberUrl: "exampleSubscriberUrl",
+  userId: 42,
 };
 const FIND_MANY_RESULT = [
   {
@@ -41,6 +43,7 @@ const FIND_MANY_RESULT = [
     payloadTemplate: "examplePayloadTemplate",
     secret: "exampleSecret",
     subscriberUrl: "exampleSubscriberUrl",
+    userId: 42,
   },
 ];
 const FIND_ONE_RESULT = {
@@ -50,6 +53,7 @@ const FIND_ONE_RESULT = {
   payloadTemplate: "examplePayloadTemplate",
   secret: "exampleSecret",
   subscriberUrl: "exampleSubscriberUrl",
+  userId: 42,
 };
 
 const service = {

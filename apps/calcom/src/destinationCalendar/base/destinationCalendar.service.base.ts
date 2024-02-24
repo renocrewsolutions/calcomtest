@@ -16,8 +16,7 @@ import {
   DestinationCalendar, // @ts-ignore
   Booking, // @ts-ignore
   Credential, // @ts-ignore
-  EventType, // @ts-ignore
-  User,
+  EventType,
 } from "@prisma/client";
 
 export class DestinationCalendarServiceBase {
@@ -86,13 +85,5 @@ export class DestinationCalendarServiceBase {
         where: { id: parentId },
       })
       .eventType();
-  }
-
-  async getUser(parentId: number): Promise<User | null> {
-    return this.prisma.destinationCalendar
-      .findUnique({
-        where: { id: parentId },
-      })
-      .user();
   }
 }

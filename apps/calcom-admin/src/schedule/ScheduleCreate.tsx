@@ -7,13 +7,11 @@ import {
   ReferenceArrayInput,
   SelectArrayInput,
   TextInput,
-  ReferenceInput,
-  SelectInput,
+  NumberInput,
 } from "react-admin";
 
 import { AvailabilityTitle } from "../availability/AvailabilityTitle";
 import { EventTypeTitle } from "../eventType/EventTypeTitle";
-import { UserTitle } from "../user/UserTitle";
 
 export const ScheduleCreate = (props: CreateProps): React.ReactElement => {
   return (
@@ -37,9 +35,7 @@ export const ScheduleCreate = (props: CreateProps): React.ReactElement => {
         </ReferenceArrayInput>
         <TextInput label="Name" source="name" />
         <TextInput label="Time Zone" source="timeZone" />
-        <ReferenceInput source="user.id" reference="User" label="User">
-          <SelectInput optionText={UserTitle} />
-        </ReferenceInput>
+        <NumberInput step={1} label="User ID" source="userId" />
       </SimpleForm>
     </Create>
   );

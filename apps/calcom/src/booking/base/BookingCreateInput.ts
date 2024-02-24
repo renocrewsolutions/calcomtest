@@ -32,7 +32,6 @@ import { PaymentCreateNestedManyWithoutBookingsInput } from "./PaymentCreateNest
 import { BookingReferenceCreateNestedManyWithoutBookingsInput } from "./BookingReferenceCreateNestedManyWithoutBookingsInput";
 import { BookingSeatCreateNestedManyWithoutBookingsInput } from "./BookingSeatCreateNestedManyWithoutBookingsInput";
 import { EnumBookingStatus } from "./EnumBookingStatus";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { WorkflowReminderCreateNestedManyWithoutBookingsInput } from "./WorkflowReminderCreateNestedManyWithoutBookingsInput";
 
 @InputType()
@@ -357,15 +356,14 @@ class BookingCreateInput {
 
   @ApiProperty({
     required: false,
-    type: () => UserWhereUniqueInput,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
+  @IsInt()
   @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
+  @Field(() => Number, {
     nullable: true,
   })
-  user?: UserWhereUniqueInput | null;
+  userId?: number | null;
 
   @ApiProperty({
     required: false,

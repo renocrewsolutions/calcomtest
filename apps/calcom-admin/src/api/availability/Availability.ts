@@ -1,6 +1,5 @@
 import { EventType } from "../eventType/EventType";
 import { Schedule } from "../schedule/Schedule";
-import { User } from "../user/User";
 
 export type Availability = {
   date: Date | null;
@@ -10,5 +9,5 @@ export type Availability = {
   id: number;
   schedule?: Schedule | null;
   startTime: Date;
-  user?: User | null;
+  userId: number | null;
 };

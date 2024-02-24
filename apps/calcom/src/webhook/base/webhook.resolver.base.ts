@@ -23,7 +23,6 @@ import { DeleteWebhookArgs } from "./DeleteWebhookArgs";
 import { AppModel } from "../../appModel/base/AppModel";
 import { EventType } from "../../eventType/base/EventType";
 import { Team } from "../../team/base/Team";
-import { User } from "../../user/base/User";
 import { WebhookService } from "../webhook.service";
 @graphql.Resolver(() => Webhook)
 export class WebhookResolverBase {
@@ -82,12 +81,6 @@ export class WebhookResolverBase {
               connect: args.data.team,
             }
           : undefined,
-
-        user: args.data.user
-          ? {
-              connect: args.data.user,
-            }
-          : undefined,
       },
     });
   }
@@ -117,12 +110,6 @@ export class WebhookResolverBase {
           team: args.data.team
             ? {
                 connect: args.data.team,
-              }
-            : undefined,
-
-          user: args.data.user
-            ? {
-                connect: args.data.user,
               }
             : undefined,
         },
@@ -189,19 +176,6 @@ export class WebhookResolverBase {
   })
   async getTeam(@graphql.Parent() parent: Webhook): Promise<Team | null> {
     const result = await this.service.getTeam(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return result;
-  }
-
-  @graphql.ResolveField(() => User, {
-    nullable: true,
-    name: "user",
-  })
-  async getUser(@graphql.Parent() parent: Webhook): Promise<User | null> {
-    const result = await this.service.getUser(parent.id);
 
     if (!result) {
       return null;

@@ -14,7 +14,6 @@ import Pagination from "../Components/Pagination";
 import { DESTINATIONCALENDAR_TITLE_FIELD } from "../destinationCalendar/DestinationCalendarTitle";
 import { EVENTTYPE_TITLE_FIELD } from "../eventType/EventTypeTitle";
 import { INSTANTMEETINGTOKEN_TITLE_FIELD } from "../instantMeetingToken/InstantMeetingTokenTitle";
-import { USER_TITLE_FIELD } from "../user/UserTitle";
 
 export const BookingList = (props: ListProps): React.ReactElement => {
   return (
@@ -79,9 +78,7 @@ export const BookingList = (props: ListProps): React.ReactElement => {
         <TextField label="Title" source="title" />
         <TextField label="Uid" source="uid" />
         <TextField label="Updated At" source="updatedAt" />
-        <ReferenceField label="User" source="user.id" reference="User">
-          <TextField source={USER_TITLE_FIELD} />
-        </ReferenceField>
+        <TextField label="User ID" source="userId" />
         <TextField label="User Primary Email" source="userPrimaryEmail" />
       </Datagrid>
     </List>

@@ -20,31 +20,39 @@ const existingId = "existingId";
 const CREATE_INPUT = {
   createdAt: new Date(),
   id: 42,
+  movedFromUserId: 42,
   uid: "exampleUid",
   updatedAt: new Date(),
+  userId: 42,
   username: "exampleUsername",
 };
 const CREATE_RESULT = {
   createdAt: new Date(),
   id: 42,
+  movedFromUserId: 42,
   uid: "exampleUid",
   updatedAt: new Date(),
+  userId: 42,
   username: "exampleUsername",
 };
 const FIND_MANY_RESULT = [
   {
     createdAt: new Date(),
     id: 42,
+    movedFromUserId: 42,
     uid: "exampleUid",
     updatedAt: new Date(),
+    userId: 42,
     username: "exampleUsername",
   },
 ];
 const FIND_ONE_RESULT = {
   createdAt: new Date(),
   id: 42,
+  movedFromUserId: 42,
   uid: "exampleUid",
   updatedAt: new Date(),
+  userId: 42,
   username: "exampleUsername",
 };
 

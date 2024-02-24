@@ -29,7 +29,7 @@ import { StringFilter } from "../../util/StringFilter";
 import { BookingSeatListRelationFilter } from "../../bookingSeat/base/BookingSeatListRelationFilter";
 import { EnumBookingStatus } from "./EnumBookingStatus";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
+import { IntNullableFilter } from "../../util/IntNullableFilter";
 import { WorkflowReminderListRelationFilter } from "../../workflowReminder/base/WorkflowReminderListRelationFilter";
 
 @InputType()
@@ -406,15 +406,14 @@ class BookingWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => UserWhereUniqueInput,
+    type: IntNullableFilter,
   })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
+  @Type(() => IntNullableFilter)
   @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
+  @Field(() => IntNullableFilter, {
     nullable: true,
   })
-  user?: UserWhereUniqueInput;
+  userId?: IntNullableFilter;
 
   @ApiProperty({
     required: false,

@@ -22,7 +22,6 @@ import {
   WorkflowsOnEventType, // @ts-ignore
   DestinationCalendar, // @ts-ignore
   HashedLink, // @ts-ignore
-  User, // @ts-ignore
   Profile, // @ts-ignore
   Schedule, // @ts-ignore
   Team,
@@ -156,14 +155,6 @@ export class EventTypeServiceBase {
         where: { id: parentId },
       })
       .hashedLink();
-  }
-
-  async getOwner(parentId: number): Promise<User | null> {
-    return this.prisma.eventType
-      .findUnique({
-        where: { id: parentId },
-      })
-      .owner();
   }
 
   async getParent(parentId: number): Promise<EventType | null> {

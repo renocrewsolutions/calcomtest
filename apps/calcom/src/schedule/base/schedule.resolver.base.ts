@@ -24,7 +24,6 @@ import { AvailabilityFindManyArgs } from "../../availability/base/AvailabilityFi
 import { Availability } from "../../availability/base/Availability";
 import { EventTypeFindManyArgs } from "../../eventType/base/EventTypeFindManyArgs";
 import { EventType } from "../../eventType/base/EventType";
-import { User } from "../../user/base/User";
 import { ScheduleService } from "../schedule.service";
 @graphql.Resolver(() => Schedule)
 export class ScheduleResolverBase {
@@ -63,13 +62,7 @@ export class ScheduleResolverBase {
   ): Promise<Schedule> {
     return await this.service.createSchedule({
       ...args,
-      data: {
-        ...args.data,
-
-        user: {
-          connect: args.data.user,
-        },
-      },
+      data: args.data,
     });
   }
 
@@ -80,13 +73,7 @@ export class ScheduleResolverBase {
     try {
       return await this.service.updateSchedule({
         ...args,
-        data: {
-          ...args.data,
-
-          user: {
-            connect: args.data.user,
-          },
-        },
+        data: args.data,
       });
     } catch (error) {
       if (isRecordNotFoundError(error)) {
@@ -140,18 +127,5 @@ export class ScheduleResolverBase {
     }
 
     return results;
-  }
-
-  @graphql.ResolveField(() => User, {
-    nullable: true,
-    name: "user",
-  })
-  async getUser(@graphql.Parent() parent: Schedule): Promise<User | null> {
-    const result = await this.service.getUser(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return result;
   }
 }

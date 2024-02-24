@@ -1,7 +1,6 @@
 import { AppModelWhereUniqueInput } from "../appModel/AppModelWhereUniqueInput";
 import { EventTypeWhereUniqueInput } from "../eventType/EventTypeWhereUniqueInput";
 import { TeamWhereUniqueInput } from "../team/TeamWhereUniqueInput";
-import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 
 export type WebhookUpdateInput = {
   active?: boolean;
@@ -25,5 +24,5 @@ export type WebhookUpdateInput = {
   secret?: string | null;
   subscriberUrl?: string;
   team?: TeamWhereUniqueInput | null;
-  user?: UserWhereUniqueInput | null;
+  userId?: number | null;
 };

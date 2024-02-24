@@ -16,8 +16,7 @@ import {
   Workflow, // @ts-ignore
   WorkflowsOnEventType, // @ts-ignore
   WorkflowStep, // @ts-ignore
-  Team, // @ts-ignore
-  User,
+  Team,
 } from "@prisma/client";
 
 export class WorkflowServiceBase {
@@ -83,13 +82,5 @@ export class WorkflowServiceBase {
         where: { id: parentId },
       })
       .team();
-  }
-
-  async getUser(parentId: number): Promise<User | null> {
-    return this.prisma.workflow
-      .findUnique({
-        where: { id: parentId },
-      })
-      .user();
   }
 }

@@ -22,7 +22,6 @@ import { UpdateAvailabilityArgs } from "./UpdateAvailabilityArgs";
 import { DeleteAvailabilityArgs } from "./DeleteAvailabilityArgs";
 import { EventType } from "../../eventType/base/EventType";
 import { Schedule } from "../../schedule/base/Schedule";
-import { User } from "../../user/base/User";
 import { AvailabilityService } from "../availability.service";
 @graphql.Resolver(() => Availability)
 export class AvailabilityResolverBase {
@@ -75,12 +74,6 @@ export class AvailabilityResolverBase {
               connect: args.data.schedule,
             }
           : undefined,
-
-        user: args.data.user
-          ? {
-              connect: args.data.user,
-            }
-          : undefined,
       },
     });
   }
@@ -104,12 +97,6 @@ export class AvailabilityResolverBase {
           schedule: args.data.schedule
             ? {
                 connect: args.data.schedule,
-              }
-            : undefined,
-
-          user: args.data.user
-            ? {
-                connect: args.data.user,
               }
             : undefined,
         },
@@ -163,19 +150,6 @@ export class AvailabilityResolverBase {
     @graphql.Parent() parent: Availability
   ): Promise<Schedule | null> {
     const result = await this.service.getSchedule(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return result;
-  }
-
-  @graphql.ResolveField(() => User, {
-    nullable: true,
-    name: "user",
-  })
-  async getUser(@graphql.Parent() parent: Availability): Promise<User | null> {
-    const result = await this.service.getUser(parent.id);
 
     if (!result) {
       return null;

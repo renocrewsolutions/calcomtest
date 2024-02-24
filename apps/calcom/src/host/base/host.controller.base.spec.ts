@@ -21,23 +21,27 @@ const CREATE_INPUT = {
   id: 42,
   isFixed: "true",
   priority: 42,
+  userId: 42,
 };
 const CREATE_RESULT = {
   id: 42,
   isFixed: "true",
   priority: 42,
+  userId: 42,
 };
 const FIND_MANY_RESULT = [
   {
     id: 42,
     isFixed: "true",
     priority: 42,
+    userId: 42,
   },
 ];
 const FIND_ONE_RESULT = {
   id: 42,
   isFixed: "true",
   priority: 42,
+  userId: 42,
 };
 
 const service = {

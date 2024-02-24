@@ -4,7 +4,6 @@ import { DestinationCalendarUpdateManyWithoutCredentialsInput } from "./Destinat
 import { InputJsonValue } from "../../types";
 import { SelectedCalendarUpdateManyWithoutCredentialsInput } from "./SelectedCalendarUpdateManyWithoutCredentialsInput";
 import { TeamWhereUniqueInput } from "../team/TeamWhereUniqueInput";
-import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 
 export type CredentialUpdateInput = {
   appField?: AppModelWhereUniqueInput | null;
@@ -18,5 +17,5 @@ export type CredentialUpdateInput = {
   subscriptionId?: string | null;
   team?: TeamWhereUniqueInput | null;
   typeField?: string;
-  user?: UserWhereUniqueInput | null;
+  userId?: number | null;
 };

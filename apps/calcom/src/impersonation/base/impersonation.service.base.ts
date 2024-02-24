@@ -10,12 +10,7 @@ https://docs.amplication.com/how-to/custom-code
 ------------------------------------------------------------------------------
   */
 import { PrismaService } from "../../prisma/prisma.service";
-
-import {
-  Prisma,
-  Impersonation, // @ts-ignore
-  User,
-} from "@prisma/client";
+import { Prisma, Impersonation } from "@prisma/client";
 
 export class ImpersonationServiceBase {
   constructor(protected readonly prisma: PrismaService) {}
@@ -50,21 +45,5 @@ export class ImpersonationServiceBase {
     args: Prisma.SelectSubset<T, Prisma.ImpersonationDeleteArgs>
   ): Promise<Impersonation> {
     return this.prisma.impersonation.delete(args);
-  }
-
-  async getImpersonatedBy(parentId: number): Promise<User | null> {
-    return this.prisma.impersonation
-      .findUnique({
-        where: { id: parentId },
-      })
-      .impersonatedBy();
-  }
-
-  async getImpersonatedUser(parentId: number): Promise<User | null> {
-    return this.prisma.impersonation
-      .findUnique({
-        where: { id: parentId },
-      })
-      .impersonatedUser();
   }
 }

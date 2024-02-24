@@ -8,7 +8,6 @@ import {
 } from "react-admin";
 import { EVENTTYPE_TITLE_FIELD } from "../eventType/EventTypeTitle";
 import { SCHEDULE_TITLE_FIELD } from "../schedule/ScheduleTitle";
-import { USER_TITLE_FIELD } from "../user/UserTitle";
 
 export const AvailabilityShow = (props: ShowProps): React.ReactElement => {
   return (
@@ -33,9 +32,7 @@ export const AvailabilityShow = (props: ShowProps): React.ReactElement => {
           <TextField source={SCHEDULE_TITLE_FIELD} />
         </ReferenceField>
         <TextField label="Start Time" source="startTime" />
-        <ReferenceField label="User" source="user.id" reference="User">
-          <TextField source={USER_TITLE_FIELD} />
-        </ReferenceField>
+        <TextField label="User ID" source="userId" />
       </SimpleShowLayout>
     </Show>
   );

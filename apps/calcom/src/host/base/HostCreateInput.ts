@@ -14,7 +14,6 @@ import { ApiProperty } from "@nestjs/swagger";
 import { EventTypeWhereUniqueInput } from "../../eventType/base/EventTypeWhereUniqueInput";
 import { ValidateNested, IsBoolean, IsInt, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
 class HostCreateInput {
@@ -48,12 +47,11 @@ class HostCreateInput {
 
   @ApiProperty({
     required: true,
-    type: () => UserWhereUniqueInput,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
-  @Field(() => UserWhereUniqueInput)
-  user!: UserWhereUniqueInput;
+  @IsInt()
+  @Field(() => Number)
+  userId!: number;
 }
 
 export { HostCreateInput as HostCreateInput };

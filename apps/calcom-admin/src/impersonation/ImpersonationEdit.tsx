@@ -1,31 +1,20 @@
 import * as React from "react";
-import {
-  Edit,
-  SimpleForm,
-  EditProps,
-  ReferenceInput,
-  SelectInput,
-} from "react-admin";
-import { UserTitle } from "../user/UserTitle";
+import { Edit, SimpleForm, EditProps, NumberInput } from "react-admin";
 
 export const ImpersonationEdit = (props: EditProps): React.ReactElement => {
   return (
     <Edit {...props}>
       <SimpleForm>
-        <ReferenceInput
-          source="impersonatedBy.id"
-          reference="User"
-          label="Impersonated By"
-        >
-          <SelectInput optionText={UserTitle} />
-        </ReferenceInput>
-        <ReferenceInput
-          source="impersonatedUser.id"
-          reference="User"
-          label="Impersonated User"
-        >
-          <SelectInput optionText={UserTitle} />
-        </ReferenceInput>
+        <NumberInput
+          step={1}
+          label="Impersonated By ID"
+          source="impersonatedById"
+        />
+        <NumberInput
+          step={1}
+          label="Impersonated User ID"
+          source="impersonatedUserId"
+        />
       </SimpleForm>
     </Edit>
   );

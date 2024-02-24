@@ -4,7 +4,6 @@ import { DestinationCalendarCreateNestedManyWithoutCredentialsInput } from "./De
 import { InputJsonValue } from "../../types";
 import { SelectedCalendarCreateNestedManyWithoutCredentialsInput } from "./SelectedCalendarCreateNestedManyWithoutCredentialsInput";
 import { TeamWhereUniqueInput } from "../team/TeamWhereUniqueInput";
-import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 
 export type CredentialCreateInput = {
   appField?: AppModelWhereUniqueInput | null;
@@ -18,5 +17,5 @@ export type CredentialCreateInput = {
   subscriptionId?: string | null;
   team?: TeamWhereUniqueInput | null;
   typeField: string;
-  user?: UserWhereUniqueInput | null;
+  userId?: number | null;
 };

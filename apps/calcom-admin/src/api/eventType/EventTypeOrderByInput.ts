@@ -24,7 +24,7 @@ export type EventTypeOrderByInput = {
   minimumBookingNotice?: SortOrder;
   offsetStart?: SortOrder;
   onlyShowFirstAvailableSlot?: SortOrder;
-  userId?: SortOrder;
+  ownerId?: SortOrder;
   parentId?: SortOrder;
   periodCountCalendarDays?: SortOrder;
   periodDays?: SortOrder;

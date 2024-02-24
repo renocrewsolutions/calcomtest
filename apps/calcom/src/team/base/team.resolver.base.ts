@@ -36,8 +36,6 @@ import { MembershipFindManyArgs } from "../../membership/base/MembershipFindMany
 import { Membership } from "../../membership/base/Membership";
 import { ProfileFindManyArgs } from "../../profile/base/ProfileFindManyArgs";
 import { Profile } from "../../profile/base/Profile";
-import { UserFindManyArgs } from "../../user/base/UserFindManyArgs";
-import { User } from "../../user/base/User";
 import { AppRoutingFormsFormFindManyArgs } from "../../appRoutingFormsForm/base/AppRoutingFormsFormFindManyArgs";
 import { AppRoutingFormsForm } from "../../appRoutingFormsForm/base/AppRoutingFormsForm";
 import { VerifiedNumberFindManyArgs } from "../../verifiedNumber/base/VerifiedNumberFindManyArgs";
@@ -252,20 +250,6 @@ export class TeamResolverBase {
     @graphql.Args() args: ProfileFindManyArgs
   ): Promise<Profile[]> {
     const results = await this.service.findOrgProfiles(parent.id, args);
-
-    if (!results) {
-      return [];
-    }
-
-    return results;
-  }
-
-  @graphql.ResolveField(() => [User], { name: "orgUsers" })
-  async findOrgUsers(
-    @graphql.Parent() parent: Team,
-    @graphql.Args() args: UserFindManyArgs
-  ): Promise<User[]> {
-    const results = await this.service.findOrgUsers(parent.id, args);
 
     if (!results) {
       return [];

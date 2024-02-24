@@ -31,7 +31,6 @@ import { IsJSONValue } from "../../validators";
 import { GraphQLJSON } from "graphql-type-json";
 import { InputJsonValue } from "../../types";
 import { ProfileCreateNestedManyWithoutTeamsInput } from "./ProfileCreateNestedManyWithoutTeamsInput";
-import { UserCreateNestedManyWithoutTeamsInput } from "./UserCreateNestedManyWithoutTeamsInput";
 import { TeamWhereUniqueInput } from "./TeamWhereUniqueInput";
 import { AppRoutingFormsFormCreateNestedManyWithoutTeamsInput } from "./AppRoutingFormsFormCreateNestedManyWithoutTeamsInput";
 import { VerifiedNumberCreateNestedManyWithoutTeamsInput } from "./VerifiedNumberCreateNestedManyWithoutTeamsInput";
@@ -280,15 +279,13 @@ class TeamCreateInput {
 
   @ApiProperty({
     required: false,
-    type: () => UserCreateNestedManyWithoutTeamsInput,
   })
-  @ValidateNested()
-  @Type(() => UserCreateNestedManyWithoutTeamsInput)
+  @IsJSONValue()
   @IsOptional()
-  @Field(() => UserCreateNestedManyWithoutTeamsInput, {
+  @Field(() => GraphQLJSON, {
     nullable: true,
   })
-  orgUsers?: UserCreateNestedManyWithoutTeamsInput;
+  orgUsers?: InputJsonValue;
 
   @ApiProperty({
     required: false,

@@ -15,7 +15,6 @@ import {
 
 import { AppRoutingFormsFormResponseTitle } from "../appRoutingFormsFormResponse/AppRoutingFormsFormResponseTitle";
 import { TeamTitle } from "../team/TeamTitle";
-import { UserTitle } from "../user/UserTitle";
 
 export const AppRoutingFormsFormCreate = (
   props: CreateProps
@@ -41,9 +40,7 @@ export const AppRoutingFormsFormCreate = (
         <ReferenceInput source="team.id" reference="Team" label="Team">
           <SelectInput optionText={TeamTitle} />
         </ReferenceInput>
-        <ReferenceInput source="user.id" reference="User" label="User">
-          <SelectInput optionText={UserTitle} />
-        </ReferenceInput>
+        <NumberInput step={1} label="User ID" source="userId" />
       </SimpleForm>
     </Create>
   );

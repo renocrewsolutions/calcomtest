@@ -1,13 +1,6 @@
 import * as React from "react";
-import {
-  List,
-  Datagrid,
-  ListProps,
-  TextField,
-  ReferenceField,
-} from "react-admin";
+import { List, Datagrid, ListProps, TextField } from "react-admin";
 import Pagination from "../Components/Pagination";
-import { USER_TITLE_FIELD } from "../user/UserTitle";
 
 export const UserPasswordList = (props: ListProps): React.ReactElement => {
   return (
@@ -21,9 +14,7 @@ export const UserPasswordList = (props: ListProps): React.ReactElement => {
       <Datagrid rowClick="show">
         <TextField label="Hash" source="hash" />
         <TextField label="ID" source="id" />
-        <ReferenceField label="User" source="user.id" reference="User">
-          <TextField source={USER_TITLE_FIELD} />
-        </ReferenceField>
+        <TextField label="User ID" source="userId" />
       </Datagrid>
     </List>
   );

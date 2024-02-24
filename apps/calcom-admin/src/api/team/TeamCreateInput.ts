@@ -8,7 +8,6 @@ import { VerificationTokenCreateNestedManyWithoutTeamsInput } from "./Verificati
 import { MembershipCreateNestedManyWithoutTeamsInput } from "./MembershipCreateNestedManyWithoutTeamsInput";
 import { InputJsonValue } from "../../types";
 import { ProfileCreateNestedManyWithoutTeamsInput } from "./ProfileCreateNestedManyWithoutTeamsInput";
-import { UserCreateNestedManyWithoutTeamsInput } from "./UserCreateNestedManyWithoutTeamsInput";
 import { TeamWhereUniqueInput } from "./TeamWhereUniqueInput";
 import { AppRoutingFormsFormCreateNestedManyWithoutTeamsInput } from "./AppRoutingFormsFormCreateNestedManyWithoutTeamsInput";
 import { VerifiedNumberCreateNestedManyWithoutTeamsInput } from "./VerifiedNumberCreateNestedManyWithoutTeamsInput";
@@ -38,7 +37,7 @@ export type TeamCreateInput = {
   metadata?: InputJsonValue;
   name: string;
   orgProfiles?: ProfileCreateNestedManyWithoutTeamsInput;
-  orgUsers?: UserCreateNestedManyWithoutTeamsInput;
+  orgUsers?: InputJsonValue;
   parent?: TeamWhereUniqueInput | null;
   pendingPayment: boolean;
   routingForms?: AppRoutingFormsFormCreateNestedManyWithoutTeamsInput;

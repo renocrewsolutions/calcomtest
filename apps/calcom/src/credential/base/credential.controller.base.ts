@@ -54,12 +54,6 @@ export class CredentialControllerBase {
               connect: data.team,
             }
           : undefined,
-
-        user: data.user
-          ? {
-              connect: data.user,
-            }
-          : undefined,
       },
       select: {
         appField: {
@@ -82,12 +76,7 @@ export class CredentialControllerBase {
         },
 
         typeField: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
   }
@@ -120,12 +109,7 @@ export class CredentialControllerBase {
         },
 
         typeField: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
   }
@@ -159,12 +143,7 @@ export class CredentialControllerBase {
         },
 
         typeField: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
     if (result === null) {
@@ -199,12 +178,6 @@ export class CredentialControllerBase {
                 connect: data.team,
               }
             : undefined,
-
-          user: data.user
-            ? {
-                connect: data.user,
-              }
-            : undefined,
         },
         select: {
           appField: {
@@ -227,12 +200,7 @@ export class CredentialControllerBase {
           },
 
           typeField: true,
-
-          user: {
-            select: {
-              id: true,
-            },
-          },
+          userId: true,
         },
       });
     } catch (error) {
@@ -275,12 +243,7 @@ export class CredentialControllerBase {
           },
 
           typeField: true,
-
-          user: {
-            select: {
-              id: true,
-            },
-          },
+          userId: true,
         },
       });
     } catch (error) {
@@ -400,12 +363,7 @@ export class CredentialControllerBase {
         id: true,
         integration: true,
         primaryEmail: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
     if (results === null) {
@@ -486,12 +444,7 @@ export class CredentialControllerBase {
         externalId: true,
         id: true,
         integration: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
     if (results === null) {

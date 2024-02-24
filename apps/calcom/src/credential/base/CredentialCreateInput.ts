@@ -27,7 +27,6 @@ import { GraphQLJSON } from "graphql-type-json";
 import { InputJsonValue } from "../../types";
 import { SelectedCalendarCreateNestedManyWithoutCredentialsInput } from "./SelectedCalendarCreateNestedManyWithoutCredentialsInput";
 import { TeamWhereUniqueInput } from "../../team/base/TeamWhereUniqueInput";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
 class CredentialCreateInput {
@@ -152,15 +151,14 @@ class CredentialCreateInput {
 
   @ApiProperty({
     required: false,
-    type: () => UserWhereUniqueInput,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
+  @IsInt()
   @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
+  @Field(() => Number, {
     nullable: true,
   })
-  user?: UserWhereUniqueInput | null;
+  userId?: number | null;
 }
 
 export { CredentialCreateInput as CredentialCreateInput };

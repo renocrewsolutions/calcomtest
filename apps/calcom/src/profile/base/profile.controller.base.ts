@@ -37,29 +37,14 @@ export class ProfileControllerBase {
       data: {
         ...data,
 
-        movedFromUser: data.movedFromUser
-          ? {
-              connect: data.movedFromUser,
-            }
-          : undefined,
-
         organization: {
           connect: data.organization,
-        },
-
-        user: {
-          connect: data.user,
         },
       },
       select: {
         createdAt: true,
         id: true,
-
-        movedFromUser: {
-          select: {
-            id: true,
-          },
-        },
+        movedFromUserId: true,
 
         organization: {
           select: {
@@ -69,13 +54,7 @@ export class ProfileControllerBase {
 
         uid: true,
         updatedAt: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
-
+        userId: true,
         username: true,
       },
     });
@@ -91,12 +70,7 @@ export class ProfileControllerBase {
       select: {
         createdAt: true,
         id: true,
-
-        movedFromUser: {
-          select: {
-            id: true,
-          },
-        },
+        movedFromUserId: true,
 
         organization: {
           select: {
@@ -106,13 +80,7 @@ export class ProfileControllerBase {
 
         uid: true,
         updatedAt: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
-
+        userId: true,
         username: true,
       },
     });
@@ -129,12 +97,7 @@ export class ProfileControllerBase {
       select: {
         createdAt: true,
         id: true,
-
-        movedFromUser: {
-          select: {
-            id: true,
-          },
-        },
+        movedFromUserId: true,
 
         organization: {
           select: {
@@ -144,13 +107,7 @@ export class ProfileControllerBase {
 
         uid: true,
         updatedAt: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
-
+        userId: true,
         username: true,
       },
     });
@@ -175,29 +132,14 @@ export class ProfileControllerBase {
         data: {
           ...data,
 
-          movedFromUser: data.movedFromUser
-            ? {
-                connect: data.movedFromUser,
-              }
-            : undefined,
-
           organization: {
             connect: data.organization,
-          },
-
-          user: {
-            connect: data.user,
           },
         },
         select: {
           createdAt: true,
           id: true,
-
-          movedFromUser: {
-            select: {
-              id: true,
-            },
-          },
+          movedFromUserId: true,
 
           organization: {
             select: {
@@ -207,13 +149,7 @@ export class ProfileControllerBase {
 
           uid: true,
           updatedAt: true,
-
-          user: {
-            select: {
-              id: true,
-            },
-          },
-
+          userId: true,
           username: true,
         },
       });
@@ -239,12 +175,7 @@ export class ProfileControllerBase {
         select: {
           createdAt: true,
           id: true,
-
-          movedFromUser: {
-            select: {
-              id: true,
-            },
-          },
+          movedFromUserId: true,
 
           organization: {
             select: {
@@ -254,13 +185,7 @@ export class ProfileControllerBase {
 
           uid: true,
           updatedAt: true,
-
-          user: {
-            select: {
-              id: true,
-            },
-          },
-
+          userId: true,
           username: true,
         },
       });
@@ -319,12 +244,7 @@ export class ProfileControllerBase {
         minimumBookingNotice: true,
         offsetStart: true,
         onlyShowFirstAvailableSlot: true,
-
-        owner: {
-          select: {
-            id: true,
-          },
-        },
+        ownerId: true,
 
         parent: {
           select: {

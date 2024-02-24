@@ -24,7 +24,6 @@ import { BookingFindManyArgs } from "../../booking/base/BookingFindManyArgs";
 import { Booking } from "../../booking/base/Booking";
 import { Credential } from "../../credential/base/Credential";
 import { EventType } from "../../eventType/base/EventType";
-import { User } from "../../user/base/User";
 import { DestinationCalendarService } from "../destinationCalendar.service";
 @graphql.Resolver(() => DestinationCalendar)
 export class DestinationCalendarResolverBase {
@@ -77,12 +76,6 @@ export class DestinationCalendarResolverBase {
               connect: args.data.eventType,
             }
           : undefined,
-
-        user: args.data.user
-          ? {
-              connect: args.data.user,
-            }
-          : undefined,
       },
     });
   }
@@ -106,12 +99,6 @@ export class DestinationCalendarResolverBase {
           eventType: args.data.eventType
             ? {
                 connect: args.data.eventType,
-              }
-            : undefined,
-
-          user: args.data.user
-            ? {
-                connect: args.data.user,
               }
             : undefined,
         },
@@ -179,21 +166,6 @@ export class DestinationCalendarResolverBase {
     @graphql.Parent() parent: DestinationCalendar
   ): Promise<EventType | null> {
     const result = await this.service.getEventType(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return result;
-  }
-
-  @graphql.ResolveField(() => User, {
-    nullable: true,
-    name: "user",
-  })
-  async getUser(
-    @graphql.Parent() parent: DestinationCalendar
-  ): Promise<User | null> {
-    const result = await this.service.getUser(parent.id);
 
     if (!result) {
       return null;

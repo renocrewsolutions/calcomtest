@@ -21,7 +21,6 @@ import { EventTypeCustomInputTitle } from "../eventTypeCustomInput/EventTypeCust
 import { DestinationCalendarTitle } from "../destinationCalendar/DestinationCalendarTitle";
 import { HashedLinkTitle } from "../hashedLink/HashedLinkTitle";
 import { HostTitle } from "../host/HostTitle";
-import { UserTitle } from "../user/UserTitle";
 import { ProfileTitle } from "../profile/ProfileTitle";
 import { ScheduleTitle } from "../schedule/ScheduleTitle";
 import { TeamTitle } from "../team/TeamTitle";
@@ -127,9 +126,7 @@ export const EventTypeEdit = (props: EditProps): React.ReactElement => {
           label="Only Show First Available Slot"
           source="onlyShowFirstAvailableSlot"
         />
-        <ReferenceInput source="owner.id" reference="User" label="Owner">
-          <SelectInput optionText={UserTitle} />
-        </ReferenceInput>
+        <NumberInput step={1} label="Owner ID" source="ownerId" />
         <ReferenceInput source="parent.id" reference="EventType" label="Parent">
           <SelectInput optionText={EventTypeTitle} />
         </ReferenceInput>

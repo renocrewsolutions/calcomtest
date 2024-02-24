@@ -24,7 +24,6 @@ import { WorkflowStepCreateNestedManyWithoutWorkflowsInput } from "./WorkflowSte
 import { TeamWhereUniqueInput } from "../../team/base/TeamWhereUniqueInput";
 import { EnumWorkflowTimeUnit } from "./EnumWorkflowTimeUnit";
 import { EnumWorkflowTrigger } from "./EnumWorkflowTrigger";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
 class WorkflowCreateInput {
@@ -117,15 +116,14 @@ class WorkflowCreateInput {
 
   @ApiProperty({
     required: false,
-    type: () => UserWhereUniqueInput,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
+  @IsInt()
   @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
+  @Field(() => Number, {
     nullable: true,
   })
-  user?: UserWhereUniqueInput | null;
+  userId?: number | null;
 }
 
 export { WorkflowCreateInput as WorkflowCreateInput };

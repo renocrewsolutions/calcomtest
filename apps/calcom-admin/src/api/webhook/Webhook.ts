@@ -1,7 +1,6 @@
 import { AppModel } from "../appModel/AppModel";
 import { EventType } from "../eventType/EventType";
 import { Team } from "../team/Team";
-import { User } from "../user/User";
 
 export type Webhook = {
   active: boolean;
@@ -27,5 +26,5 @@ export type Webhook = {
   secret: string | null;
   subscriberUrl: string;
   team?: Team | null;
-  user?: User | null;
+  userId: number | null;
 };

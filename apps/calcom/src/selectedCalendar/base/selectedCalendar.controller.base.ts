@@ -39,10 +39,6 @@ export class SelectedCalendarControllerBase {
               connect: data.credential,
             }
           : undefined,
-
-        user: {
-          connect: data.user,
-        },
       },
       select: {
         credential: {
@@ -54,12 +50,7 @@ export class SelectedCalendarControllerBase {
         externalId: true,
         id: true,
         integration: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
   }
@@ -83,12 +74,7 @@ export class SelectedCalendarControllerBase {
         externalId: true,
         id: true,
         integration: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
   }
@@ -111,12 +97,7 @@ export class SelectedCalendarControllerBase {
         externalId: true,
         id: true,
         integration: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
     if (result === null) {
@@ -145,10 +126,6 @@ export class SelectedCalendarControllerBase {
                 connect: data.credential,
               }
             : undefined,
-
-          user: {
-            connect: data.user,
-          },
         },
         select: {
           credential: {
@@ -160,12 +137,7 @@ export class SelectedCalendarControllerBase {
           externalId: true,
           id: true,
           integration: true,
-
-          user: {
-            select: {
-              id: true,
-            },
-          },
+          userId: true,
         },
       });
     } catch (error) {
@@ -197,12 +169,7 @@ export class SelectedCalendarControllerBase {
           externalId: true,
           id: true,
           integration: true,
-
-          user: {
-            select: {
-              id: true,
-            },
-          },
+          userId: true,
         },
       });
     } catch (error) {

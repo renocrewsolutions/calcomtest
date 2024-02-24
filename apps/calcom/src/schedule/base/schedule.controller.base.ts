@@ -37,23 +37,12 @@ export class ScheduleControllerBase {
     @common.Body() data: ScheduleCreateInput
   ): Promise<Schedule> {
     return await this.service.createSchedule({
-      data: {
-        ...data,
-
-        user: {
-          connect: data.user,
-        },
-      },
+      data: data,
       select: {
         id: true,
         name: true,
         timeZone: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
   }
@@ -69,12 +58,7 @@ export class ScheduleControllerBase {
         id: true,
         name: true,
         timeZone: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
   }
@@ -91,12 +75,7 @@ export class ScheduleControllerBase {
         id: true,
         name: true,
         timeZone: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
     if (result === null) {
@@ -117,23 +96,12 @@ export class ScheduleControllerBase {
     try {
       return await this.service.updateSchedule({
         where: params,
-        data: {
-          ...data,
-
-          user: {
-            connect: data.user,
-          },
-        },
+        data: data,
         select: {
           id: true,
           name: true,
           timeZone: true,
-
-          user: {
-            select: {
-              id: true,
-            },
-          },
+          userId: true,
         },
       });
     } catch (error) {
@@ -159,12 +127,7 @@ export class ScheduleControllerBase {
           id: true,
           name: true,
           timeZone: true,
-
-          user: {
-            select: {
-              id: true,
-            },
-          },
+          userId: true,
         },
       });
     } catch (error) {
@@ -206,12 +169,7 @@ export class ScheduleControllerBase {
         },
 
         startTime: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
     if (results === null) {
@@ -318,12 +276,7 @@ export class ScheduleControllerBase {
         minimumBookingNotice: true,
         offsetStart: true,
         onlyShowFirstAvailableSlot: true,
-
-        owner: {
-          select: {
-            id: true,
-          },
-        },
+        ownerId: true,
 
         parent: {
           select: {

@@ -24,7 +24,6 @@ import { WorkflowStepUpdateManyWithoutWorkflowsInput } from "./WorkflowStepUpdat
 import { TeamWhereUniqueInput } from "../../team/base/TeamWhereUniqueInput";
 import { EnumWorkflowTimeUnit } from "./EnumWorkflowTimeUnit";
 import { EnumWorkflowTrigger } from "./EnumWorkflowTrigger";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
 class WorkflowUpdateInput {
@@ -126,15 +125,14 @@ class WorkflowUpdateInput {
 
   @ApiProperty({
     required: false,
-    type: () => UserWhereUniqueInput,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
+  @IsInt()
   @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
+  @Field(() => Number, {
     nullable: true,
   })
-  user?: UserWhereUniqueInput | null;
+  userId?: number | null;
 }
 
 export { WorkflowUpdateInput as WorkflowUpdateInput };

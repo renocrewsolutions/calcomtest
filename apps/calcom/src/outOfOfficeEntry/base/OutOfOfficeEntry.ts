@@ -11,15 +11,8 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import {
-  IsDate,
-  IsInt,
-  ValidateNested,
-  IsOptional,
-  IsString,
-} from "class-validator";
+import { IsDate, IsInt, IsOptional, IsString } from "class-validator";
 import { Type } from "class-transformer";
-import { User } from "../../user/base/User";
 
 @ObjectType()
 class OutOfOfficeEntry {
@@ -57,12 +50,14 @@ class OutOfOfficeEntry {
 
   @ApiProperty({
     required: false,
-    type: () => User,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => User)
+  @IsInt()
   @IsOptional()
-  toUser?: User | null;
+  @Field(() => Number, {
+    nullable: true,
+  })
+  toUserId!: number | null;
 
   @ApiProperty({
     required: true,
@@ -74,11 +69,11 @@ class OutOfOfficeEntry {
 
   @ApiProperty({
     required: true,
-    type: () => User,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => User)
-  user?: User;
+  @IsInt()
+  @Field(() => Number)
+  userId!: number;
 
   @ApiProperty({
     required: true,

@@ -4,19 +4,15 @@ import {
   SimpleForm,
   CreateProps,
   TextInput,
-  ReferenceInput,
-  SelectInput,
+  NumberInput,
 } from "react-admin";
-import { UserTitle } from "../user/UserTitle";
 
 export const UserPasswordCreate = (props: CreateProps): React.ReactElement => {
   return (
     <Create {...props}>
       <SimpleForm>
         <TextInput label="Hash" source="hash" />
-        <ReferenceInput source="user.id" reference="User" label="User">
-          <SelectInput optionText={UserTitle} />
-        </ReferenceInput>
+        <NumberInput step={1} label="User ID" source="userId" />
       </SimpleForm>
     </Create>
   );

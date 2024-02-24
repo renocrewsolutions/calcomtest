@@ -14,7 +14,6 @@ import {
 import { EVENTTYPE_TITLE_FIELD } from "../eventType/EventTypeTitle";
 import { WORKFLOW_TITLE_FIELD } from "./WorkflowTitle";
 import { TEAM_TITLE_FIELD } from "../team/TeamTitle";
-import { USER_TITLE_FIELD } from "../user/UserTitle";
 
 export const WorkflowShow = (props: ShowProps): React.ReactElement => {
   return (
@@ -29,9 +28,7 @@ export const WorkflowShow = (props: ShowProps): React.ReactElement => {
         <TextField label="Time" source="time" />
         <TextField label="Time Unit" source="timeUnit" />
         <TextField label="Trigger" source="trigger" />
-        <ReferenceField label="User" source="user.id" reference="User">
-          <TextField source={USER_TITLE_FIELD} />
-        </ReferenceField>
+        <TextField label="User ID" source="userId" />
         <ReferenceManyField
           reference="WorkflowsOnEventType"
           target="workflowId"

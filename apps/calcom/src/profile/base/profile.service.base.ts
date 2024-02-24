@@ -15,7 +15,6 @@ import {
   Prisma,
   Profile, // @ts-ignore
   EventType, // @ts-ignore
-  User, // @ts-ignore
   Team,
 } from "@prisma/client";
 
@@ -65,27 +64,11 @@ export class ProfileServiceBase {
       .eventTypes(args);
   }
 
-  async getMovedFromUser(parentId: number): Promise<User | null> {
-    return this.prisma.profile
-      .findUnique({
-        where: { id: parentId },
-      })
-      .movedFromUser();
-  }
-
   async getOrganization(parentId: number): Promise<Team | null> {
     return this.prisma.profile
       .findUnique({
         where: { id: parentId },
       })
       .organization();
-  }
-
-  async getUser(parentId: number): Promise<User | null> {
-    return this.prisma.profile
-      .findUnique({
-        where: { id: parentId },
-      })
-      .user();
   }
 }

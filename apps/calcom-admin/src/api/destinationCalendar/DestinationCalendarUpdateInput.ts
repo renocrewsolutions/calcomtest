@@ -1,7 +1,6 @@
 import { BookingUpdateManyWithoutDestinationCalendarsInput } from "./BookingUpdateManyWithoutDestinationCalendarsInput";
 import { CredentialWhereUniqueInput } from "../credential/CredentialWhereUniqueInput";
 import { EventTypeWhereUniqueInput } from "../eventType/EventTypeWhereUniqueInput";
-import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 
 export type DestinationCalendarUpdateInput = {
   booking?: BookingUpdateManyWithoutDestinationCalendarsInput;
@@ -10,5 +9,5 @@ export type DestinationCalendarUpdateInput = {
   externalId?: string;
   integration?: string;
   primaryEmail?: string | null;
-  user?: UserWhereUniqueInput | null;
+  userId?: number | null;
 };

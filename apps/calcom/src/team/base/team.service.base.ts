@@ -22,7 +22,6 @@ import {
   VerificationToken, // @ts-ignore
   Membership, // @ts-ignore
   Profile, // @ts-ignore
-  User, // @ts-ignore
   AppRoutingFormsForm, // @ts-ignore
   VerifiedNumber, // @ts-ignore
   Webhook, // @ts-ignore
@@ -161,17 +160,6 @@ export class TeamServiceBase {
         where: { id: parentId },
       })
       .orgProfiles(args);
-  }
-
-  async findOrgUsers(
-    parentId: number,
-    args: Prisma.UserFindManyArgs
-  ): Promise<User[]> {
-    return this.prisma.team
-      .findUniqueOrThrow({
-        where: { id: parentId },
-      })
-      .orgUsers(args);
   }
 
   async findRoutingForms(

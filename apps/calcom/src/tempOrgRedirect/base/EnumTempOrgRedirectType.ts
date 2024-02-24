@@ -9,7 +9,6 @@ https://docs.amplication.com/how-to/custom-code
 
 ------------------------------------------------------------------------------
   */
-import { User } from "../../user/base/User";
 import { Team } from "../../team/base/Team";
 import { registerEnumType } from "@nestjs/graphql";
 

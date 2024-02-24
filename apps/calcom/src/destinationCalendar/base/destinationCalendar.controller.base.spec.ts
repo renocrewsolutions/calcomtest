@@ -22,12 +22,14 @@ const CREATE_INPUT = {
   id: 42,
   integration: "exampleIntegration",
   primaryEmail: "examplePrimaryEmail",
+  userId: 42,
 };
 const CREATE_RESULT = {
   externalId: "exampleExternalId",
   id: 42,
   integration: "exampleIntegration",
   primaryEmail: "examplePrimaryEmail",
+  userId: 42,
 };
 const FIND_MANY_RESULT = [
   {
@@ -35,6 +37,7 @@ const FIND_MANY_RESULT = [
     id: 42,
     integration: "exampleIntegration",
     primaryEmail: "examplePrimaryEmail",
+    userId: 42,
   },
 ];
 const FIND_ONE_RESULT = {
@@ -42,6 +45,7 @@ const FIND_ONE_RESULT = {
   id: 42,
   integration: "exampleIntegration",
   primaryEmail: "examplePrimaryEmail",
+  userId: 42,
 };
 
 const service = {

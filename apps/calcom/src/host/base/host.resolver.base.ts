@@ -21,7 +21,6 @@ import { CreateHostArgs } from "./CreateHostArgs";
 import { UpdateHostArgs } from "./UpdateHostArgs";
 import { DeleteHostArgs } from "./DeleteHostArgs";
 import { EventType } from "../../eventType/base/EventType";
-import { User } from "../../user/base/User";
 import { HostService } from "../host.service";
 @graphql.Resolver(() => Host)
 export class HostResolverBase {
@@ -60,10 +59,6 @@ export class HostResolverBase {
         eventType: {
           connect: args.data.eventType,
         },
-
-        user: {
-          connect: args.data.user,
-        },
       },
     });
   }
@@ -78,10 +73,6 @@ export class HostResolverBase {
 
           eventType: {
             connect: args.data.eventType,
-          },
-
-          user: {
-            connect: args.data.user,
           },
         },
       });
@@ -117,19 +108,6 @@ export class HostResolverBase {
     @graphql.Parent() parent: Host
   ): Promise<EventType | null> {
     const result = await this.service.getEventType(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return result;
-  }
-
-  @graphql.ResolveField(() => User, {
-    nullable: true,
-    name: "user",
-  })
-  async getUser(@graphql.Parent() parent: Host): Promise<User | null> {
-    const result = await this.service.getUser(parent.id);
 
     if (!result) {
       return null;

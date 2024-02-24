@@ -20,7 +20,6 @@ import { UserPasswordFindUniqueArgs } from "./UserPasswordFindUniqueArgs";
 import { CreateUserPasswordArgs } from "./CreateUserPasswordArgs";
 import { UpdateUserPasswordArgs } from "./UpdateUserPasswordArgs";
 import { DeleteUserPasswordArgs } from "./DeleteUserPasswordArgs";
-import { User } from "../../user/base/User";
 import { UserPasswordService } from "../userPassword.service";
 @graphql.Resolver(() => UserPassword)
 export class UserPasswordResolverBase {
@@ -59,13 +58,7 @@ export class UserPasswordResolverBase {
   ): Promise<UserPassword> {
     return await this.service.createUserPassword({
       ...args,
-      data: {
-        ...args.data,
-
-        user: {
-          connect: args.data.user,
-        },
-      },
+      data: args.data,
     });
   }
 
@@ -76,13 +69,7 @@ export class UserPasswordResolverBase {
     try {
       return await this.service.updateUserPassword({
         ...args,
-        data: {
-          ...args.data,
-
-          user: {
-            connect: args.data.user,
-          },
-        },
+        data: args.data,
       });
     } catch (error) {
       if (isRecordNotFoundError(error)) {
@@ -108,18 +95,5 @@ export class UserPasswordResolverBase {
       }
       throw error;
     }
-  }
-
-  @graphql.ResolveField(() => User, {
-    nullable: true,
-    name: "user",
-  })
-  async getUser(@graphql.Parent() parent: UserPassword): Promise<User | null> {
-    const result = await this.service.getUser(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return result;
   }
 }

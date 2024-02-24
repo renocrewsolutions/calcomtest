@@ -12,11 +12,10 @@ https://docs.amplication.com/how-to/custom-code
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { BookingUpdateManyWithoutDestinationCalendarsInput } from "./BookingUpdateManyWithoutDestinationCalendarsInput";
-import { ValidateNested, IsOptional, IsString } from "class-validator";
+import { ValidateNested, IsOptional, IsString, IsInt } from "class-validator";
 import { Type } from "class-transformer";
 import { CredentialWhereUniqueInput } from "../../credential/base/CredentialWhereUniqueInput";
 import { EventTypeWhereUniqueInput } from "../../eventType/base/EventTypeWhereUniqueInput";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
 class DestinationCalendarUpdateInput {
@@ -91,15 +90,14 @@ class DestinationCalendarUpdateInput {
 
   @ApiProperty({
     required: false,
-    type: () => UserWhereUniqueInput,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
+  @IsInt()
   @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
+  @Field(() => Number, {
     nullable: true,
   })
-  user?: UserWhereUniqueInput | null;
+  userId?: number | null;
 }
 
 export { DestinationCalendarUpdateInput as DestinationCalendarUpdateInput };

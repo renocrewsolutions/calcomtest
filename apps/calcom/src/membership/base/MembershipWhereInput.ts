@@ -17,7 +17,6 @@ import { IsOptional, IsEnum, ValidateNested } from "class-validator";
 import { IntFilter } from "../../util/IntFilter";
 import { EnumMembershipRole } from "./EnumMembershipRole";
 import { TeamWhereUniqueInput } from "../../team/base/TeamWhereUniqueInput";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
 class MembershipWhereInput {
@@ -79,15 +78,14 @@ class MembershipWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => UserWhereUniqueInput,
+    type: IntFilter,
   })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
+  @Type(() => IntFilter)
   @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
+  @Field(() => IntFilter, {
     nullable: true,
   })
-  user?: UserWhereUniqueInput;
+  userId?: IntFilter;
 }
 
 export { MembershipWhereInput as MembershipWhereInput };

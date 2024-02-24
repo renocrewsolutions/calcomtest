@@ -12,10 +12,9 @@ https://docs.amplication.com/how-to/custom-code
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { AvailabilityUpdateManyWithoutSchedulesInput } from "./AvailabilityUpdateManyWithoutSchedulesInput";
-import { ValidateNested, IsOptional, IsString } from "class-validator";
+import { ValidateNested, IsOptional, IsString, IsInt } from "class-validator";
 import { Type } from "class-transformer";
 import { EventTypeUpdateManyWithoutSchedulesInput } from "./EventTypeUpdateManyWithoutSchedulesInput";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
 class ScheduleUpdateInput {
@@ -67,15 +66,14 @@ class ScheduleUpdateInput {
 
   @ApiProperty({
     required: false,
-    type: () => UserWhereUniqueInput,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
+  @IsInt()
   @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
+  @Field(() => Number, {
     nullable: true,
   })
-  user?: UserWhereUniqueInput;
+  userId?: number;
 }
 
 export { ScheduleUpdateInput as ScheduleUpdateInput };

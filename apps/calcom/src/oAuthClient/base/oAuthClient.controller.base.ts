@@ -169,11 +169,7 @@ export class OAuthClientControllerBase {
           },
         },
 
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
     if (results === null) {

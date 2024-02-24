@@ -13,7 +13,6 @@ import {
 
 import { CREDENTIAL_TITLE_FIELD } from "./CredentialTitle";
 import { EVENTTYPE_TITLE_FIELD } from "../eventType/EventTypeTitle";
-import { USER_TITLE_FIELD } from "../user/UserTitle";
 import { APPMODEL_TITLE_FIELD } from "../appModel/AppModelTitle";
 import { TEAM_TITLE_FIELD } from "../team/TeamTitle";
 
@@ -38,9 +37,7 @@ export const CredentialShow = (props: ShowProps): React.ReactElement => {
           <TextField source={TEAM_TITLE_FIELD} />
         </ReferenceField>
         <TextField label="Type Field" source="typeField" />
-        <ReferenceField label="User" source="user.id" reference="User">
-          <TextField source={USER_TITLE_FIELD} />
-        </ReferenceField>
+        <TextField label="User ID" source="userId" />
         <ReferenceManyField
           reference="CalendarCache"
           target="credentialId"
@@ -84,9 +81,7 @@ export const CredentialShow = (props: ShowProps): React.ReactElement => {
             <TextField label="ID" source="id" />
             <TextField label="Integration" source="integration" />
             <TextField label="Primary Email" source="primaryEmail" />
-            <ReferenceField label="User" source="user.id" reference="User">
-              <TextField source={USER_TITLE_FIELD} />
-            </ReferenceField>
+            <TextField label="User ID" source="userId" />
           </Datagrid>
         </ReferenceManyField>
         <ReferenceManyField
@@ -105,9 +100,7 @@ export const CredentialShow = (props: ShowProps): React.ReactElement => {
             <TextField label="External Id" source="externalId" />
             <TextField label="ID" source="id" />
             <TextField label="Integration" source="integration" />
-            <ReferenceField label="User" source="user.id" reference="User">
-              <TextField source={USER_TITLE_FIELD} />
-            </ReferenceField>
+            <TextField label="User ID" source="userId" />
           </Datagrid>
         </ReferenceManyField>
       </SimpleShowLayout>

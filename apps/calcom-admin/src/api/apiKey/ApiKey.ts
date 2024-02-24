@@ -1,6 +1,5 @@
 import { AppModel } from "../appModel/AppModel";
 import { Team } from "../team/Team";
-import { User } from "../user/User";
 
 export type ApiKey = {
   appField?: AppModel | null;
@@ -11,5 +10,5 @@ export type ApiKey = {
   lastUsedAt: Date | null;
   note: string | null;
   team?: Team | null;
-  user?: User | null;
+  userId: number | null;
 };

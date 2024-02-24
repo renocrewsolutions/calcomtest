@@ -1,12 +1,11 @@
 import { EventTypeUpdateManyWithoutProfilesInput } from "./EventTypeUpdateManyWithoutProfilesInput";
-import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 import { TeamWhereUniqueInput } from "../team/TeamWhereUniqueInput";
 
 export type ProfileUpdateInput = {
   eventTypes?: EventTypeUpdateManyWithoutProfilesInput;
-  movedFromUser?: UserWhereUniqueInput | null;
+  movedFromUserId?: number | null;
   organization?: TeamWhereUniqueInput;
   uid?: string;
-  user?: UserWhereUniqueInput;
+  userId?: number;
   username?: string;
 };

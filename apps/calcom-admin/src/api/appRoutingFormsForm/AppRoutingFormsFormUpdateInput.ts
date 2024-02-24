@@ -1,7 +1,6 @@
 import { InputJsonValue } from "../../types";
 import { AppRoutingFormsFormResponseUpdateManyWithoutAppRoutingFormsFormsInput } from "./AppRoutingFormsFormResponseUpdateManyWithoutAppRoutingFormsFormsInput";
 import { TeamWhereUniqueInput } from "../team/TeamWhereUniqueInput";
-import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 
 export type AppRoutingFormsFormUpdateInput = {
   description?: string | null;
@@ -13,5 +12,5 @@ export type AppRoutingFormsFormUpdateInput = {
   routes?: InputJsonValue;
   settings?: InputJsonValue;
   team?: TeamWhereUniqueInput | null;
-  user?: UserWhereUniqueInput;
+  userId?: number;
 };

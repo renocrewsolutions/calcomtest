@@ -20,7 +20,6 @@ import { AccountFindUniqueArgs } from "./AccountFindUniqueArgs";
 import { CreateAccountArgs } from "./CreateAccountArgs";
 import { UpdateAccountArgs } from "./UpdateAccountArgs";
 import { DeleteAccountArgs } from "./DeleteAccountArgs";
-import { User } from "../../user/base/User";
 import { AccountService } from "../account.service";
 @graphql.Resolver(() => Account)
 export class AccountResolverBase {
@@ -59,15 +58,7 @@ export class AccountResolverBase {
   ): Promise<Account> {
     return await this.service.createAccount({
       ...args,
-      data: {
-        ...args.data,
-
-        user: args.data.user
-          ? {
-              connect: args.data.user,
-            }
-          : undefined,
-      },
+      data: args.data,
     });
   }
 
@@ -78,15 +69,7 @@ export class AccountResolverBase {
     try {
       return await this.service.updateAccount({
         ...args,
-        data: {
-          ...args.data,
-
-          user: args.data.user
-            ? {
-                connect: args.data.user,
-              }
-            : undefined,
-        },
+        data: args.data,
       });
     } catch (error) {
       if (isRecordNotFoundError(error)) {
@@ -112,18 +95,5 @@ export class AccountResolverBase {
       }
       throw error;
     }
-  }
-
-  @graphql.ResolveField(() => User, {
-    nullable: true,
-    name: "user",
-  })
-  async getUser(@graphql.Parent() parent: Account): Promise<User | null> {
-    const result = await this.service.getUser(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return result;
   }
 }

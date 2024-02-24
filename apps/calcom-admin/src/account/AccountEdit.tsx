@@ -1,16 +1,11 @@
 import * as React from "react";
-
 import {
   Edit,
   SimpleForm,
   EditProps,
   TextInput,
   NumberInput,
-  ReferenceInput,
-  SelectInput,
 } from "react-admin";
-
-import { UserTitle } from "../user/UserTitle";
 
 export const AccountEdit = (props: EditProps): React.ReactElement => {
   return (
@@ -26,9 +21,7 @@ export const AccountEdit = (props: EditProps): React.ReactElement => {
         <TextInput label="Session State" source="sessionState" />
         <TextInput label="Token Type" source="tokenType" />
         <TextInput label="Type Field" source="typeField" />
-        <ReferenceInput source="user.id" reference="User" label="User">
-          <SelectInput optionText={UserTitle} />
-        </ReferenceInput>
+        <NumberInput step={1} label="User ID" source="userId" />
       </SimpleForm>
     </Edit>
   );

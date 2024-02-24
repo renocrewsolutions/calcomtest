@@ -66,12 +66,6 @@ export class BookingControllerBase {
               connect: data.instantMeetingToken,
             }
           : undefined,
-
-        user: data.user
-          ? {
-              connect: data.user,
-            }
-          : undefined,
       },
       select: {
         cancellationReason: true,
@@ -121,13 +115,7 @@ export class BookingControllerBase {
         title: true,
         uid: true,
         updatedAt: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
-
+        userId: true,
         userPrimaryEmail: true,
       },
     });
@@ -188,13 +176,7 @@ export class BookingControllerBase {
         title: true,
         uid: true,
         updatedAt: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
-
+        userId: true,
         userPrimaryEmail: true,
       },
     });
@@ -256,13 +238,7 @@ export class BookingControllerBase {
         title: true,
         uid: true,
         updatedAt: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
-
+        userId: true,
         userPrimaryEmail: true,
       },
     });
@@ -302,12 +278,6 @@ export class BookingControllerBase {
           instantMeetingToken: data.instantMeetingToken
             ? {
                 connect: data.instantMeetingToken,
-              }
-            : undefined,
-
-          user: data.user
-            ? {
-                connect: data.user,
               }
             : undefined,
         },
@@ -359,13 +329,7 @@ export class BookingControllerBase {
           title: true,
           uid: true,
           updatedAt: true,
-
-          user: {
-            select: {
-              id: true,
-            },
-          },
-
+          userId: true,
           userPrimaryEmail: true,
         },
       });
@@ -436,13 +400,7 @@ export class BookingControllerBase {
           title: true,
           uid: true,
           updatedAt: true,
-
-          user: {
-            select: {
-              id: true,
-            },
-          },
-
+          userId: true,
           userPrimaryEmail: true,
         },
       });

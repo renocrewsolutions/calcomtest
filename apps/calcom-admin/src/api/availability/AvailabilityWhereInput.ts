@@ -3,7 +3,7 @@ import { IntFilter } from "../../util/IntFilter";
 import { DateTimeFilter } from "../../util/DateTimeFilter";
 import { EventTypeWhereUniqueInput } from "../eventType/EventTypeWhereUniqueInput";
 import { ScheduleWhereUniqueInput } from "../schedule/ScheduleWhereUniqueInput";
-import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
+import { IntNullableFilter } from "../../util/IntNullableFilter";
 
 export type AvailabilityWhereInput = {
   date?: DateTimeNullableFilter;
@@ -13,5 +13,5 @@ export type AvailabilityWhereInput = {
   id?: IntFilter;
   schedule?: ScheduleWhereUniqueInput;
   startTime?: DateTimeFilter;
-  user?: UserWhereUniqueInput;
+  userId?: IntNullableFilter;
 };

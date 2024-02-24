@@ -13,7 +13,7 @@ import { BooleanNullableFilter } from "../../util/BooleanNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { BookingSeatListRelationFilter } from "../bookingSeat/BookingSeatListRelationFilter";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
-import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
+import { IntNullableFilter } from "../../util/IntNullableFilter";
 import { WorkflowReminderListRelationFilter } from "../workflowReminder/WorkflowReminderListRelationFilter";
 
 export type BookingWhereInput = {
@@ -50,7 +50,7 @@ export type BookingWhereInput = {
   title?: StringFilter;
   uid?: StringFilter;
   updatedAt?: DateTimeNullableFilter;
-  user?: UserWhereUniqueInput;
+  userId?: IntNullableFilter;
   userPrimaryEmail?: StringNullableFilter;
   workflowReminders?: WorkflowReminderListRelationFilter;
 };

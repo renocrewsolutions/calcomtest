@@ -25,10 +25,9 @@ import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { DestinationCalendarWhereUniqueInput } from "../../destinationCalendar/base/DestinationCalendarWhereUniqueInput";
 import { HashedLinkWhereUniqueInput } from "../../hashedLink/base/HashedLinkWhereUniqueInput";
 import { HostListRelationFilter } from "../../host/base/HostListRelationFilter";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
+import { IntNullableFilter } from "../../util/IntNullableFilter";
 import { EventTypeWhereUniqueInput } from "./EventTypeWhereUniqueInput";
 import { BooleanNullableFilter } from "../../util/BooleanNullableFilter";
-import { IntNullableFilter } from "../../util/IntNullableFilter";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 import { EnumEventTypePeriodType } from "./EnumEventTypePeriodType";
 import { ProfileWhereUniqueInput } from "../../profile/base/ProfileWhereUniqueInput";
@@ -357,15 +356,14 @@ class EventTypeWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => UserWhereUniqueInput,
+    type: IntNullableFilter,
   })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
+  @Type(() => IntNullableFilter)
   @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
+  @Field(() => IntNullableFilter, {
     nullable: true,
   })
-  owner?: UserWhereUniqueInput;
+  ownerId?: IntNullableFilter;
 
   @ApiProperty({
     required: false,

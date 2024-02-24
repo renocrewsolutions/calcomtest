@@ -4,7 +4,7 @@ import { EventTypeWhereUniqueInput } from "../eventType/EventTypeWhereUniqueInpu
 import { StringFilter } from "../../util/StringFilter";
 import { IntFilter } from "../../util/IntFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
-import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
+import { IntNullableFilter } from "../../util/IntNullableFilter";
 
 export type DestinationCalendarWhereInput = {
   booking?: BookingListRelationFilter;
@@ -14,5 +14,5 @@ export type DestinationCalendarWhereInput = {
   id?: IntFilter;
   integration?: StringFilter;
   primaryEmail?: StringNullableFilter;
-  user?: UserWhereUniqueInput;
+  userId?: IntNullableFilter;
 };

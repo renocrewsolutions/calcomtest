@@ -12,7 +12,6 @@ import {
 
 import { EventTypeTitle } from "../eventType/EventTypeTitle";
 import { ScheduleTitle } from "../schedule/ScheduleTitle";
-import { UserTitle } from "../user/UserTitle";
 
 export const AvailabilityEdit = (props: EditProps): React.ReactElement => {
   return (
@@ -36,9 +35,7 @@ export const AvailabilityEdit = (props: EditProps): React.ReactElement => {
           <SelectInput optionText={ScheduleTitle} />
         </ReferenceInput>
         <DateTimeInput label="Start Time" source="startTime" />
-        <ReferenceInput source="user.id" reference="User" label="User">
-          <SelectInput optionText={UserTitle} />
-        </ReferenceInput>
+        <NumberInput step={1} label="User ID" source="userId" />
       </SimpleForm>
     </Edit>
   );

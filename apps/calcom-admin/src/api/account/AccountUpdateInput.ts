@@ -1,5 +1,3 @@
-import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
-
 export type AccountUpdateInput = {
   accessToken?: string | null;
   expiresAt?: number | null;
@@ -11,5 +9,5 @@ export type AccountUpdateInput = {
   sessionState?: string | null;
   tokenType?: string | null;
   typeField?: string;
-  user?: UserWhereUniqueInput | null;
+  userId?: number | null;
 };

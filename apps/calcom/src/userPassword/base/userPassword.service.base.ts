@@ -10,12 +10,7 @@ https://docs.amplication.com/how-to/custom-code
 ------------------------------------------------------------------------------
   */
 import { PrismaService } from "../../prisma/prisma.service";
-
-import {
-  Prisma,
-  UserPassword, // @ts-ignore
-  User,
-} from "@prisma/client";
+import { Prisma, UserPassword } from "@prisma/client";
 
 export class UserPasswordServiceBase {
   constructor(protected readonly prisma: PrismaService) {}
@@ -50,13 +45,5 @@ export class UserPasswordServiceBase {
     args: Prisma.SelectSubset<T, Prisma.UserPasswordDeleteArgs>
   ): Promise<UserPassword> {
     return this.prisma.userPassword.delete(args);
-  }
-
-  async getUser(parentId: number): Promise<User | null> {
-    return this.prisma.userPassword
-      .findUnique({
-        where: { id: parentId },
-      })
-      .user();
   }
 }

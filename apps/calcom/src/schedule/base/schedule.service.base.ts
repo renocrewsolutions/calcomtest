@@ -15,8 +15,7 @@ import {
   Prisma,
   Schedule, // @ts-ignore
   Availability, // @ts-ignore
-  EventType, // @ts-ignore
-  User,
+  EventType,
 } from "@prisma/client";
 
 export class ScheduleServiceBase {
@@ -74,13 +73,5 @@ export class ScheduleServiceBase {
         where: { id: parentId },
       })
       .eventType(args);
-  }
-
-  async getUser(parentId: number): Promise<User | null> {
-    return this.prisma.schedule
-      .findUnique({
-        where: { id: parentId },
-      })
-      .user();
   }
 }

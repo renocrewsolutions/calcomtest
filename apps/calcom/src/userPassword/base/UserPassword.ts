@@ -11,9 +11,7 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsInt, ValidateNested } from "class-validator";
-import { User } from "../../user/base/User";
-import { Type } from "class-transformer";
+import { IsString, IsInt } from "class-validator";
 
 @ObjectType()
 class UserPassword {
@@ -35,11 +33,11 @@ class UserPassword {
 
   @ApiProperty({
     required: true,
-    type: () => User,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => User)
-  user?: User;
+  @IsInt()
+  @Field(() => Number)
+  userId!: number;
 }
 
 export { UserPassword as UserPassword };

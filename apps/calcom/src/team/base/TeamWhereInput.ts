@@ -28,7 +28,6 @@ import { MembershipListRelationFilter } from "../../membership/base/MembershipLi
 import { JsonFilter } from "../../util/JsonFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { ProfileListRelationFilter } from "../../profile/base/ProfileListRelationFilter";
-import { UserListRelationFilter } from "../../user/base/UserListRelationFilter";
 import { TeamWhereUniqueInput } from "./TeamWhereUniqueInput";
 import { AppRoutingFormsFormListRelationFilter } from "../../appRoutingFormsForm/base/AppRoutingFormsFormListRelationFilter";
 import { IntNullableFilter } from "../../util/IntNullableFilter";
@@ -313,15 +312,14 @@ class TeamWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => UserListRelationFilter,
+    type: JsonFilter,
   })
-  @ValidateNested()
-  @Type(() => UserListRelationFilter)
+  @Type(() => JsonFilter)
   @IsOptional()
-  @Field(() => UserListRelationFilter, {
+  @Field(() => JsonFilter, {
     nullable: true,
   })
-  orgUsers?: UserListRelationFilter;
+  orgUsers?: JsonFilter;
 
   @ApiProperty({
     required: false,

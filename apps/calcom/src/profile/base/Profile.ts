@@ -20,7 +20,6 @@ import {
 } from "class-validator";
 import { Type } from "class-transformer";
 import { EventType } from "../../eventType/base/EventType";
-import { User } from "../../user/base/User";
 import { Team } from "../../team/base/Team";
 
 @ObjectType()
@@ -52,12 +51,14 @@ class Profile {
 
   @ApiProperty({
     required: false,
-    type: () => User,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => User)
+  @IsInt()
   @IsOptional()
-  movedFromUser?: User | null;
+  @Field(() => Number, {
+    nullable: true,
+  })
+  movedFromUserId!: number | null;
 
   @ApiProperty({
     required: true,
@@ -85,11 +86,11 @@ class Profile {
 
   @ApiProperty({
     required: true,
-    type: () => User,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => User)
-  user?: User;
+  @IsInt()
+  @Field(() => Number)
+  userId!: number;
 
   @ApiProperty({
     required: true,

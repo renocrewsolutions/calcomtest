@@ -1,4 +1,5 @@
 import * as React from "react";
+
 import {
   Create,
   SimpleForm,
@@ -6,9 +7,10 @@ import {
   ReferenceInput,
   SelectInput,
   TextInput,
+  NumberInput,
 } from "react-admin";
+
 import { CredentialTitle } from "../credential/CredentialTitle";
-import { UserTitle } from "../user/UserTitle";
 
 export const SelectedCalendarCreate = (
   props: CreateProps
@@ -25,9 +27,7 @@ export const SelectedCalendarCreate = (
         </ReferenceInput>
         <TextInput label="External Id" source="externalId" />
         <TextInput label="Integration" source="integration" />
-        <ReferenceInput source="user.id" reference="User" label="User">
-          <SelectInput optionText={UserTitle} />
-        </ReferenceInput>
+        <NumberInput step={1} label="User ID" source="userId" />
       </SimpleForm>
     </Create>
   );

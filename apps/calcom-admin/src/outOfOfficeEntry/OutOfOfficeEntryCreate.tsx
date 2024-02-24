@@ -1,16 +1,12 @@
 import * as React from "react";
-
 import {
   Create,
   SimpleForm,
   CreateProps,
   DateTimeInput,
-  ReferenceInput,
-  SelectInput,
+  NumberInput,
   TextInput,
 } from "react-admin";
-
-import { UserTitle } from "../user/UserTitle";
 
 export const OutOfOfficeEntryCreate = (
   props: CreateProps
@@ -20,12 +16,8 @@ export const OutOfOfficeEntryCreate = (
       <SimpleForm>
         <DateTimeInput label="End" source="end" />
         <DateTimeInput label="Start" source="start" />
-        <ReferenceInput source="toUser.id" reference="User" label="To User">
-          <SelectInput optionText={UserTitle} />
-        </ReferenceInput>
-        <ReferenceInput source="user.id" reference="User" label="User">
-          <SelectInput optionText={UserTitle} />
-        </ReferenceInput>
+        <NumberInput step={1} label="To User ID" source="toUserId" />
+        <NumberInput step={1} label="User ID" source="userId" />
         <TextInput label="Uuid" source="uuid" />
       </SimpleForm>
     </Create>

@@ -22,7 +22,6 @@ import { UpdateProfileArgs } from "./UpdateProfileArgs";
 import { DeleteProfileArgs } from "./DeleteProfileArgs";
 import { EventTypeFindManyArgs } from "../../eventType/base/EventTypeFindManyArgs";
 import { EventType } from "../../eventType/base/EventType";
-import { User } from "../../user/base/User";
 import { Team } from "../../team/base/Team";
 import { ProfileService } from "../profile.service";
 @graphql.Resolver(() => Profile)
@@ -65,18 +64,8 @@ export class ProfileResolverBase {
       data: {
         ...args.data,
 
-        movedFromUser: args.data.movedFromUser
-          ? {
-              connect: args.data.movedFromUser,
-            }
-          : undefined,
-
         organization: {
           connect: args.data.organization,
-        },
-
-        user: {
-          connect: args.data.user,
         },
       },
     });
@@ -92,18 +81,8 @@ export class ProfileResolverBase {
         data: {
           ...args.data,
 
-          movedFromUser: args.data.movedFromUser
-            ? {
-                connect: args.data.movedFromUser,
-              }
-            : undefined,
-
           organization: {
             connect: args.data.organization,
-          },
-
-          user: {
-            connect: args.data.user,
           },
         },
       });
@@ -147,21 +126,6 @@ export class ProfileResolverBase {
     return results;
   }
 
-  @graphql.ResolveField(() => User, {
-    nullable: true,
-    name: "movedFromUser",
-  })
-  async getMovedFromUser(
-    @graphql.Parent() parent: Profile
-  ): Promise<User | null> {
-    const result = await this.service.getMovedFromUser(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return result;
-  }
-
   @graphql.ResolveField(() => Team, {
     nullable: true,
     name: "organization",
@@ -170,19 +134,6 @@ export class ProfileResolverBase {
     @graphql.Parent() parent: Profile
   ): Promise<Team | null> {
     const result = await this.service.getOrganization(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return result;
-  }
-
-  @graphql.ResolveField(() => User, {
-    nullable: true,
-    name: "user",
-  })
-  async getUser(@graphql.Parent() parent: Profile): Promise<User | null> {
-    const result = await this.service.getUser(parent.id);
 
     if (!result) {
       return null;

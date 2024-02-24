@@ -32,7 +32,6 @@ import { Payment } from "../../payment/base/Payment";
 import { BookingReference } from "../../bookingReference/base/BookingReference";
 import { BookingSeat } from "../../bookingSeat/base/BookingSeat";
 import { EnumBookingStatus } from "./EnumBookingStatus";
-import { User } from "../../user/base/User";
 import { WorkflowReminder } from "../../workflowReminder/base/WorkflowReminder";
 
 @ObjectType()
@@ -354,12 +353,14 @@ class Booking {
 
   @ApiProperty({
     required: false,
-    type: () => User,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => User)
+  @IsInt()
   @IsOptional()
-  user?: User | null;
+  @Field(() => Number, {
+    nullable: true,
+  })
+  userId!: number | null;
 
   @ApiProperty({
     required: false,

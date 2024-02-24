@@ -14,7 +14,6 @@ import { ApiProperty } from "@nestjs/swagger";
 import { Credential } from "../../credential/base/Credential";
 import { ValidateNested, IsOptional, IsString, IsInt } from "class-validator";
 import { Type } from "class-transformer";
-import { User } from "../../user/base/User";
 
 @ObjectType()
 class SelectedCalendar {
@@ -53,11 +52,11 @@ class SelectedCalendar {
 
   @ApiProperty({
     required: true,
-    type: () => User,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => User)
-  user?: User;
+  @IsInt()
+  @Field(() => Number)
+  userId!: number;
 }
 
 export { SelectedCalendar as SelectedCalendar };

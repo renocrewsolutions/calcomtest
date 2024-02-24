@@ -20,7 +20,6 @@ import { SessionFindUniqueArgs } from "./SessionFindUniqueArgs";
 import { CreateSessionArgs } from "./CreateSessionArgs";
 import { UpdateSessionArgs } from "./UpdateSessionArgs";
 import { DeleteSessionArgs } from "./DeleteSessionArgs";
-import { User } from "../../user/base/User";
 import { SessionService } from "../session.service";
 @graphql.Resolver(() => Session)
 export class SessionResolverBase {
@@ -59,15 +58,7 @@ export class SessionResolverBase {
   ): Promise<Session> {
     return await this.service.createSession({
       ...args,
-      data: {
-        ...args.data,
-
-        user: args.data.user
-          ? {
-              connect: args.data.user,
-            }
-          : undefined,
-      },
+      data: args.data,
     });
   }
 
@@ -78,15 +69,7 @@ export class SessionResolverBase {
     try {
       return await this.service.updateSession({
         ...args,
-        data: {
-          ...args.data,
-
-          user: args.data.user
-            ? {
-                connect: args.data.user,
-              }
-            : undefined,
-        },
+        data: args.data,
       });
     } catch (error) {
       if (isRecordNotFoundError(error)) {
@@ -112,18 +95,5 @@ export class SessionResolverBase {
       }
       throw error;
     }
-  }
-
-  @graphql.ResolveField(() => User, {
-    nullable: true,
-    name: "user",
-  })
-  async getUser(@graphql.Parent() parent: Session): Promise<User | null> {
-    const result = await this.service.getUser(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return result;
   }
 }

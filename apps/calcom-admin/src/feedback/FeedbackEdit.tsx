@@ -4,10 +4,8 @@ import {
   SimpleForm,
   EditProps,
   TextInput,
-  ReferenceInput,
-  SelectInput,
+  NumberInput,
 } from "react-admin";
-import { UserTitle } from "../user/UserTitle";
 
 export const FeedbackEdit = (props: EditProps): React.ReactElement => {
   return (
@@ -15,9 +13,7 @@ export const FeedbackEdit = (props: EditProps): React.ReactElement => {
       <SimpleForm>
         <TextInput label="Comment" source="comment" />
         <TextInput label="Rating" source="rating" />
-        <ReferenceInput source="user.id" reference="User" label="User">
-          <SelectInput optionText={UserTitle} />
-        </ReferenceInput>
+        <NumberInput step={1} label="User ID" source="userId" />
       </SimpleForm>
     </Edit>
   );

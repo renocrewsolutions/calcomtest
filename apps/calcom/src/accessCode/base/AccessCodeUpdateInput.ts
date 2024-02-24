@@ -18,11 +18,11 @@ import {
   IsString,
   IsDate,
   IsEnum,
+  IsInt,
 } from "class-validator";
 import { Type } from "class-transformer";
 import { EnumAccessCodeScopes } from "./EnumAccessCodeScopes";
 import { TeamWhereUniqueInput } from "../../team/base/TeamWhereUniqueInput";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
 class AccessCodeUpdateInput {
@@ -88,15 +88,14 @@ class AccessCodeUpdateInput {
 
   @ApiProperty({
     required: false,
-    type: () => UserWhereUniqueInput,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
+  @IsInt()
   @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
+  @Field(() => Number, {
     nullable: true,
   })
-  user?: UserWhereUniqueInput | null;
+  userId?: number | null;
 }
 
 export { AccessCodeUpdateInput as AccessCodeUpdateInput };

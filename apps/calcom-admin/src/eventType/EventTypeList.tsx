@@ -10,7 +10,6 @@ import {
 import Pagination from "../Components/Pagination";
 import { DESTINATIONCALENDAR_TITLE_FIELD } from "../destinationCalendar/DestinationCalendarTitle";
 import { HASHEDLINK_TITLE_FIELD } from "../hashedLink/HashedLinkTitle";
-import { USER_TITLE_FIELD } from "../user/UserTitle";
 import { EVENTTYPE_TITLE_FIELD } from "./EventTypeTitle";
 import { PROFILE_TITLE_FIELD } from "../profile/ProfileTitle";
 import { SCHEDULE_TITLE_FIELD } from "../schedule/ScheduleTitle";
@@ -73,9 +72,7 @@ export const EventTypeList = (props: ListProps): React.ReactElement => {
           label="Only Show First Available Slot"
           source="onlyShowFirstAvailableSlot"
         />
-        <ReferenceField label="Owner" source="user.id" reference="User">
-          <TextField source={USER_TITLE_FIELD} />
-        </ReferenceField>
+        <TextField label="Owner ID" source="ownerId" />
         <ReferenceField
           label="Parent"
           source="eventtype.id"

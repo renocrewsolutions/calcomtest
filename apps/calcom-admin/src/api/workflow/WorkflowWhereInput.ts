@@ -4,7 +4,6 @@ import { StringFilter } from "../../util/StringFilter";
 import { WorkflowStepListRelationFilter } from "../workflowStep/WorkflowStepListRelationFilter";
 import { TeamWhereUniqueInput } from "../team/TeamWhereUniqueInput";
 import { IntNullableFilter } from "../../util/IntNullableFilter";
-import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 
 export type WorkflowWhereInput = {
   activeOn?: WorkflowsOnEventTypeListRelationFilter;
@@ -21,5 +20,5 @@ export type WorkflowWhereInput = {
     | "NEW_EVENT"
     | "AFTER_EVENT"
     | "RESCHEDULE_EVENT";
-  user?: UserWhereUniqueInput;
+  userId?: IntNullableFilter;
 };

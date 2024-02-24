@@ -41,6 +41,7 @@ export const TeamList = (props: ListProps): React.ReactElement => {
         <TextField label="Logo Url" source="logoUrl" />
         <TextField label="Metadata" source="metadata" />
         <TextField label="Name" source="name" />
+        <TextField label="Org Users" source="orgUsers" />
         <ReferenceField label="Parent" source="team.id" reference="Team">
           <TextField source={TEAM_TITLE_FIELD} />
         </ReferenceField>

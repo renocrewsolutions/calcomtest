@@ -11,9 +11,8 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsDate, IsInt, ValidateNested } from "class-validator";
+import { IsDate, IsInt } from "class-validator";
 import { Type } from "class-transformer";
-import { User } from "../../user/base/User";
 
 @ObjectType()
 class Impersonation {
@@ -35,19 +34,19 @@ class Impersonation {
 
   @ApiProperty({
     required: true,
-    type: () => User,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => User)
-  impersonatedBy?: User;
+  @IsInt()
+  @Field(() => Number)
+  impersonatedById!: number;
 
   @ApiProperty({
     required: true,
-    type: () => User,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => User)
-  impersonatedUser?: User;
+  @IsInt()
+  @Field(() => Number)
+  impersonatedUserId!: number;
 }
 
 export { Impersonation as Impersonation };

@@ -12,9 +12,8 @@ https://docs.amplication.com/how-to/custom-code
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { EventTypeUpdateManyWithoutProfilesInput } from "./EventTypeUpdateManyWithoutProfilesInput";
-import { ValidateNested, IsOptional, IsString } from "class-validator";
+import { ValidateNested, IsOptional, IsInt, IsString } from "class-validator";
 import { Type } from "class-transformer";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { TeamWhereUniqueInput } from "../../team/base/TeamWhereUniqueInput";
 
 @InputType()
@@ -33,15 +32,14 @@ class ProfileUpdateInput {
 
   @ApiProperty({
     required: false,
-    type: () => UserWhereUniqueInput,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
+  @IsInt()
   @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
+  @Field(() => Number, {
     nullable: true,
   })
-  movedFromUser?: UserWhereUniqueInput | null;
+  movedFromUserId?: number | null;
 
   @ApiProperty({
     required: false,
@@ -68,15 +66,14 @@ class ProfileUpdateInput {
 
   @ApiProperty({
     required: false,
-    type: () => UserWhereUniqueInput,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
+  @IsInt()
   @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
+  @Field(() => Number, {
     nullable: true,
   })
-  user?: UserWhereUniqueInput;
+  userId?: number;
 
   @ApiProperty({
     required: false,

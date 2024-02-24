@@ -31,24 +31,13 @@ export class FeedbackControllerBase {
     @common.Body() data: FeedbackCreateInput
   ): Promise<Feedback> {
     return await this.service.createFeedback({
-      data: {
-        ...data,
-
-        user: {
-          connect: data.user,
-        },
-      },
+      data: data,
       select: {
         comment: true,
         date: true,
         id: true,
         rating: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
   }
@@ -65,12 +54,7 @@ export class FeedbackControllerBase {
         date: true,
         id: true,
         rating: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
   }
@@ -88,12 +72,7 @@ export class FeedbackControllerBase {
         date: true,
         id: true,
         rating: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
     if (result === null) {
@@ -114,24 +93,13 @@ export class FeedbackControllerBase {
     try {
       return await this.service.updateFeedback({
         where: params,
-        data: {
-          ...data,
-
-          user: {
-            connect: data.user,
-          },
-        },
+        data: data,
         select: {
           comment: true,
           date: true,
           id: true,
           rating: true,
-
-          user: {
-            select: {
-              id: true,
-            },
-          },
+          userId: true,
         },
       });
     } catch (error) {
@@ -158,12 +126,7 @@ export class FeedbackControllerBase {
           date: true,
           id: true,
           rating: true,
-
-          user: {
-            select: {
-              id: true,
-            },
-          },
+          userId: true,
         },
       });
     } catch (error) {

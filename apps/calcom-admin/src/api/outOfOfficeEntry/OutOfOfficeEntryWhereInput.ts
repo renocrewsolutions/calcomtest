@@ -1,6 +1,6 @@
 import { DateTimeFilter } from "../../util/DateTimeFilter";
 import { IntFilter } from "../../util/IntFilter";
-import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
+import { IntNullableFilter } from "../../util/IntNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
 
 export type OutOfOfficeEntryWhereInput = {
@@ -8,8 +8,8 @@ export type OutOfOfficeEntryWhereInput = {
   end?: DateTimeFilter;
   id?: IntFilter;
   start?: DateTimeFilter;
-  toUser?: UserWhereUniqueInput;
+  toUserId?: IntNullableFilter;
   updatedAt?: DateTimeFilter;
-  user?: UserWhereUniqueInput;
+  userId?: IntFilter;
   uuid?: StringFilter;
 };

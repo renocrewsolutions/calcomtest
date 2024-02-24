@@ -31,39 +31,15 @@ export class OutOfOfficeEntryControllerBase {
     @common.Body() data: OutOfOfficeEntryCreateInput
   ): Promise<OutOfOfficeEntry> {
     return await this.service.createOutOfOfficeEntry({
-      data: {
-        ...data,
-
-        toUser: data.toUser
-          ? {
-              connect: data.toUser,
-            }
-          : undefined,
-
-        user: {
-          connect: data.user,
-        },
-      },
+      data: data,
       select: {
         createdAt: true,
         end: true,
         id: true,
         start: true,
-
-        toUser: {
-          select: {
-            id: true,
-          },
-        },
-
+        toUserId: true,
         updatedAt: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
-
+        userId: true,
         uuid: true,
       },
     });
@@ -83,21 +59,9 @@ export class OutOfOfficeEntryControllerBase {
         end: true,
         id: true,
         start: true,
-
-        toUser: {
-          select: {
-            id: true,
-          },
-        },
-
+        toUserId: true,
         updatedAt: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
-
+        userId: true,
         uuid: true,
       },
     });
@@ -116,21 +80,9 @@ export class OutOfOfficeEntryControllerBase {
         end: true,
         id: true,
         start: true,
-
-        toUser: {
-          select: {
-            id: true,
-          },
-        },
-
+        toUserId: true,
         updatedAt: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
-
+        userId: true,
         uuid: true,
       },
     });
@@ -152,39 +104,15 @@ export class OutOfOfficeEntryControllerBase {
     try {
       return await this.service.updateOutOfOfficeEntry({
         where: params,
-        data: {
-          ...data,
-
-          toUser: data.toUser
-            ? {
-                connect: data.toUser,
-              }
-            : undefined,
-
-          user: {
-            connect: data.user,
-          },
-        },
+        data: data,
         select: {
           createdAt: true,
           end: true,
           id: true,
           start: true,
-
-          toUser: {
-            select: {
-              id: true,
-            },
-          },
-
+          toUserId: true,
           updatedAt: true,
-
-          user: {
-            select: {
-              id: true,
-            },
-          },
-
+          userId: true,
           uuid: true,
         },
       });
@@ -212,21 +140,9 @@ export class OutOfOfficeEntryControllerBase {
           end: true,
           id: true,
           start: true,
-
-          toUser: {
-            select: {
-              id: true,
-            },
-          },
-
+          toUserId: true,
           updatedAt: true,
-
-          user: {
-            select: {
-              id: true,
-            },
-          },
-
+          userId: true,
           uuid: true,
         },
       });

@@ -16,7 +16,7 @@ import { Type } from "class-transformer";
 import { IsOptional, ValidateNested } from "class-validator";
 import { EventTypeListRelationFilter } from "../../eventType/base/EventTypeListRelationFilter";
 import { IntFilter } from "../../util/IntFilter";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
+import { IntNullableFilter } from "../../util/IntNullableFilter";
 import { TeamWhereUniqueInput } from "../../team/base/TeamWhereUniqueInput";
 import { StringFilter } from "../../util/StringFilter";
 
@@ -58,15 +58,14 @@ class ProfileWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => UserWhereUniqueInput,
+    type: IntNullableFilter,
   })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
+  @Type(() => IntNullableFilter)
   @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
+  @Field(() => IntNullableFilter, {
     nullable: true,
   })
-  movedFromUser?: UserWhereUniqueInput;
+  movedFromUserId?: IntNullableFilter;
 
   @ApiProperty({
     required: false,
@@ -104,15 +103,14 @@ class ProfileWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => UserWhereUniqueInput,
+    type: IntFilter,
   })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
+  @Type(() => IntFilter)
   @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
+  @Field(() => IntFilter, {
     nullable: true,
   })
-  user?: UserWhereUniqueInput;
+  userId?: IntFilter;
 
   @ApiProperty({
     required: false,

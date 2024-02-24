@@ -21,23 +21,27 @@ const CREATE_INPUT = {
   accepted: "true",
   disableImpersonation: "true",
   id: 42,
+  userId: 42,
 };
 const CREATE_RESULT = {
   accepted: "true",
   disableImpersonation: "true",
   id: 42,
+  userId: 42,
 };
 const FIND_MANY_RESULT = [
   {
     accepted: "true",
     disableImpersonation: "true",
     id: 42,
+    userId: 42,
   },
 ];
 const FIND_ONE_RESULT = {
   accepted: "true",
   disableImpersonation: "true",
   id: 42,
+  userId: 42,
 };
 
 const service = {

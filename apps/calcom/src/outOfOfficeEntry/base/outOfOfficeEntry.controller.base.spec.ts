@@ -22,7 +22,9 @@ const CREATE_INPUT = {
   end: new Date(),
   id: 42,
   start: new Date(),
+  toUserId: 42,
   updatedAt: new Date(),
+  userId: 42,
   uuid: "exampleUuid",
 };
 const CREATE_RESULT = {
@@ -30,7 +32,9 @@ const CREATE_RESULT = {
   end: new Date(),
   id: 42,
   start: new Date(),
+  toUserId: 42,
   updatedAt: new Date(),
+  userId: 42,
   uuid: "exampleUuid",
 };
 const FIND_MANY_RESULT = [
@@ -39,7 +43,9 @@ const FIND_MANY_RESULT = [
     end: new Date(),
     id: 42,
     start: new Date(),
+    toUserId: 42,
     updatedAt: new Date(),
+    userId: 42,
     uuid: "exampleUuid",
   },
 ];
@@ -48,7 +54,9 @@ const FIND_ONE_RESULT = {
   end: new Date(),
   id: 42,
   start: new Date(),
+  toUserId: 42,
   updatedAt: new Date(),
+  userId: 42,
   uuid: "exampleUuid",
 };
 

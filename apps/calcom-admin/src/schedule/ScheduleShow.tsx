@@ -5,15 +5,14 @@ import {
   SimpleShowLayout,
   ShowProps,
   TextField,
-  ReferenceField,
   ReferenceManyField,
   Datagrid,
+  ReferenceField,
   BooleanField,
 } from "react-admin";
 
 import { EVENTTYPE_TITLE_FIELD } from "../eventType/EventTypeTitle";
 import { SCHEDULE_TITLE_FIELD } from "./ScheduleTitle";
-import { USER_TITLE_FIELD } from "../user/UserTitle";
 import { DESTINATIONCALENDAR_TITLE_FIELD } from "../destinationCalendar/DestinationCalendarTitle";
 import { HASHEDLINK_TITLE_FIELD } from "../hashedLink/HashedLinkTitle";
 import { PROFILE_TITLE_FIELD } from "../profile/ProfileTitle";
@@ -26,9 +25,7 @@ export const ScheduleShow = (props: ShowProps): React.ReactElement => {
         <TextField label="ID" source="id" />
         <TextField label="Name" source="name" />
         <TextField label="Time Zone" source="timeZone" />
-        <ReferenceField label="User" source="user.id" reference="User">
-          <TextField source={USER_TITLE_FIELD} />
-        </ReferenceField>
+        <TextField label="User ID" source="userId" />
         <ReferenceManyField
           reference="Availability"
           target="scheduleId"
@@ -54,9 +51,7 @@ export const ScheduleShow = (props: ShowProps): React.ReactElement => {
               <TextField source={SCHEDULE_TITLE_FIELD} />
             </ReferenceField>
             <TextField label="Start Time" source="startTime" />
-            <ReferenceField label="User" source="user.id" reference="User">
-              <TextField source={USER_TITLE_FIELD} />
-            </ReferenceField>
+            <TextField label="User ID" source="userId" />
           </Datagrid>
         </ReferenceManyField>
         <ReferenceManyField
@@ -115,9 +110,7 @@ export const ScheduleShow = (props: ShowProps): React.ReactElement => {
               label="Only Show First Available Slot"
               source="onlyShowFirstAvailableSlot"
             />
-            <ReferenceField label="Owner" source="user.id" reference="User">
-              <TextField source={USER_TITLE_FIELD} />
-            </ReferenceField>
+            <TextField label="Owner ID" source="ownerId" />
             <ReferenceField
               label="Parent"
               source="eventtype.id"

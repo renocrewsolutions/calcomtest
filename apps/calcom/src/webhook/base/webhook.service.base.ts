@@ -16,8 +16,7 @@ import {
   Webhook, // @ts-ignore
   AppModel, // @ts-ignore
   EventType, // @ts-ignore
-  Team, // @ts-ignore
-  User,
+  Team,
 } from "@prisma/client";
 
 export class WebhookServiceBase {
@@ -77,13 +76,5 @@ export class WebhookServiceBase {
         where: { id: parentId },
       })
       .team();
-  }
-
-  async getUser(parentId: string): Promise<User | null> {
-    return this.prisma.webhook
-      .findUnique({
-        where: { id: parentId },
-      })
-      .user();
   }
 }

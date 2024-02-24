@@ -31,22 +31,11 @@ export class UserPasswordControllerBase {
     @common.Body() data: UserPasswordCreateInput
   ): Promise<UserPassword> {
     return await this.service.createUserPassword({
-      data: {
-        ...data,
-
-        user: {
-          connect: data.user,
-        },
-      },
+      data: data,
       select: {
         hash: true,
         id: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
   }
@@ -61,12 +50,7 @@ export class UserPasswordControllerBase {
       select: {
         hash: true,
         id: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
   }
@@ -82,12 +66,7 @@ export class UserPasswordControllerBase {
       select: {
         hash: true,
         id: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
     if (result === null) {
@@ -108,22 +87,11 @@ export class UserPasswordControllerBase {
     try {
       return await this.service.updateUserPassword({
         where: params,
-        data: {
-          ...data,
-
-          user: {
-            connect: data.user,
-          },
-        },
+        data: data,
         select: {
           hash: true,
           id: true,
-
-          user: {
-            select: {
-              id: true,
-            },
-          },
+          userId: true,
         },
       });
     } catch (error) {
@@ -148,12 +116,7 @@ export class UserPasswordControllerBase {
         select: {
           hash: true,
           id: true,
-
-          user: {
-            select: {
-              id: true,
-            },
-          },
+          userId: true,
         },
       });
     } catch (error) {

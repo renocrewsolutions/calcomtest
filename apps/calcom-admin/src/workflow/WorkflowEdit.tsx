@@ -15,7 +15,6 @@ import {
 import { WorkflowsOnEventTypeTitle } from "../workflowsOnEventType/WorkflowsOnEventTypeTitle";
 import { WorkflowStepTitle } from "../workflowStep/WorkflowStepTitle";
 import { TeamTitle } from "../team/TeamTitle";
-import { UserTitle } from "../user/UserTitle";
 
 export const WorkflowEdit = (props: EditProps): React.ReactElement => {
   return (
@@ -68,9 +67,7 @@ export const WorkflowEdit = (props: EditProps): React.ReactElement => {
           optionText="label"
           optionValue="value"
         />
-        <ReferenceInput source="user.id" reference="User" label="User">
-          <SelectInput optionText={UserTitle} />
-        </ReferenceInput>
+        <NumberInput step={1} label="User ID" source="userId" />
       </SimpleForm>
     </Edit>
   );

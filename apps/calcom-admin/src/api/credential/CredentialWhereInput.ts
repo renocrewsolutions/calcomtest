@@ -9,7 +9,6 @@ import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { SelectedCalendarListRelationFilter } from "../selectedCalendar/SelectedCalendarListRelationFilter";
 import { TeamWhereUniqueInput } from "../team/TeamWhereUniqueInput";
 import { StringFilter } from "../../util/StringFilter";
-import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 
 export type CredentialWhereInput = {
   appField?: AppModelWhereUniqueInput;
@@ -24,5 +23,5 @@ export type CredentialWhereInput = {
   subscriptionId?: StringNullableFilter;
   team?: TeamWhereUniqueInput;
   typeField?: StringFilter;
-  user?: UserWhereUniqueInput;
+  userId?: IntNullableFilter;
 };

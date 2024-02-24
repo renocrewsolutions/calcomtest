@@ -64,12 +64,6 @@ export class EventTypeControllerBase {
             }
           : undefined,
 
-        owner: data.owner
-          ? {
-              connect: data.owner,
-            }
-          : undefined,
-
         parent: data.parent
           ? {
               connect: data.parent,
@@ -130,12 +124,7 @@ export class EventTypeControllerBase {
         minimumBookingNotice: true,
         offsetStart: true,
         onlyShowFirstAvailableSlot: true,
-
-        owner: {
-          select: {
-            id: true,
-          },
-        },
+        ownerId: true,
 
         parent: {
           select: {
@@ -231,12 +220,7 @@ export class EventTypeControllerBase {
         minimumBookingNotice: true,
         offsetStart: true,
         onlyShowFirstAvailableSlot: true,
-
-        owner: {
-          select: {
-            id: true,
-          },
-        },
+        ownerId: true,
 
         parent: {
           select: {
@@ -333,12 +317,7 @@ export class EventTypeControllerBase {
         minimumBookingNotice: true,
         offsetStart: true,
         onlyShowFirstAvailableSlot: true,
-
-        owner: {
-          select: {
-            id: true,
-          },
-        },
+        ownerId: true,
 
         parent: {
           select: {
@@ -422,12 +401,6 @@ export class EventTypeControllerBase {
               }
             : undefined,
 
-          owner: data.owner
-            ? {
-                connect: data.owner,
-              }
-            : undefined,
-
           parent: data.parent
             ? {
                 connect: data.parent,
@@ -488,12 +461,7 @@ export class EventTypeControllerBase {
           minimumBookingNotice: true,
           offsetStart: true,
           onlyShowFirstAvailableSlot: true,
-
-          owner: {
-            select: {
-              id: true,
-            },
-          },
+          ownerId: true,
 
           parent: {
             select: {
@@ -599,12 +567,7 @@ export class EventTypeControllerBase {
           minimumBookingNotice: true,
           offsetStart: true,
           onlyShowFirstAvailableSlot: true,
-
-          owner: {
-            select: {
-              id: true,
-            },
-          },
+          ownerId: true,
 
           parent: {
             select: {
@@ -694,12 +657,7 @@ export class EventTypeControllerBase {
         },
 
         startTime: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
     if (results === null) {
@@ -818,13 +776,7 @@ export class EventTypeControllerBase {
         title: true,
         uid: true,
         updatedAt: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
-
+        userId: true,
         userPrimaryEmail: true,
       },
     });
@@ -932,12 +884,7 @@ export class EventTypeControllerBase {
         minimumBookingNotice: true,
         offsetStart: true,
         onlyShowFirstAvailableSlot: true,
-
-        owner: {
-          select: {
-            id: true,
-          },
-        },
+        ownerId: true,
 
         parent: {
           select: {
@@ -1149,12 +1096,7 @@ export class EventTypeControllerBase {
         id: true,
         isFixed: true,
         priority: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
     if (results === null) {
@@ -1254,11 +1196,7 @@ export class EventTypeControllerBase {
           },
         },
 
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
     if (results === null) {

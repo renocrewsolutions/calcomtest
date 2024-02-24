@@ -14,8 +14,7 @@ import { PrismaService } from "../../prisma/prisma.service";
 import {
   Prisma,
   Host, // @ts-ignore
-  EventType, // @ts-ignore
-  User,
+  EventType,
 } from "@prisma/client";
 
 export class HostServiceBase {
@@ -59,13 +58,5 @@ export class HostServiceBase {
         where: { id: parentId },
       })
       .eventType();
-  }
-
-  async getUser(parentId: number): Promise<User | null> {
-    return this.prisma.host
-      .findUnique({
-        where: { id: parentId },
-      })
-      .user();
   }
 }

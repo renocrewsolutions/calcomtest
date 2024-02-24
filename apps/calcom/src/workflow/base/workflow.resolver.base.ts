@@ -25,7 +25,6 @@ import { WorkflowsOnEventType } from "../../workflowsOnEventType/base/WorkflowsO
 import { WorkflowStepFindManyArgs } from "../../workflowStep/base/WorkflowStepFindManyArgs";
 import { WorkflowStep } from "../../workflowStep/base/WorkflowStep";
 import { Team } from "../../team/base/Team";
-import { User } from "../../user/base/User";
 import { WorkflowService } from "../workflow.service";
 @graphql.Resolver(() => Workflow)
 export class WorkflowResolverBase {
@@ -72,12 +71,6 @@ export class WorkflowResolverBase {
               connect: args.data.team,
             }
           : undefined,
-
-        user: args.data.user
-          ? {
-              connect: args.data.user,
-            }
-          : undefined,
       },
     });
   }
@@ -95,12 +88,6 @@ export class WorkflowResolverBase {
           team: args.data.team
             ? {
                 connect: args.data.team,
-              }
-            : undefined,
-
-          user: args.data.user
-            ? {
-                connect: args.data.user,
               }
             : undefined,
         },
@@ -165,19 +152,6 @@ export class WorkflowResolverBase {
   })
   async getTeam(@graphql.Parent() parent: Workflow): Promise<Team | null> {
     const result = await this.service.getTeam(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return result;
-  }
-
-  @graphql.ResolveField(() => User, {
-    nullable: true,
-    name: "user",
-  })
-  async getUser(@graphql.Parent() parent: Workflow): Promise<User | null> {
-    const result = await this.service.getUser(parent.id);
 
     if (!result) {
       return null;

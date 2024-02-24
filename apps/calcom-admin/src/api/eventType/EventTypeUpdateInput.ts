@@ -6,7 +6,6 @@ import { EventTypeCustomInputUpdateManyWithoutEventTypesInput } from "./EventTyp
 import { DestinationCalendarWhereUniqueInput } from "../destinationCalendar/DestinationCalendarWhereUniqueInput";
 import { HashedLinkWhereUniqueInput } from "../hashedLink/HashedLinkWhereUniqueInput";
 import { HostUpdateManyWithoutEventTypesInput } from "./HostUpdateManyWithoutEventTypesInput";
-import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 import { EventTypeWhereUniqueInput } from "./EventTypeWhereUniqueInput";
 import { ProfileWhereUniqueInput } from "../profile/ProfileWhereUniqueInput";
 import { ScheduleWhereUniqueInput } from "../schedule/ScheduleWhereUniqueInput";
@@ -42,7 +41,7 @@ export type EventTypeUpdateInput = {
   minimumBookingNotice?: number;
   offsetStart?: number;
   onlyShowFirstAvailableSlot?: boolean;
-  owner?: UserWhereUniqueInput | null;
+  ownerId?: number | null;
   parent?: EventTypeWhereUniqueInput | null;
   periodCountCalendarDays?: boolean | null;
   periodDays?: number | null;

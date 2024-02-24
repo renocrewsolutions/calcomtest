@@ -7,7 +7,6 @@ import { VerificationToken } from "../verificationToken/VerificationToken";
 import { Membership } from "../membership/Membership";
 import { JsonValue } from "type-fest";
 import { Profile } from "../profile/Profile";
-import { User } from "../user/User";
 import { AppRoutingFormsForm } from "../appRoutingFormsForm/AppRoutingFormsForm";
 import { VerifiedNumber } from "../verifiedNumber/VerifiedNumber";
 import { Webhook } from "../webhook/Webhook";
@@ -38,7 +37,7 @@ export type Team = {
   metadata: JsonValue;
   name: string;
   orgProfiles?: Array<Profile>;
-  orgUsers?: Array<User>;
+  orgUsers: JsonValue;
   parent?: Team | null;
   pendingPayment: boolean;
   routingForms?: Array<AppRoutingFormsForm>;

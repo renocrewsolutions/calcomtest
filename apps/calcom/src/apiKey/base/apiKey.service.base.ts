@@ -15,8 +15,7 @@ import {
   Prisma,
   ApiKey, // @ts-ignore
   AppModel, // @ts-ignore
-  Team, // @ts-ignore
-  User,
+  Team,
 } from "@prisma/client";
 
 export class ApiKeyServiceBase {
@@ -68,13 +67,5 @@ export class ApiKeyServiceBase {
         where: { id: parentId },
       })
       .team();
-  }
-
-  async getUser(parentId: string): Promise<User | null> {
-    return this.prisma.apiKey
-      .findUnique({
-        where: { id: parentId },
-      })
-      .user();
   }
 }

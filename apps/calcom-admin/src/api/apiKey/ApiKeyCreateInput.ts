@@ -1,6 +1,5 @@
 import { AppModelWhereUniqueInput } from "../appModel/AppModelWhereUniqueInput";
 import { TeamWhereUniqueInput } from "../team/TeamWhereUniqueInput";
-import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 
 export type ApiKeyCreateInput = {
   appField?: AppModelWhereUniqueInput | null;
@@ -9,5 +8,5 @@ export type ApiKeyCreateInput = {
   lastUsedAt?: Date | null;
   note?: string | null;
   team?: TeamWhereUniqueInput | null;
-  user?: UserWhereUniqueInput | null;
+  userId?: number | null;
 };

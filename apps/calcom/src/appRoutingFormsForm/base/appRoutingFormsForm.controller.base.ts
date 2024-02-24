@@ -42,10 +42,6 @@ export class AppRoutingFormsFormControllerBase {
               connect: data.team,
             }
           : undefined,
-
-        user: {
-          connect: data.user,
-        },
       },
       select: {
         createdAt: true,
@@ -65,12 +61,7 @@ export class AppRoutingFormsFormControllerBase {
         },
 
         updatedAt: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
   }
@@ -102,12 +93,7 @@ export class AppRoutingFormsFormControllerBase {
         },
 
         updatedAt: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
   }
@@ -138,12 +124,7 @@ export class AppRoutingFormsFormControllerBase {
         },
 
         updatedAt: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
     if (result === null) {
@@ -172,10 +153,6 @@ export class AppRoutingFormsFormControllerBase {
                 connect: data.team,
               }
             : undefined,
-
-          user: {
-            connect: data.user,
-          },
         },
         select: {
           createdAt: true,
@@ -195,12 +172,7 @@ export class AppRoutingFormsFormControllerBase {
           },
 
           updatedAt: true,
-
-          user: {
-            select: {
-              id: true,
-            },
-          },
+          userId: true,
         },
       });
     } catch (error) {
@@ -240,12 +212,7 @@ export class AppRoutingFormsFormControllerBase {
           },
 
           updatedAt: true,
-
-          user: {
-            select: {
-              id: true,
-            },
-          },
+          userId: true,
         },
       });
     } catch (error) {

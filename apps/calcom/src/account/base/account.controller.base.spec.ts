@@ -29,6 +29,7 @@ const CREATE_INPUT = {
   sessionState: "exampleSessionState",
   tokenType: "exampleTokenType",
   typeField: "exampleTypeField",
+  userId: 42,
 };
 const CREATE_RESULT = {
   accessToken: "exampleAccessToken",
@@ -42,6 +43,7 @@ const CREATE_RESULT = {
   sessionState: "exampleSessionState",
   tokenType: "exampleTokenType",
   typeField: "exampleTypeField",
+  userId: 42,
 };
 const FIND_MANY_RESULT = [
   {
@@ -56,6 +58,7 @@ const FIND_MANY_RESULT = [
     sessionState: "exampleSessionState",
     tokenType: "exampleTokenType",
     typeField: "exampleTypeField",
+    userId: 42,
   },
 ];
 const FIND_ONE_RESULT = {
@@ -70,6 +73,7 @@ const FIND_ONE_RESULT = {
   sessionState: "exampleSessionState",
   tokenType: "exampleTokenType",
   typeField: "exampleTypeField",
+  userId: 42,
 };
 
 const service = {

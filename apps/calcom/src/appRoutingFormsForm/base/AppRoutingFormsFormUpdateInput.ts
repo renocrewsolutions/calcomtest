@@ -24,7 +24,6 @@ import { InputJsonValue } from "../../types";
 import { AppRoutingFormsFormResponseUpdateManyWithoutAppRoutingFormsFormsInput } from "./AppRoutingFormsFormResponseUpdateManyWithoutAppRoutingFormsFormsInput";
 import { Type } from "class-transformer";
 import { TeamWhereUniqueInput } from "../../team/base/TeamWhereUniqueInput";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
 class AppRoutingFormsFormUpdateInput {
@@ -134,15 +133,14 @@ class AppRoutingFormsFormUpdateInput {
 
   @ApiProperty({
     required: false,
-    type: () => UserWhereUniqueInput,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
+  @IsInt()
   @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
+  @Field(() => Number, {
     nullable: true,
   })
-  user?: UserWhereUniqueInput;
+  userId?: number;
 }
 
 export { AppRoutingFormsFormUpdateInput as AppRoutingFormsFormUpdateInput };

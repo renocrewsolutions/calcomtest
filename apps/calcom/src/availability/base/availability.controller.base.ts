@@ -45,12 +45,6 @@ export class AvailabilityControllerBase {
               connect: data.schedule,
             }
           : undefined,
-
-        user: data.user
-          ? {
-              connect: data.user,
-            }
-          : undefined,
       },
       select: {
         date: true,
@@ -72,12 +66,7 @@ export class AvailabilityControllerBase {
         },
 
         startTime: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
   }
@@ -111,12 +100,7 @@ export class AvailabilityControllerBase {
         },
 
         startTime: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
   }
@@ -149,12 +133,7 @@ export class AvailabilityControllerBase {
         },
 
         startTime: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
     if (result === null) {
@@ -189,12 +168,6 @@ export class AvailabilityControllerBase {
                 connect: data.schedule,
               }
             : undefined,
-
-          user: data.user
-            ? {
-                connect: data.user,
-              }
-            : undefined,
         },
         select: {
           date: true,
@@ -216,12 +189,7 @@ export class AvailabilityControllerBase {
           },
 
           startTime: true,
-
-          user: {
-            select: {
-              id: true,
-            },
-          },
+          userId: true,
         },
       });
     } catch (error) {
@@ -263,12 +231,7 @@ export class AvailabilityControllerBase {
           },
 
           startTime: true,
-
-          user: {
-            select: {
-              id: true,
-            },
-          },
+          userId: true,
         },
       });
     } catch (error) {

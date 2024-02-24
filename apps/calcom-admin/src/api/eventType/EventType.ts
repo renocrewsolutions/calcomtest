@@ -5,7 +5,6 @@ import { EventTypeCustomInput } from "../eventTypeCustomInput/EventTypeCustomInp
 import { DestinationCalendar } from "../destinationCalendar/DestinationCalendar";
 import { HashedLink } from "../hashedLink/HashedLink";
 import { Host } from "../host/Host";
-import { User } from "../user/User";
 import { Profile } from "../profile/Profile";
 import { Schedule } from "../schedule/Schedule";
 import { Team } from "../team/Team";
@@ -41,7 +40,7 @@ export type EventType = {
   minimumBookingNotice: number;
   offsetStart: number;
   onlyShowFirstAvailableSlot: boolean;
-  owner?: User | null;
+  ownerId: number | null;
   parent?: EventType | null;
   periodCountCalendarDays: boolean | null;
   periodDays: number | null;

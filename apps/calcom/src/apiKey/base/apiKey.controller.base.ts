@@ -43,12 +43,6 @@ export class ApiKeyControllerBase {
               connect: data.team,
             }
           : undefined,
-
-        user: data.user
-          ? {
-              connect: data.user,
-            }
-          : undefined,
       },
       select: {
         appField: {
@@ -70,11 +64,7 @@ export class ApiKeyControllerBase {
           },
         },
 
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
   }
@@ -106,11 +96,7 @@ export class ApiKeyControllerBase {
           },
         },
 
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
   }
@@ -143,11 +129,7 @@ export class ApiKeyControllerBase {
           },
         },
 
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
     if (result === null) {
@@ -182,12 +164,6 @@ export class ApiKeyControllerBase {
                 connect: data.team,
               }
             : undefined,
-
-          user: data.user
-            ? {
-                connect: data.user,
-              }
-            : undefined,
         },
         select: {
           appField: {
@@ -209,11 +185,7 @@ export class ApiKeyControllerBase {
             },
           },
 
-          user: {
-            select: {
-              id: true,
-            },
-          },
+          userId: true,
         },
       });
     } catch (error) {
@@ -255,11 +227,7 @@ export class ApiKeyControllerBase {
             },
           },
 
-          user: {
-            select: {
-              id: true,
-            },
-          },
+          userId: true,
         },
       });
     } catch (error) {

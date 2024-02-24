@@ -31,7 +31,6 @@ import { IsJSONValue } from "../../validators";
 import { GraphQLJSON } from "graphql-type-json";
 import { JsonValue } from "type-fest";
 import { Profile } from "../../profile/base/Profile";
-import { User } from "../../user/base/User";
 import { AppRoutingFormsForm } from "../../appRoutingFormsForm/base/AppRoutingFormsForm";
 import { VerifiedNumber } from "../../verifiedNumber/base/VerifiedNumber";
 import { Webhook } from "../../webhook/base/Webhook";
@@ -268,12 +267,13 @@ class Team {
 
   @ApiProperty({
     required: false,
-    type: () => [User],
   })
-  @ValidateNested()
-  @Type(() => User)
+  @IsJSONValue()
   @IsOptional()
-  orgUsers?: Array<User>;
+  @Field(() => GraphQLJSON, {
+    nullable: true,
+  })
+  orgUsers!: JsonValue;
 
   @ApiProperty({
     required: false,

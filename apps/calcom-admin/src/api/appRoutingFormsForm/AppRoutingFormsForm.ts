@@ -1,7 +1,6 @@
 import { JsonValue } from "type-fest";
 import { AppRoutingFormsFormResponse } from "../appRoutingFormsFormResponse/AppRoutingFormsFormResponse";
 import { Team } from "../team/Team";
-import { User } from "../user/User";
 
 export type AppRoutingFormsForm = {
   createdAt: Date;
@@ -16,5 +15,5 @@ export type AppRoutingFormsForm = {
   settings: JsonValue;
   team?: Team | null;
   updatedAt: Date;
-  user?: User;
+  userId: number;
 };

@@ -21,7 +21,6 @@ import { CreateMembershipArgs } from "./CreateMembershipArgs";
 import { UpdateMembershipArgs } from "./UpdateMembershipArgs";
 import { DeleteMembershipArgs } from "./DeleteMembershipArgs";
 import { Team } from "../../team/base/Team";
-import { User } from "../../user/base/User";
 import { MembershipService } from "../membership.service";
 @graphql.Resolver(() => Membership)
 export class MembershipResolverBase {
@@ -66,10 +65,6 @@ export class MembershipResolverBase {
         team: {
           connect: args.data.team,
         },
-
-        user: {
-          connect: args.data.user,
-        },
       },
     });
   }
@@ -86,10 +81,6 @@ export class MembershipResolverBase {
 
           team: {
             connect: args.data.team,
-          },
-
-          user: {
-            connect: args.data.user,
           },
         },
       });
@@ -125,19 +116,6 @@ export class MembershipResolverBase {
   })
   async getTeam(@graphql.Parent() parent: Membership): Promise<Team | null> {
     const result = await this.service.getTeam(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return result;
-  }
-
-  @graphql.ResolveField(() => User, {
-    nullable: true,
-    name: "user",
-  })
-  async getUser(@graphql.Parent() parent: Membership): Promise<User | null> {
-    const result = await this.service.getUser(parent.id);
 
     if (!result) {
       return null;

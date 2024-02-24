@@ -22,12 +22,14 @@ const CREATE_INPUT = {
   date: new Date(),
   id: 42,
   rating: "exampleRating",
+  userId: 42,
 };
 const CREATE_RESULT = {
   comment: "exampleComment",
   date: new Date(),
   id: 42,
   rating: "exampleRating",
+  userId: 42,
 };
 const FIND_MANY_RESULT = [
   {
@@ -35,6 +37,7 @@ const FIND_MANY_RESULT = [
     date: new Date(),
     id: 42,
     rating: "exampleRating",
+    userId: 42,
   },
 ];
 const FIND_ONE_RESULT = {
@@ -42,6 +45,7 @@ const FIND_ONE_RESULT = {
   date: new Date(),
   id: 42,
   rating: "exampleRating",
+  userId: 42,
 };
 
 const service = {

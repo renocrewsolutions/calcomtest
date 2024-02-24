@@ -25,7 +25,6 @@ import { GraphQLJSON } from "graphql-type-json";
 import { JsonValue } from "type-fest";
 import { AppRoutingFormsFormResponse } from "../../appRoutingFormsFormResponse/base/AppRoutingFormsFormResponse";
 import { Team } from "../../team/base/Team";
-import { User } from "../../user/base/User";
 
 @ObjectType()
 class AppRoutingFormsForm {
@@ -138,11 +137,11 @@ class AppRoutingFormsForm {
 
   @ApiProperty({
     required: true,
-    type: () => User,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => User)
-  user?: User;
+  @IsInt()
+  @Field(() => Number)
+  userId!: number;
 }
 
 export { AppRoutingFormsForm as AppRoutingFormsForm };

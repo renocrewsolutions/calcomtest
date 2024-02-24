@@ -14,7 +14,6 @@ import {
 
 import { APPROUTINGFORMSFORM_TITLE_FIELD } from "./AppRoutingFormsFormTitle";
 import { TEAM_TITLE_FIELD } from "../team/TeamTitle";
-import { USER_TITLE_FIELD } from "../user/UserTitle";
 
 export const AppRoutingFormsFormShow = (
   props: ShowProps
@@ -35,9 +34,7 @@ export const AppRoutingFormsFormShow = (
           <TextField source={TEAM_TITLE_FIELD} />
         </ReferenceField>
         <DateField source="updatedAt" label="Updated At" />
-        <ReferenceField label="User" source="user.id" reference="User">
-          <TextField source={USER_TITLE_FIELD} />
-        </ReferenceField>
+        <TextField label="User ID" source="userId" />
         <ReferenceManyField
           reference="AppRoutingFormsFormResponse"
           target="formId"

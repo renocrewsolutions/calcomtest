@@ -18,7 +18,6 @@ import { CalendarCacheTitle } from "../calendarCache/CalendarCacheTitle";
 import { DestinationCalendarTitle } from "../destinationCalendar/DestinationCalendarTitle";
 import { SelectedCalendarTitle } from "../selectedCalendar/SelectedCalendarTitle";
 import { TeamTitle } from "../team/TeamTitle";
-import { UserTitle } from "../user/UserTitle";
 
 export const CredentialEdit = (props: EditProps): React.ReactElement => {
   return (
@@ -68,9 +67,7 @@ export const CredentialEdit = (props: EditProps): React.ReactElement => {
           <SelectInput optionText={TeamTitle} />
         </ReferenceInput>
         <TextInput label="Type Field" source="typeField" />
-        <ReferenceInput source="user.id" reference="User" label="User">
-          <SelectInput optionText={UserTitle} />
-        </ReferenceInput>
+        <NumberInput step={1} label="User ID" source="userId" />
       </SimpleForm>
     </Edit>
   );

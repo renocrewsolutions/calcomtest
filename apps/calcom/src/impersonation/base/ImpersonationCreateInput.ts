@@ -11,29 +11,25 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
-import { ValidateNested } from "class-validator";
-import { Type } from "class-transformer";
+import { IsInt } from "class-validator";
 
 @InputType()
 class ImpersonationCreateInput {
   @ApiProperty({
     required: true,
-    type: () => UserWhereUniqueInput,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
-  @Field(() => UserWhereUniqueInput)
-  impersonatedBy!: UserWhereUniqueInput;
+  @IsInt()
+  @Field(() => Number)
+  impersonatedById!: number;
 
   @ApiProperty({
     required: true,
-    type: () => UserWhereUniqueInput,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
-  @Field(() => UserWhereUniqueInput)
-  impersonatedUser!: UserWhereUniqueInput;
+  @IsInt()
+  @Field(() => Number)
+  impersonatedUserId!: number;
 }
 
 export { ImpersonationCreateInput as ImpersonationCreateInput };

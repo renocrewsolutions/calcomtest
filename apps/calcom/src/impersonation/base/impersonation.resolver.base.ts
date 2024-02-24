@@ -20,7 +20,6 @@ import { ImpersonationFindUniqueArgs } from "./ImpersonationFindUniqueArgs";
 import { CreateImpersonationArgs } from "./CreateImpersonationArgs";
 import { UpdateImpersonationArgs } from "./UpdateImpersonationArgs";
 import { DeleteImpersonationArgs } from "./DeleteImpersonationArgs";
-import { User } from "../../user/base/User";
 import { ImpersonationService } from "../impersonation.service";
 @graphql.Resolver(() => Impersonation)
 export class ImpersonationResolverBase {
@@ -59,17 +58,7 @@ export class ImpersonationResolverBase {
   ): Promise<Impersonation> {
     return await this.service.createImpersonation({
       ...args,
-      data: {
-        ...args.data,
-
-        impersonatedBy: {
-          connect: args.data.impersonatedBy,
-        },
-
-        impersonatedUser: {
-          connect: args.data.impersonatedUser,
-        },
-      },
+      data: args.data,
     });
   }
 
@@ -80,17 +69,7 @@ export class ImpersonationResolverBase {
     try {
       return await this.service.updateImpersonation({
         ...args,
-        data: {
-          ...args.data,
-
-          impersonatedBy: {
-            connect: args.data.impersonatedBy,
-          },
-
-          impersonatedUser: {
-            connect: args.data.impersonatedUser,
-          },
-        },
+        data: args.data,
       });
     } catch (error) {
       if (isRecordNotFoundError(error)) {
@@ -116,35 +95,5 @@ export class ImpersonationResolverBase {
       }
       throw error;
     }
-  }
-
-  @graphql.ResolveField(() => User, {
-    nullable: true,
-    name: "impersonatedBy",
-  })
-  async getImpersonatedBy(
-    @graphql.Parent() parent: Impersonation
-  ): Promise<User | null> {
-    const result = await this.service.getImpersonatedBy(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return result;
-  }
-
-  @graphql.ResolveField(() => User, {
-    nullable: true,
-    name: "impersonatedUser",
-  })
-  async getImpersonatedUser(
-    @graphql.Parent() parent: Impersonation
-  ): Promise<User | null> {
-    const result = await this.service.getImpersonatedUser(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return result;
   }
 }

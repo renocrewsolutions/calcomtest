@@ -6,7 +6,6 @@ import { InstantMeetingTokenWhereUniqueInput } from "../instantMeetingToken/Inst
 import { PaymentCreateNestedManyWithoutBookingsInput } from "./PaymentCreateNestedManyWithoutBookingsInput";
 import { BookingReferenceCreateNestedManyWithoutBookingsInput } from "./BookingReferenceCreateNestedManyWithoutBookingsInput";
 import { BookingSeatCreateNestedManyWithoutBookingsInput } from "./BookingSeatCreateNestedManyWithoutBookingsInput";
-import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 import { WorkflowReminderCreateNestedManyWithoutBookingsInput } from "./WorkflowReminderCreateNestedManyWithoutBookingsInput";
 
 export type BookingCreateInput = {
@@ -41,7 +40,7 @@ export type BookingCreateInput = {
   title: string;
   uid: string;
   updatedAt?: Date | null;
-  user?: UserWhereUniqueInput | null;
+  userId?: number | null;
   userPrimaryEmail?: string | null;
   workflowReminders?: WorkflowReminderCreateNestedManyWithoutBookingsInput;
 };

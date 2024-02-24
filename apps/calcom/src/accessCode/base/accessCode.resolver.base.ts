@@ -22,7 +22,6 @@ import { UpdateAccessCodeArgs } from "./UpdateAccessCodeArgs";
 import { DeleteAccessCodeArgs } from "./DeleteAccessCodeArgs";
 import { OAuthClient } from "../../oAuthClient/base/OAuthClient";
 import { Team } from "../../team/base/Team";
-import { User } from "../../user/base/User";
 import { AccessCodeService } from "../accessCode.service";
 @graphql.Resolver(() => AccessCode)
 export class AccessCodeResolverBase {
@@ -75,12 +74,6 @@ export class AccessCodeResolverBase {
               connect: args.data.team,
             }
           : undefined,
-
-        user: args.data.user
-          ? {
-              connect: args.data.user,
-            }
-          : undefined,
       },
     });
   }
@@ -104,12 +97,6 @@ export class AccessCodeResolverBase {
           team: args.data.team
             ? {
                 connect: args.data.team,
-              }
-            : undefined,
-
-          user: args.data.user
-            ? {
-                connect: args.data.user,
               }
             : undefined,
         },
@@ -161,19 +148,6 @@ export class AccessCodeResolverBase {
   })
   async getTeam(@graphql.Parent() parent: AccessCode): Promise<Team | null> {
     const result = await this.service.getTeam(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return result;
-  }
-
-  @graphql.ResolveField(() => User, {
-    nullable: true,
-    name: "user",
-  })
-  async getUser(@graphql.Parent() parent: AccessCode): Promise<User | null> {
-    const result = await this.service.getUser(parent.id);
 
     if (!result) {
       return null;

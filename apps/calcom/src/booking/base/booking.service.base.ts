@@ -21,8 +21,7 @@ import {
   WorkflowReminder, // @ts-ignore
   DestinationCalendar, // @ts-ignore
   EventType, // @ts-ignore
-  InstantMeetingToken, // @ts-ignore
-  User,
+  InstantMeetingToken,
 } from "@prisma/client";
 
 export class BookingServiceBase {
@@ -141,13 +140,5 @@ export class BookingServiceBase {
         where: { id: parentId },
       })
       .instantMeetingToken();
-  }
-
-  async getUser(parentId: number): Promise<User | null> {
-    return this.prisma.booking
-      .findUnique({
-        where: { id: parentId },
-      })
-      .user();
   }
 }

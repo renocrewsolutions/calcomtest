@@ -31,32 +31,12 @@ export class ImpersonationControllerBase {
     @common.Body() data: ImpersonationCreateInput
   ): Promise<Impersonation> {
     return await this.service.createImpersonation({
-      data: {
-        ...data,
-
-        impersonatedBy: {
-          connect: data.impersonatedBy,
-        },
-
-        impersonatedUser: {
-          connect: data.impersonatedUser,
-        },
-      },
+      data: data,
       select: {
         createdAt: true,
         id: true,
-
-        impersonatedBy: {
-          select: {
-            id: true,
-          },
-        },
-
-        impersonatedUser: {
-          select: {
-            id: true,
-          },
-        },
+        impersonatedById: true,
+        impersonatedUserId: true,
       },
     });
   }
@@ -73,18 +53,8 @@ export class ImpersonationControllerBase {
       select: {
         createdAt: true,
         id: true,
-
-        impersonatedBy: {
-          select: {
-            id: true,
-          },
-        },
-
-        impersonatedUser: {
-          select: {
-            id: true,
-          },
-        },
+        impersonatedById: true,
+        impersonatedUserId: true,
       },
     });
   }
@@ -100,18 +70,8 @@ export class ImpersonationControllerBase {
       select: {
         createdAt: true,
         id: true,
-
-        impersonatedBy: {
-          select: {
-            id: true,
-          },
-        },
-
-        impersonatedUser: {
-          select: {
-            id: true,
-          },
-        },
+        impersonatedById: true,
+        impersonatedUserId: true,
       },
     });
     if (result === null) {
@@ -132,32 +92,12 @@ export class ImpersonationControllerBase {
     try {
       return await this.service.updateImpersonation({
         where: params,
-        data: {
-          ...data,
-
-          impersonatedBy: {
-            connect: data.impersonatedBy,
-          },
-
-          impersonatedUser: {
-            connect: data.impersonatedUser,
-          },
-        },
+        data: data,
         select: {
           createdAt: true,
           id: true,
-
-          impersonatedBy: {
-            select: {
-              id: true,
-            },
-          },
-
-          impersonatedUser: {
-            select: {
-              id: true,
-            },
-          },
+          impersonatedById: true,
+          impersonatedUserId: true,
         },
       });
     } catch (error) {
@@ -182,18 +122,8 @@ export class ImpersonationControllerBase {
         select: {
           createdAt: true,
           id: true,
-
-          impersonatedBy: {
-            select: {
-              id: true,
-            },
-          },
-
-          impersonatedUser: {
-            select: {
-              id: true,
-            },
-          },
+          impersonatedById: true,
+          impersonatedUserId: true,
         },
       });
     } catch (error) {

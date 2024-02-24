@@ -14,7 +14,6 @@ import {
 
 import { EVENTTYPE_TITLE_FIELD } from "./EventTypeTitle";
 import { SCHEDULE_TITLE_FIELD } from "../schedule/ScheduleTitle";
-import { USER_TITLE_FIELD } from "../user/UserTitle";
 import { DESTINATIONCALENDAR_TITLE_FIELD } from "../destinationCalendar/DestinationCalendarTitle";
 import { INSTANTMEETINGTOKEN_TITLE_FIELD } from "../instantMeetingToken/InstantMeetingTokenTitle";
 import { HASHEDLINK_TITLE_FIELD } from "../hashedLink/HashedLinkTitle";
@@ -74,9 +73,7 @@ export const EventTypeShow = (props: ShowProps): React.ReactElement => {
           label="Only Show First Available Slot"
           source="onlyShowFirstAvailableSlot"
         />
-        <ReferenceField label="Owner" source="user.id" reference="User">
-          <TextField source={USER_TITLE_FIELD} />
-        </ReferenceField>
+        <TextField label="Owner ID" source="ownerId" />
         <ReferenceField
           label="Parent"
           source="eventtype.id"
@@ -160,9 +157,7 @@ export const EventTypeShow = (props: ShowProps): React.ReactElement => {
               <TextField source={SCHEDULE_TITLE_FIELD} />
             </ReferenceField>
             <TextField label="Start Time" source="startTime" />
-            <ReferenceField label="User" source="user.id" reference="User">
-              <TextField source={USER_TITLE_FIELD} />
-            </ReferenceField>
+            <TextField label="User ID" source="userId" />
           </Datagrid>
         </ReferenceManyField>
         <ReferenceManyField
@@ -227,9 +222,7 @@ export const EventTypeShow = (props: ShowProps): React.ReactElement => {
             <TextField label="Title" source="title" />
             <TextField label="Uid" source="uid" />
             <TextField label="Updated At" source="updatedAt" />
-            <ReferenceField label="User" source="user.id" reference="User">
-              <TextField source={USER_TITLE_FIELD} />
-            </ReferenceField>
+            <TextField label="User ID" source="userId" />
             <TextField label="User Primary Email" source="userPrimaryEmail" />
           </Datagrid>
         </ReferenceManyField>
@@ -289,9 +282,7 @@ export const EventTypeShow = (props: ShowProps): React.ReactElement => {
               label="Only Show First Available Slot"
               source="onlyShowFirstAvailableSlot"
             />
-            <ReferenceField label="Owner" source="user.id" reference="User">
-              <TextField source={USER_TITLE_FIELD} />
-            </ReferenceField>
+            <TextField label="Owner ID" source="ownerId" />
             <ReferenceField
               label="Parent"
               source="eventtype.id"
@@ -392,9 +383,7 @@ export const EventTypeShow = (props: ShowProps): React.ReactElement => {
             <TextField label="ID" source="id" />
             <BooleanField label="Is Fixed" source="isFixed" />
             <TextField label="Priority" source="priority" />
-            <ReferenceField label="User" source="user.id" reference="User">
-              <TextField source={USER_TITLE_FIELD} />
-            </ReferenceField>
+            <TextField label="User ID" source="userId" />
           </Datagrid>
         </ReferenceManyField>
         <ReferenceManyField
@@ -427,9 +416,7 @@ export const EventTypeShow = (props: ShowProps): React.ReactElement => {
             <ReferenceField label="Team" source="team.id" reference="Team">
               <TextField source={TEAM_TITLE_FIELD} />
             </ReferenceField>
-            <ReferenceField label="User" source="user.id" reference="User">
-              <TextField source={USER_TITLE_FIELD} />
-            </ReferenceField>
+            <TextField label="User ID" source="userId" />
           </Datagrid>
         </ReferenceManyField>
         <ReferenceManyField

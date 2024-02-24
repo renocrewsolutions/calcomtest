@@ -15,8 +15,7 @@ import {
   Prisma,
   AccessCode, // @ts-ignore
   OAuthClient, // @ts-ignore
-  Team, // @ts-ignore
-  User,
+  Team,
 } from "@prisma/client";
 
 export class AccessCodeServiceBase {
@@ -68,13 +67,5 @@ export class AccessCodeServiceBase {
         where: { id: parentId },
       })
       .team();
-  }
-
-  async getUser(parentId: number): Promise<User | null> {
-    return this.prisma.accessCode
-      .findUnique({
-        where: { id: parentId },
-      })
-      .user();
   }
 }

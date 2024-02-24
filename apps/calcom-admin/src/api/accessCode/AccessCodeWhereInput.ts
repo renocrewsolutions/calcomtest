@@ -3,7 +3,7 @@ import { StringFilter } from "../../util/StringFilter";
 import { DateTimeFilter } from "../../util/DateTimeFilter";
 import { IntFilter } from "../../util/IntFilter";
 import { TeamWhereUniqueInput } from "../team/TeamWhereUniqueInput";
-import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
+import { IntNullableFilter } from "../../util/IntNullableFilter";
 
 export type AccessCodeWhereInput = {
   client?: OAuthClientWhereUniqueInput;
@@ -11,5 +11,5 @@ export type AccessCodeWhereInput = {
   expiresAt?: DateTimeFilter;
   id?: IntFilter;
   team?: TeamWhereUniqueInput;
-  user?: UserWhereUniqueInput;
+  userId?: IntNullableFilter;
 };

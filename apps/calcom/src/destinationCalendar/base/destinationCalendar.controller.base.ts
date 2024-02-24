@@ -48,12 +48,6 @@ export class DestinationCalendarControllerBase {
               connect: data.eventType,
             }
           : undefined,
-
-        user: data.user
-          ? {
-              connect: data.user,
-            }
-          : undefined,
       },
       select: {
         credential: {
@@ -72,12 +66,7 @@ export class DestinationCalendarControllerBase {
         id: true,
         integration: true,
         primaryEmail: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
   }
@@ -108,12 +97,7 @@ export class DestinationCalendarControllerBase {
         id: true,
         integration: true,
         primaryEmail: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
   }
@@ -143,12 +127,7 @@ export class DestinationCalendarControllerBase {
         id: true,
         integration: true,
         primaryEmail: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
     if (result === null) {
@@ -183,12 +162,6 @@ export class DestinationCalendarControllerBase {
                 connect: data.eventType,
               }
             : undefined,
-
-          user: data.user
-            ? {
-                connect: data.user,
-              }
-            : undefined,
         },
         select: {
           credential: {
@@ -207,12 +180,7 @@ export class DestinationCalendarControllerBase {
           id: true,
           integration: true,
           primaryEmail: true,
-
-          user: {
-            select: {
-              id: true,
-            },
-          },
+          userId: true,
         },
       });
     } catch (error) {
@@ -251,12 +219,7 @@ export class DestinationCalendarControllerBase {
           id: true,
           integration: true,
           primaryEmail: true,
-
-          user: {
-            select: {
-              id: true,
-            },
-          },
+          userId: true,
         },
       });
     } catch (error) {
@@ -326,13 +289,7 @@ export class DestinationCalendarControllerBase {
         title: true,
         uid: true,
         updatedAt: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
-
+        userId: true,
         userPrimaryEmail: true,
       },
     });

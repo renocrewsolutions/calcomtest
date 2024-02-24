@@ -14,8 +14,7 @@ import { PrismaService } from "../../prisma/prisma.service";
 import {
   Prisma,
   VerifiedNumber, // @ts-ignore
-  Team, // @ts-ignore
-  User,
+  Team,
 } from "@prisma/client";
 
 export class VerifiedNumberServiceBase {
@@ -59,13 +58,5 @@ export class VerifiedNumberServiceBase {
         where: { id: parentId },
       })
       .team();
-  }
-
-  async getUser(parentId: number): Promise<User | null> {
-    return this.prisma.verifiedNumber
-      .findUnique({
-        where: { id: parentId },
-      })
-      .user();
   }
 }

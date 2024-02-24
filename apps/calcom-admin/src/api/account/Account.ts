@@ -1,5 +1,3 @@
-import { User } from "../user/User";
-
 export type Account = {
   accessToken: string | null;
   expiresAt: number | null;
@@ -12,5 +10,5 @@ export type Account = {
   sessionState: string | null;
   tokenType: string | null;
   typeField: string;
-  user?: User | null;
+  userId: number | null;
 };

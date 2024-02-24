@@ -6,13 +6,13 @@ import {
   EditProps,
   ReferenceArrayInput,
   SelectArrayInput,
+  NumberInput,
   ReferenceInput,
   SelectInput,
   TextInput,
 } from "react-admin";
 
 import { EventTypeTitle } from "../eventType/EventTypeTitle";
-import { UserTitle } from "../user/UserTitle";
 import { TeamTitle } from "../team/TeamTitle";
 
 export const ProfileEdit = (props: EditProps): React.ReactElement => {
@@ -27,13 +27,11 @@ export const ProfileEdit = (props: EditProps): React.ReactElement => {
         >
           <SelectArrayInput optionText={EventTypeTitle} />
         </ReferenceArrayInput>
-        <ReferenceInput
-          source="movedFromUser.id"
-          reference="User"
-          label="Moved From User"
-        >
-          <SelectInput optionText={UserTitle} />
-        </ReferenceInput>
+        <NumberInput
+          step={1}
+          label="Moved From User ID"
+          source="movedFromUserId"
+        />
         <ReferenceInput
           source="organization.id"
           reference="Team"
@@ -42,9 +40,7 @@ export const ProfileEdit = (props: EditProps): React.ReactElement => {
           <SelectInput optionText={TeamTitle} />
         </ReferenceInput>
         <TextInput label="Uid" source="uid" />
-        <ReferenceInput source="user.id" reference="User" label="User">
-          <SelectInput optionText={UserTitle} />
-        </ReferenceInput>
+        <NumberInput step={1} label="User ID" source="userId" />
         <TextInput label="Username" source="username" />
       </SimpleForm>
     </Edit>

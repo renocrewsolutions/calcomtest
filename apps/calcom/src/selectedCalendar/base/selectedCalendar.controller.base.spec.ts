@@ -21,23 +21,27 @@ const CREATE_INPUT = {
   externalId: "exampleExternalId",
   id: 42,
   integration: "exampleIntegration",
+  userId: 42,
 };
 const CREATE_RESULT = {
   externalId: "exampleExternalId",
   id: 42,
   integration: "exampleIntegration",
+  userId: 42,
 };
 const FIND_MANY_RESULT = [
   {
     externalId: "exampleExternalId",
     id: 42,
     integration: "exampleIntegration",
+    userId: 42,
   },
 ];
 const FIND_ONE_RESULT = {
   externalId: "exampleExternalId",
   id: 42,
   integration: "exampleIntegration",
+  userId: 42,
 };
 
 const service = {

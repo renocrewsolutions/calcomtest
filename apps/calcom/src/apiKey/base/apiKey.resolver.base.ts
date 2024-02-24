@@ -22,7 +22,6 @@ import { UpdateApiKeyArgs } from "./UpdateApiKeyArgs";
 import { DeleteApiKeyArgs } from "./DeleteApiKeyArgs";
 import { AppModel } from "../../appModel/base/AppModel";
 import { Team } from "../../team/base/Team";
-import { User } from "../../user/base/User";
 import { ApiKeyService } from "../apiKey.service";
 @graphql.Resolver(() => ApiKey)
 export class ApiKeyResolverBase {
@@ -71,12 +70,6 @@ export class ApiKeyResolverBase {
               connect: args.data.team,
             }
           : undefined,
-
-        user: args.data.user
-          ? {
-              connect: args.data.user,
-            }
-          : undefined,
       },
     });
   }
@@ -100,12 +93,6 @@ export class ApiKeyResolverBase {
           team: args.data.team
             ? {
                 connect: args.data.team,
-              }
-            : undefined,
-
-          user: args.data.user
-            ? {
-                connect: args.data.user,
               }
             : undefined,
         },
@@ -157,19 +144,6 @@ export class ApiKeyResolverBase {
   })
   async getTeam(@graphql.Parent() parent: ApiKey): Promise<Team | null> {
     const result = await this.service.getTeam(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return result;
-  }
-
-  @graphql.ResolveField(() => User, {
-    nullable: true,
-    name: "user",
-  })
-  async getUser(@graphql.Parent() parent: ApiKey): Promise<User | null> {
-    const result = await this.service.getUser(parent.id);
 
     if (!result) {
       return null;

@@ -20,20 +20,24 @@ const existingId = "existingId";
 const CREATE_INPUT = {
   id: 42,
   phoneNumber: "examplePhoneNumber",
+  userId: 42,
 };
 const CREATE_RESULT = {
   id: 42,
   phoneNumber: "examplePhoneNumber",
+  userId: 42,
 };
 const FIND_MANY_RESULT = [
   {
     id: 42,
     phoneNumber: "examplePhoneNumber",
+    userId: 42,
   },
 ];
 const FIND_ONE_RESULT = {
   id: 42,
   phoneNumber: "examplePhoneNumber",
+  userId: 42,
 };
 
 const service = {

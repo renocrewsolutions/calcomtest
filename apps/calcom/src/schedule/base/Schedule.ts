@@ -15,7 +15,6 @@ import { Availability } from "../../availability/base/Availability";
 import { ValidateNested, IsOptional, IsInt, IsString } from "class-validator";
 import { Type } from "class-transformer";
 import { EventType } from "../../eventType/base/EventType";
-import { User } from "../../user/base/User";
 
 @ObjectType()
 class Schedule {
@@ -66,11 +65,11 @@ class Schedule {
 
   @ApiProperty({
     required: true,
-    type: () => User,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => User)
-  user?: User;
+  @IsInt()
+  @Field(() => Number)
+  userId!: number;
 }
 
 export { Schedule as Schedule };

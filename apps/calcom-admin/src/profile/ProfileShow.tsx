@@ -14,7 +14,6 @@ import {
 
 import { DESTINATIONCALENDAR_TITLE_FIELD } from "../destinationCalendar/DestinationCalendarTitle";
 import { HASHEDLINK_TITLE_FIELD } from "../hashedLink/HashedLinkTitle";
-import { USER_TITLE_FIELD } from "../user/UserTitle";
 import { EVENTTYPE_TITLE_FIELD } from "../eventType/EventTypeTitle";
 import { PROFILE_TITLE_FIELD } from "./ProfileTitle";
 import { SCHEDULE_TITLE_FIELD } from "../schedule/ScheduleTitle";
@@ -26,21 +25,13 @@ export const ProfileShow = (props: ShowProps): React.ReactElement => {
       <SimpleShowLayout>
         <DateField source="createdAt" label="Created At" />
         <TextField label="ID" source="id" />
-        <ReferenceField
-          label="Moved From User"
-          source="user.id"
-          reference="User"
-        >
-          <TextField source={USER_TITLE_FIELD} />
-        </ReferenceField>
+        <TextField label="Moved From User ID" source="movedFromUserId" />
         <ReferenceField label="Organization" source="team.id" reference="Team">
           <TextField source={TEAM_TITLE_FIELD} />
         </ReferenceField>
         <TextField label="Uid" source="uid" />
         <DateField source="updatedAt" label="Updated At" />
-        <ReferenceField label="User" source="user.id" reference="User">
-          <TextField source={USER_TITLE_FIELD} />
-        </ReferenceField>
+        <TextField label="User ID" source="userId" />
         <TextField label="Username" source="username" />
         <ReferenceManyField
           reference="EventType"
@@ -98,9 +89,7 @@ export const ProfileShow = (props: ShowProps): React.ReactElement => {
               label="Only Show First Available Slot"
               source="onlyShowFirstAvailableSlot"
             />
-            <ReferenceField label="Owner" source="user.id" reference="User">
-              <TextField source={USER_TITLE_FIELD} />
-            </ReferenceField>
+            <TextField label="Owner ID" source="ownerId" />
             <ReferenceField
               label="Parent"
               source="eventtype.id"

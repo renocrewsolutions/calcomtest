@@ -21,7 +21,6 @@ import { StringFilter } from "../../util/StringFilter";
 import { IntFilter } from "../../util/IntFilter";
 import { AppRoutingFormsFormResponseListRelationFilter } from "../../appRoutingFormsFormResponse/base/AppRoutingFormsFormResponseListRelationFilter";
 import { TeamWhereUniqueInput } from "../../team/base/TeamWhereUniqueInput";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
 class AppRoutingFormsFormWhereInput {
@@ -161,15 +160,14 @@ class AppRoutingFormsFormWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => UserWhereUniqueInput,
+    type: IntFilter,
   })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
+  @Type(() => IntFilter)
   @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
+  @Field(() => IntFilter, {
     nullable: true,
   })
-  user?: UserWhereUniqueInput;
+  userId?: IntFilter;
 }
 
 export { AppRoutingFormsFormWhereInput as AppRoutingFormsFormWhereInput };

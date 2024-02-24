@@ -6,7 +6,6 @@ import { InstantMeetingToken } from "../instantMeetingToken/InstantMeetingToken"
 import { Payment } from "../payment/Payment";
 import { BookingReference } from "../bookingReference/BookingReference";
 import { BookingSeat } from "../bookingSeat/BookingSeat";
-import { User } from "../user/User";
 import { WorkflowReminder } from "../workflowReminder/WorkflowReminder";
 
 export type Booking = {
@@ -43,7 +42,7 @@ export type Booking = {
   title: string;
   uid: string;
   updatedAt: Date | null;
-  user?: User | null;
+  userId: number | null;
   userPrimaryEmail: string | null;
   workflowReminders?: Array<WorkflowReminder>;
 };

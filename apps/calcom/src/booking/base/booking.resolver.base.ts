@@ -33,7 +33,6 @@ import { WorkflowReminder } from "../../workflowReminder/base/WorkflowReminder";
 import { DestinationCalendar } from "../../destinationCalendar/base/DestinationCalendar";
 import { EventType } from "../../eventType/base/EventType";
 import { InstantMeetingToken } from "../../instantMeetingToken/base/InstantMeetingToken";
-import { User } from "../../user/base/User";
 import { BookingService } from "../booking.service";
 @graphql.Resolver(() => Booking)
 export class BookingResolverBase {
@@ -92,12 +91,6 @@ export class BookingResolverBase {
               connect: args.data.instantMeetingToken,
             }
           : undefined,
-
-        user: args.data.user
-          ? {
-              connect: args.data.user,
-            }
-          : undefined,
       },
     });
   }
@@ -127,12 +120,6 @@ export class BookingResolverBase {
           instantMeetingToken: args.data.instantMeetingToken
             ? {
                 connect: args.data.instantMeetingToken,
-              }
-            : undefined,
-
-          user: args.data.user
-            ? {
-                connect: args.data.user,
               }
             : undefined,
         },
@@ -271,19 +258,6 @@ export class BookingResolverBase {
     @graphql.Parent() parent: Booking
   ): Promise<InstantMeetingToken | null> {
     const result = await this.service.getInstantMeetingToken(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return result;
-  }
-
-  @graphql.ResolveField(() => User, {
-    nullable: true,
-    name: "user",
-  })
-  async getUser(@graphql.Parent() parent: Booking): Promise<User | null> {
-    const result = await this.service.getUser(parent.id);
 
     if (!result) {
       return null;

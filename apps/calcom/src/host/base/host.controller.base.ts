@@ -35,10 +35,6 @@ export class HostControllerBase {
         eventType: {
           connect: data.eventType,
         },
-
-        user: {
-          connect: data.user,
-        },
       },
       select: {
         eventType: {
@@ -50,12 +46,7 @@ export class HostControllerBase {
         id: true,
         isFixed: true,
         priority: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
   }
@@ -77,12 +68,7 @@ export class HostControllerBase {
         id: true,
         isFixed: true,
         priority: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
   }
@@ -105,12 +91,7 @@ export class HostControllerBase {
         id: true,
         isFixed: true,
         priority: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
     if (result === null) {
@@ -137,10 +118,6 @@ export class HostControllerBase {
           eventType: {
             connect: data.eventType,
           },
-
-          user: {
-            connect: data.user,
-          },
         },
         select: {
           eventType: {
@@ -152,12 +129,7 @@ export class HostControllerBase {
           id: true,
           isFixed: true,
           priority: true,
-
-          user: {
-            select: {
-              id: true,
-            },
-          },
+          userId: true,
         },
       });
     } catch (error) {
@@ -189,12 +161,7 @@ export class HostControllerBase {
           id: true,
           isFixed: true,
           priority: true,
-
-          user: {
-            select: {
-              id: true,
-            },
-          },
+          userId: true,
         },
       });
     } catch (error) {

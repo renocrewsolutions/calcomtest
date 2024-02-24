@@ -31,7 +31,6 @@ import { EventTypeCustomInputCreateNestedManyWithoutEventTypesInput } from "./Ev
 import { DestinationCalendarWhereUniqueInput } from "../../destinationCalendar/base/DestinationCalendarWhereUniqueInput";
 import { HashedLinkWhereUniqueInput } from "../../hashedLink/base/HashedLinkWhereUniqueInput";
 import { HostCreateNestedManyWithoutEventTypesInput } from "./HostCreateNestedManyWithoutEventTypesInput";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { EventTypeWhereUniqueInput } from "./EventTypeWhereUniqueInput";
 import { EnumEventTypePeriodType } from "./EnumEventTypePeriodType";
 import { ProfileWhereUniqueInput } from "../../profile/base/ProfileWhereUniqueInput";
@@ -305,15 +304,14 @@ class EventTypeCreateInput {
 
   @ApiProperty({
     required: false,
-    type: () => UserWhereUniqueInput,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
+  @IsInt()
   @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
+  @Field(() => Number, {
     nullable: true,
   })
-  owner?: UserWhereUniqueInput | null;
+  ownerId?: number | null;
 
   @ApiProperty({
     required: false,

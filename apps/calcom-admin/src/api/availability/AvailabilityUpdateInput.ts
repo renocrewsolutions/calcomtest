@@ -1,6 +1,5 @@
 import { EventTypeWhereUniqueInput } from "../eventType/EventTypeWhereUniqueInput";
 import { ScheduleWhereUniqueInput } from "../schedule/ScheduleWhereUniqueInput";
-import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 
 export type AvailabilityUpdateInput = {
   date?: Date | null;
@@ -9,5 +8,5 @@ export type AvailabilityUpdateInput = {
   eventType?: EventTypeWhereUniqueInput | null;
   schedule?: ScheduleWhereUniqueInput | null;
   startTime?: Date;
-  user?: UserWhereUniqueInput | null;
+  userId?: number | null;
 };

@@ -10,12 +10,7 @@ https://docs.amplication.com/how-to/custom-code
 ------------------------------------------------------------------------------
   */
 import { PrismaService } from "../../prisma/prisma.service";
-
-import {
-  Prisma,
-  Feedback, // @ts-ignore
-  User,
-} from "@prisma/client";
+import { Prisma, Feedback } from "@prisma/client";
 
 export class FeedbackServiceBase {
   constructor(protected readonly prisma: PrismaService) {}
@@ -50,13 +45,5 @@ export class FeedbackServiceBase {
     args: Prisma.SelectSubset<T, Prisma.FeedbackDeleteArgs>
   ): Promise<Feedback> {
     return this.prisma.feedback.delete(args);
-  }
-
-  async getUser(parentId: number): Promise<User | null> {
-    return this.prisma.feedback
-      .findUnique({
-        where: { id: parentId },
-      })
-      .user();
   }
 }

@@ -45,12 +45,6 @@ export class WorkflowControllerBase {
               connect: data.team,
             }
           : undefined,
-
-        user: data.user
-          ? {
-              connect: data.user,
-            }
-          : undefined,
       },
       select: {
         id: true,
@@ -66,12 +60,7 @@ export class WorkflowControllerBase {
         time: true,
         timeUnit: true,
         trigger: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
   }
@@ -97,12 +86,7 @@ export class WorkflowControllerBase {
         time: true,
         timeUnit: true,
         trigger: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
   }
@@ -129,12 +113,7 @@ export class WorkflowControllerBase {
         time: true,
         timeUnit: true,
         trigger: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
     if (result === null) {
@@ -163,12 +142,6 @@ export class WorkflowControllerBase {
                 connect: data.team,
               }
             : undefined,
-
-          user: data.user
-            ? {
-                connect: data.user,
-              }
-            : undefined,
         },
         select: {
           id: true,
@@ -184,12 +157,7 @@ export class WorkflowControllerBase {
           time: true,
           timeUnit: true,
           trigger: true,
-
-          user: {
-            select: {
-              id: true,
-            },
-          },
+          userId: true,
         },
       });
     } catch (error) {
@@ -225,12 +193,7 @@ export class WorkflowControllerBase {
           time: true,
           timeUnit: true,
           trigger: true,
-
-          user: {
-            select: {
-              id: true,
-            },
-          },
+          userId: true,
         },
       });
     } catch (error) {

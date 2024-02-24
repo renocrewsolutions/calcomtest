@@ -15,8 +15,7 @@ import {
   Prisma,
   AppRoutingFormsForm, // @ts-ignore
   AppRoutingFormsFormResponse, // @ts-ignore
-  Team, // @ts-ignore
-  User,
+  Team,
 } from "@prisma/client";
 
 export class AppRoutingFormsFormServiceBase {
@@ -77,13 +76,5 @@ export class AppRoutingFormsFormServiceBase {
         where: { id: parentId },
       })
       .team();
-  }
-
-  async getUser(parentId: string): Promise<User | null> {
-    return this.prisma.appRoutingFormsForm
-      .findUnique({
-        where: { id: parentId },
-      })
-      .user();
   }
 }

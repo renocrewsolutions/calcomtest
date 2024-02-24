@@ -20,20 +20,28 @@ const existingId = "existingId";
 const CREATE_INPUT = {
   createdAt: new Date(),
   id: 42,
+  impersonatedById: 42,
+  impersonatedUserId: 42,
 };
 const CREATE_RESULT = {
   createdAt: new Date(),
   id: 42,
+  impersonatedById: 42,
+  impersonatedUserId: 42,
 };
 const FIND_MANY_RESULT = [
   {
     createdAt: new Date(),
     id: 42,
+    impersonatedById: 42,
+    impersonatedUserId: 42,
   },
 ];
 const FIND_ONE_RESULT = {
   createdAt: new Date(),
   id: 42,
+  impersonatedById: 42,
+  impersonatedUserId: 42,
 };
 
 const service = {

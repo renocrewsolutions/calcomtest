@@ -37,10 +37,6 @@ export class MembershipControllerBase {
         team: {
           connect: data.team,
         },
-
-        user: {
-          connect: data.user,
-        },
       },
       select: {
         accepted: true,
@@ -54,11 +50,7 @@ export class MembershipControllerBase {
           },
         },
 
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
   }
@@ -82,11 +74,7 @@ export class MembershipControllerBase {
           },
         },
 
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
   }
@@ -111,11 +99,7 @@ export class MembershipControllerBase {
           },
         },
 
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
     if (result === null) {
@@ -142,10 +126,6 @@ export class MembershipControllerBase {
           team: {
             connect: data.team,
           },
-
-          user: {
-            connect: data.user,
-          },
         },
         select: {
           accepted: true,
@@ -159,11 +139,7 @@ export class MembershipControllerBase {
             },
           },
 
-          user: {
-            select: {
-              id: true,
-            },
-          },
+          userId: true,
         },
       });
     } catch (error) {
@@ -197,11 +173,7 @@ export class MembershipControllerBase {
             },
           },
 
-          user: {
-            select: {
-              id: true,
-            },
-          },
+          userId: true,
         },
       });
     } catch (error) {

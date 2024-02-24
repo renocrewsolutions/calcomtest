@@ -1,7 +1,6 @@
 import { WorkflowsOnEventType } from "../workflowsOnEventType/WorkflowsOnEventType";
 import { WorkflowStep } from "../workflowStep/WorkflowStep";
 import { Team } from "../team/Team";
-import { User } from "../user/User";
 
 export type Workflow = {
   activeOn?: Array<WorkflowsOnEventType>;
@@ -18,5 +17,5 @@ export type Workflow = {
     | "NEW_EVENT"
     | "AFTER_EVENT"
     | "RESCHEDULE_EVENT";
-  user?: User | null;
+  userId: number | null;
 };

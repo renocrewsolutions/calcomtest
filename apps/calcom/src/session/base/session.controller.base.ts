@@ -31,25 +31,12 @@ export class SessionControllerBase {
     @common.Body() data: SessionCreateInput
   ): Promise<Session> {
     return await this.service.createSession({
-      data: {
-        ...data,
-
-        user: data.user
-          ? {
-              connect: data.user,
-            }
-          : undefined,
-      },
+      data: data,
       select: {
         expires: true,
         id: true,
         sessionToken: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
   }
@@ -65,12 +52,7 @@ export class SessionControllerBase {
         expires: true,
         id: true,
         sessionToken: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
   }
@@ -87,12 +69,7 @@ export class SessionControllerBase {
         expires: true,
         id: true,
         sessionToken: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
     if (result === null) {
@@ -113,25 +90,12 @@ export class SessionControllerBase {
     try {
       return await this.service.updateSession({
         where: params,
-        data: {
-          ...data,
-
-          user: data.user
-            ? {
-                connect: data.user,
-              }
-            : undefined,
-        },
+        data: data,
         select: {
           expires: true,
           id: true,
           sessionToken: true,
-
-          user: {
-            select: {
-              id: true,
-            },
-          },
+          userId: true,
         },
       });
     } catch (error) {
@@ -157,12 +121,7 @@ export class SessionControllerBase {
           expires: true,
           id: true,
           sessionToken: true,
-
-          user: {
-            select: {
-              id: true,
-            },
-          },
+          userId: true,
         },
       });
     } catch (error) {

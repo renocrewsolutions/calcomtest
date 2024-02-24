@@ -10,12 +10,7 @@ https://docs.amplication.com/how-to/custom-code
 ------------------------------------------------------------------------------
   */
 import { PrismaService } from "../../prisma/prisma.service";
-
-import {
-  Prisma,
-  Session, // @ts-ignore
-  User,
-} from "@prisma/client";
+import { Prisma, Session } from "@prisma/client";
 
 export class SessionServiceBase {
   constructor(protected readonly prisma: PrismaService) {}
@@ -50,13 +45,5 @@ export class SessionServiceBase {
     args: Prisma.SelectSubset<T, Prisma.SessionDeleteArgs>
   ): Promise<Session> {
     return this.prisma.session.delete(args);
-  }
-
-  async getUser(parentId: string): Promise<User | null> {
-    return this.prisma.session
-      .findUnique({
-        where: { id: parentId },
-      })
-      .user();
   }
 }

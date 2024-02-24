@@ -15,7 +15,6 @@ import {
 import { DESTINATIONCALENDAR_TITLE_FIELD } from "./DestinationCalendarTitle";
 import { EVENTTYPE_TITLE_FIELD } from "../eventType/EventTypeTitle";
 import { INSTANTMEETINGTOKEN_TITLE_FIELD } from "../instantMeetingToken/InstantMeetingTokenTitle";
-import { USER_TITLE_FIELD } from "../user/UserTitle";
 import { CREDENTIAL_TITLE_FIELD } from "../credential/CredentialTitle";
 
 export const DestinationCalendarShow = (
@@ -42,9 +41,7 @@ export const DestinationCalendarShow = (
         <TextField label="ID" source="id" />
         <TextField label="Integration" source="integration" />
         <TextField label="Primary Email" source="primaryEmail" />
-        <ReferenceField label="User" source="user.id" reference="User">
-          <TextField source={USER_TITLE_FIELD} />
-        </ReferenceField>
+        <TextField label="User ID" source="userId" />
         <ReferenceManyField
           reference="Booking"
           target="destinationCalendarId"
@@ -107,9 +104,7 @@ export const DestinationCalendarShow = (
             <TextField label="Title" source="title" />
             <TextField label="Uid" source="uid" />
             <TextField label="Updated At" source="updatedAt" />
-            <ReferenceField label="User" source="user.id" reference="User">
-              <TextField source={USER_TITLE_FIELD} />
-            </ReferenceField>
+            <TextField label="User ID" source="userId" />
             <TextField label="User Primary Email" source="userPrimaryEmail" />
           </Datagrid>
         </ReferenceManyField>

@@ -27,7 +27,6 @@ import { GraphQLJSON } from "graphql-type-json";
 import { JsonValue } from "type-fest";
 import { SelectedCalendar } from "../../selectedCalendar/base/SelectedCalendar";
 import { Team } from "../../team/base/Team";
-import { User } from "../../user/base/User";
 
 @ObjectType()
 class Credential {
@@ -145,12 +144,14 @@ class Credential {
 
   @ApiProperty({
     required: false,
-    type: () => User,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => User)
+  @IsInt()
   @IsOptional()
-  user?: User | null;
+  @Field(() => Number, {
+    nullable: true,
+  })
+  userId!: number | null;
 }
 
 export { Credential as Credential };

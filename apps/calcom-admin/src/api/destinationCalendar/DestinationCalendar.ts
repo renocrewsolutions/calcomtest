@@ -1,7 +1,6 @@
 import { Booking } from "../booking/Booking";
 import { Credential } from "../credential/Credential";
 import { EventType } from "../eventType/EventType";
-import { User } from "../user/User";
 
 export type DestinationCalendar = {
   booking?: Array<Booking>;
@@ -11,5 +10,5 @@ export type DestinationCalendar = {
   id: number;
   integration: string;
   primaryEmail: string | null;
-  user?: User | null;
+  userId: number | null;
 };

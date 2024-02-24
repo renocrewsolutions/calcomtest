@@ -21,7 +21,6 @@ import { CreateVerifiedNumberArgs } from "./CreateVerifiedNumberArgs";
 import { UpdateVerifiedNumberArgs } from "./UpdateVerifiedNumberArgs";
 import { DeleteVerifiedNumberArgs } from "./DeleteVerifiedNumberArgs";
 import { Team } from "../../team/base/Team";
-import { User } from "../../user/base/User";
 import { VerifiedNumberService } from "../verifiedNumber.service";
 @graphql.Resolver(() => VerifiedNumber)
 export class VerifiedNumberResolverBase {
@@ -68,12 +67,6 @@ export class VerifiedNumberResolverBase {
               connect: args.data.team,
             }
           : undefined,
-
-        user: args.data.user
-          ? {
-              connect: args.data.user,
-            }
-          : undefined,
       },
     });
   }
@@ -91,12 +84,6 @@ export class VerifiedNumberResolverBase {
           team: args.data.team
             ? {
                 connect: args.data.team,
-              }
-            : undefined,
-
-          user: args.data.user
-            ? {
-                connect: args.data.user,
               }
             : undefined,
         },
@@ -135,21 +122,6 @@ export class VerifiedNumberResolverBase {
     @graphql.Parent() parent: VerifiedNumber
   ): Promise<Team | null> {
     const result = await this.service.getTeam(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return result;
-  }
-
-  @graphql.ResolveField(() => User, {
-    nullable: true,
-    name: "user",
-  })
-  async getUser(
-    @graphql.Parent() parent: VerifiedNumber
-  ): Promise<User | null> {
-    const result = await this.service.getUser(parent.id);
 
     if (!result) {
       return null;

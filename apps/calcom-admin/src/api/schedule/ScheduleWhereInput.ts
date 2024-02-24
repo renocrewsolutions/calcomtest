@@ -3,7 +3,6 @@ import { EventTypeListRelationFilter } from "../eventType/EventTypeListRelationF
 import { IntFilter } from "../../util/IntFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
-import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 
 export type ScheduleWhereInput = {
   availability?: AvailabilityListRelationFilter;
@@ -11,5 +10,5 @@ export type ScheduleWhereInput = {
   id?: IntFilter;
   name?: StringFilter;
   timeZone?: StringNullableFilter;
-  user?: UserWhereUniqueInput;
+  userId?: IntFilter;
 };

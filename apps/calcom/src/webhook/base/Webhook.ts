@@ -18,13 +18,13 @@ import {
   IsDate,
   IsEnum,
   IsString,
+  IsInt,
 } from "class-validator";
 import { AppModel } from "../../appModel/base/AppModel";
 import { Type } from "class-transformer";
 import { EnumWebhookEventTriggers } from "./EnumWebhookEventTriggers";
 import { EventType } from "../../eventType/base/EventType";
 import { Team } from "../../team/base/Team";
-import { User } from "../../user/base/User";
 
 @ObjectType()
 class Webhook {
@@ -138,12 +138,14 @@ class Webhook {
 
   @ApiProperty({
     required: false,
-    type: () => User,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => User)
+  @IsInt()
   @IsOptional()
-  user?: User | null;
+  @Field(() => Number, {
+    nullable: true,
+  })
+  userId!: number | null;
 }
 
 export { Webhook as Webhook };

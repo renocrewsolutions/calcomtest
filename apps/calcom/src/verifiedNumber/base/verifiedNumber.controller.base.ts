@@ -39,12 +39,6 @@ export class VerifiedNumberControllerBase {
               connect: data.team,
             }
           : undefined,
-
-        user: data.user
-          ? {
-              connect: data.user,
-            }
-          : undefined,
       },
       select: {
         id: true,
@@ -56,11 +50,7 @@ export class VerifiedNumberControllerBase {
           },
         },
 
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
   }
@@ -84,11 +74,7 @@ export class VerifiedNumberControllerBase {
           },
         },
 
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
   }
@@ -111,11 +97,7 @@ export class VerifiedNumberControllerBase {
           },
         },
 
-        user: {
-          select: {
-            id: true,
-          },
-        },
+        userId: true,
       },
     });
     if (result === null) {
@@ -144,12 +126,6 @@ export class VerifiedNumberControllerBase {
                 connect: data.team,
               }
             : undefined,
-
-          user: data.user
-            ? {
-                connect: data.user,
-              }
-            : undefined,
         },
         select: {
           id: true,
@@ -161,11 +137,7 @@ export class VerifiedNumberControllerBase {
             },
           },
 
-          user: {
-            select: {
-              id: true,
-            },
-          },
+          userId: true,
         },
       });
     } catch (error) {
@@ -197,11 +169,7 @@ export class VerifiedNumberControllerBase {
             },
           },
 
-          user: {
-            select: {
-              id: true,
-            },
-          },
+          userId: true,
         },
       });
     } catch (error) {

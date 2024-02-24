@@ -11,7 +11,6 @@ import {
 } from "react-admin";
 
 import { EventTypeTitle } from "../eventType/EventTypeTitle";
-import { UserTitle } from "../user/UserTitle";
 
 export const HostCreate = (props: CreateProps): React.ReactElement => {
   return (
@@ -26,9 +25,7 @@ export const HostCreate = (props: CreateProps): React.ReactElement => {
         </ReferenceInput>
         <BooleanInput label="Is Fixed" source="isFixed" />
         <NumberInput step={1} label="Priority" source="priority" />
-        <ReferenceInput source="user.id" reference="User" label="User">
-          <SelectInput optionText={UserTitle} />
-        </ReferenceInput>
+        <NumberInput step={1} label="User ID" source="userId" />
       </SimpleForm>
     </Create>
   );

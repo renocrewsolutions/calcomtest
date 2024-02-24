@@ -1,7 +1,6 @@
 import { WorkflowsOnEventTypeCreateNestedManyWithoutWorkflowsInput } from "./WorkflowsOnEventTypeCreateNestedManyWithoutWorkflowsInput";
 import { WorkflowStepCreateNestedManyWithoutWorkflowsInput } from "./WorkflowStepCreateNestedManyWithoutWorkflowsInput";
 import { TeamWhereUniqueInput } from "../team/TeamWhereUniqueInput";
-import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 
 export type WorkflowCreateInput = {
   activeOn?: WorkflowsOnEventTypeCreateNestedManyWithoutWorkflowsInput;
@@ -17,5 +16,5 @@ export type WorkflowCreateInput = {
     | "NEW_EVENT"
     | "AFTER_EVENT"
     | "RESCHEDULE_EVENT";
-  user?: UserWhereUniqueInput | null;
+  userId?: number | null;
 };

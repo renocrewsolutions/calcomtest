@@ -14,7 +14,6 @@ import {
 
 import { APPMODEL_TITLE_FIELD } from "./AppModelTitle";
 import { TEAM_TITLE_FIELD } from "../team/TeamTitle";
-import { USER_TITLE_FIELD } from "../user/UserTitle";
 import { BOOKING_TITLE_FIELD } from "../booking/BookingTitle";
 import { EVENTTYPE_TITLE_FIELD } from "../eventType/EventTypeTitle";
 
@@ -47,9 +46,7 @@ export const AppModelShow = (props: ShowProps): React.ReactElement => {
             <ReferenceField label="Team" source="team.id" reference="Team">
               <TextField source={TEAM_TITLE_FIELD} />
             </ReferenceField>
-            <ReferenceField label="User" source="user.id" reference="User">
-              <TextField source={USER_TITLE_FIELD} />
-            </ReferenceField>
+            <TextField label="User ID" source="userId" />
           </Datagrid>
         </ReferenceManyField>
         <ReferenceManyField
@@ -75,9 +72,7 @@ export const AppModelShow = (props: ShowProps): React.ReactElement => {
               <TextField source={TEAM_TITLE_FIELD} />
             </ReferenceField>
             <TextField label="Type Field" source="typeField" />
-            <ReferenceField label="User" source="user.id" reference="User">
-              <TextField source={USER_TITLE_FIELD} />
-            </ReferenceField>
+            <TextField label="User ID" source="userId" />
           </Datagrid>
         </ReferenceManyField>
         <ReferenceManyField reference="Payment" target="appId" label="Payments">
@@ -134,9 +129,7 @@ export const AppModelShow = (props: ShowProps): React.ReactElement => {
             <ReferenceField label="Team" source="team.id" reference="Team">
               <TextField source={TEAM_TITLE_FIELD} />
             </ReferenceField>
-            <ReferenceField label="User" source="user.id" reference="User">
-              <TextField source={USER_TITLE_FIELD} />
-            </ReferenceField>
+            <TextField label="User ID" source="userId" />
           </Datagrid>
         </ReferenceManyField>
       </SimpleShowLayout>

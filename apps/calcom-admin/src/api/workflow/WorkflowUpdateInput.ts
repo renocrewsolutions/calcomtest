@@ -1,7 +1,6 @@
 import { WorkflowsOnEventTypeUpdateManyWithoutWorkflowsInput } from "./WorkflowsOnEventTypeUpdateManyWithoutWorkflowsInput";
 import { WorkflowStepUpdateManyWithoutWorkflowsInput } from "./WorkflowStepUpdateManyWithoutWorkflowsInput";
 import { TeamWhereUniqueInput } from "../team/TeamWhereUniqueInput";
-import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 
 export type WorkflowUpdateInput = {
   activeOn?: WorkflowsOnEventTypeUpdateManyWithoutWorkflowsInput;
@@ -17,5 +16,5 @@ export type WorkflowUpdateInput = {
     | "NEW_EVENT"
     | "AFTER_EVENT"
     | "RESCHEDULE_EVENT";
-  user?: UserWhereUniqueInput | null;
+  userId?: number | null;
 };

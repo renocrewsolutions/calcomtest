@@ -10,12 +10,7 @@ https://docs.amplication.com/how-to/custom-code
 ------------------------------------------------------------------------------
   */
 import { PrismaService } from "../../prisma/prisma.service";
-
-import {
-  Prisma,
-  OutOfOfficeEntry, // @ts-ignore
-  User,
-} from "@prisma/client";
+import { Prisma, OutOfOfficeEntry } from "@prisma/client";
 
 export class OutOfOfficeEntryServiceBase {
   constructor(protected readonly prisma: PrismaService) {}
@@ -50,21 +45,5 @@ export class OutOfOfficeEntryServiceBase {
     args: Prisma.SelectSubset<T, Prisma.OutOfOfficeEntryDeleteArgs>
   ): Promise<OutOfOfficeEntry> {
     return this.prisma.outOfOfficeEntry.delete(args);
-  }
-
-  async getToUser(parentId: number): Promise<User | null> {
-    return this.prisma.outOfOfficeEntry
-      .findUnique({
-        where: { id: parentId },
-      })
-      .toUser();
-  }
-
-  async getUser(parentId: number): Promise<User | null> {
-    return this.prisma.outOfOfficeEntry
-      .findUnique({
-        where: { id: parentId },
-      })
-      .user();
   }
 }

@@ -28,7 +28,6 @@ import { SelectedCalendarFindManyArgs } from "../../selectedCalendar/base/Select
 import { SelectedCalendar } from "../../selectedCalendar/base/SelectedCalendar";
 import { AppModel } from "../../appModel/base/AppModel";
 import { Team } from "../../team/base/Team";
-import { User } from "../../user/base/User";
 import { CredentialService } from "../credential.service";
 @graphql.Resolver(() => Credential)
 export class CredentialResolverBase {
@@ -81,12 +80,6 @@ export class CredentialResolverBase {
               connect: args.data.team,
             }
           : undefined,
-
-        user: args.data.user
-          ? {
-              connect: args.data.user,
-            }
-          : undefined,
       },
     });
   }
@@ -110,12 +103,6 @@ export class CredentialResolverBase {
           team: args.data.team
             ? {
                 connect: args.data.team,
-              }
-            : undefined,
-
-          user: args.data.user
-            ? {
-                connect: args.data.user,
               }
             : undefined,
         },
@@ -214,19 +201,6 @@ export class CredentialResolverBase {
   })
   async getTeam(@graphql.Parent() parent: Credential): Promise<Team | null> {
     const result = await this.service.getTeam(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return result;
-  }
-
-  @graphql.ResolveField(() => User, {
-    nullable: true,
-    name: "user",
-  })
-  async getUser(@graphql.Parent() parent: Credential): Promise<User | null> {
-    const result = await this.service.getUser(parent.id);
 
     if (!result) {
       return null;

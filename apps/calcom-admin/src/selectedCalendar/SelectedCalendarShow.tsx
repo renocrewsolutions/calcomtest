@@ -7,7 +7,6 @@ import {
   TextField,
 } from "react-admin";
 import { CREDENTIAL_TITLE_FIELD } from "../credential/CredentialTitle";
-import { USER_TITLE_FIELD } from "../user/UserTitle";
 
 export const SelectedCalendarShow = (props: ShowProps): React.ReactElement => {
   return (
@@ -23,9 +22,7 @@ export const SelectedCalendarShow = (props: ShowProps): React.ReactElement => {
         <TextField label="External Id" source="externalId" />
         <TextField label="ID" source="id" />
         <TextField label="Integration" source="integration" />
-        <ReferenceField label="User" source="user.id" reference="User">
-          <TextField source={USER_TITLE_FIELD} />
-        </ReferenceField>
+        <TextField label="User ID" source="userId" />
       </SimpleShowLayout>
     </Show>
   );

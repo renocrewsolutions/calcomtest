@@ -15,7 +15,6 @@ import { IsDate, IsOptional, IsInt, ValidateNested } from "class-validator";
 import { Type } from "class-transformer";
 import { EventTypeWhereUniqueInput } from "../../eventType/base/EventTypeWhereUniqueInput";
 import { ScheduleWhereUniqueInput } from "../../schedule/base/ScheduleWhereUniqueInput";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
 class AvailabilityUpdateInput {
@@ -89,15 +88,14 @@ class AvailabilityUpdateInput {
 
   @ApiProperty({
     required: false,
-    type: () => UserWhereUniqueInput,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
+  @IsInt()
   @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
+  @Field(() => Number, {
     nullable: true,
   })
-  user?: UserWhereUniqueInput | null;
+  userId?: number | null;
 }
 
 export { AvailabilityUpdateInput as AvailabilityUpdateInput };

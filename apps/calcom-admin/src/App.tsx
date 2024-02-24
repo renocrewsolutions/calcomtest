@@ -25,10 +25,6 @@ import { UserPasswordList } from "./userPassword/UserPasswordList";
 import { UserPasswordCreate } from "./userPassword/UserPasswordCreate";
 import { UserPasswordEdit } from "./userPassword/UserPasswordEdit";
 import { UserPasswordShow } from "./userPassword/UserPasswordShow";
-import { UserList } from "./user/UserList";
-import { UserCreate } from "./user/UserCreate";
-import { UserEdit } from "./user/UserEdit";
-import { UserShow } from "./user/UserShow";
 import { ProfileList } from "./profile/ProfileList";
 import { ProfileCreate } from "./profile/ProfileCreate";
 import { ProfileEdit } from "./profile/ProfileEdit";
@@ -253,13 +249,6 @@ const App = (): React.ReactElement => {
           edit={UserPasswordEdit}
           create={UserPasswordCreate}
           show={UserPasswordShow}
-        />
-        <Resource
-          name="User"
-          list={UserList}
-          edit={UserEdit}
-          create={UserCreate}
-          show={UserShow}
         />
         <Resource
           name="Profile"

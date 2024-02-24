@@ -8,7 +8,6 @@ import {
   ReferenceField,
 } from "react-admin";
 import Pagination from "../Components/Pagination";
-import { USER_TITLE_FIELD } from "../user/UserTitle";
 import { TEAM_TITLE_FIELD } from "../team/TeamTitle";
 
 export const ProfileList = (props: ListProps): React.ReactElement => {
@@ -23,21 +22,13 @@ export const ProfileList = (props: ListProps): React.ReactElement => {
       <Datagrid rowClick="show">
         <DateField source="createdAt" label="Created At" />
         <TextField label="ID" source="id" />
-        <ReferenceField
-          label="Moved From User"
-          source="user.id"
-          reference="User"
-        >
-          <TextField source={USER_TITLE_FIELD} />
-        </ReferenceField>
+        <TextField label="Moved From User ID" source="movedFromUserId" />
         <ReferenceField label="Organization" source="team.id" reference="Team">
           <TextField source={TEAM_TITLE_FIELD} />
         </ReferenceField>
         <TextField label="Uid" source="uid" />
         <DateField source="updatedAt" label="Updated At" />
-        <ReferenceField label="User" source="user.id" reference="User">
-          <TextField source={USER_TITLE_FIELD} />
-        </ReferenceField>
+        <TextField label="User ID" source="userId" />
         <TextField label="Username" source="username" />
       </Datagrid>
     </List>

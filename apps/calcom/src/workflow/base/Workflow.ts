@@ -24,7 +24,6 @@ import { WorkflowStep } from "../../workflowStep/base/WorkflowStep";
 import { Team } from "../../team/base/Team";
 import { EnumWorkflowTimeUnit } from "./EnumWorkflowTimeUnit";
 import { EnumWorkflowTrigger } from "./EnumWorkflowTrigger";
-import { User } from "../../user/base/User";
 
 @ObjectType()
 class Workflow {
@@ -118,12 +117,14 @@ class Workflow {
 
   @ApiProperty({
     required: false,
-    type: () => User,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => User)
+  @IsInt()
   @IsOptional()
-  user?: User | null;
+  @Field(() => Number, {
+    nullable: true,
+  })
+  userId!: number | null;
 }
 
 export { Workflow as Workflow };

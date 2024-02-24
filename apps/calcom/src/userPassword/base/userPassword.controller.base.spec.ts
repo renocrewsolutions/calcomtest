@@ -20,20 +20,24 @@ const existingId = "existingId";
 const CREATE_INPUT = {
   hash: "exampleHash",
   id: 42,
+  userId: 42,
 };
 const CREATE_RESULT = {
   hash: "exampleHash",
   id: 42,
+  userId: 42,
 };
 const FIND_MANY_RESULT = [
   {
     hash: "exampleHash",
     id: 42,
+    userId: 42,
   },
 ];
 const FIND_ONE_RESULT = {
   hash: "exampleHash",
   id: 42,
+  userId: 42,
 };
 
 const service = {

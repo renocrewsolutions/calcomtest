@@ -40,6 +40,7 @@ const CREATE_INPUT = {
   title: "exampleTitle",
   uid: "exampleUid",
   updatedAt: new Date(),
+  userId: 42,
   userPrimaryEmail: "exampleUserPrimaryEmail",
 };
 const CREATE_RESULT = {
@@ -65,6 +66,7 @@ const CREATE_RESULT = {
   title: "exampleTitle",
   uid: "exampleUid",
   updatedAt: new Date(),
+  userId: 42,
   userPrimaryEmail: "exampleUserPrimaryEmail",
 };
 const FIND_MANY_RESULT = [
@@ -91,6 +93,7 @@ const FIND_MANY_RESULT = [
     title: "exampleTitle",
     uid: "exampleUid",
     updatedAt: new Date(),
+    userId: 42,
     userPrimaryEmail: "exampleUserPrimaryEmail",
   },
 ];
@@ -117,6 +120,7 @@ const FIND_ONE_RESULT = {
   title: "exampleTitle",
   uid: "exampleUid",
   updatedAt: new Date(),
+  userId: 42,
   userPrimaryEmail: "exampleUserPrimaryEmail",
 };
 

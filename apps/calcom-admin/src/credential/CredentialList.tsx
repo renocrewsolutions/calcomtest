@@ -10,7 +10,6 @@ import {
 import Pagination from "../Components/Pagination";
 import { APPMODEL_TITLE_FIELD } from "../appModel/AppModelTitle";
 import { TEAM_TITLE_FIELD } from "../team/TeamTitle";
-import { USER_TITLE_FIELD } from "../user/UserTitle";
 
 export const CredentialList = (props: ListProps): React.ReactElement => {
   return (
@@ -39,9 +38,7 @@ export const CredentialList = (props: ListProps): React.ReactElement => {
           <TextField source={TEAM_TITLE_FIELD} />
         </ReferenceField>
         <TextField label="Type Field" source="typeField" />
-        <ReferenceField label="User" source="user.id" reference="User">
-          <TextField source={USER_TITLE_FIELD} />
-        </ReferenceField>
+        <TextField label="User ID" source="userId" />
       </Datagrid>
     </List>
   );

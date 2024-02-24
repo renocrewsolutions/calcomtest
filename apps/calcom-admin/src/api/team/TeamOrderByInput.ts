@@ -16,6 +16,7 @@ export type TeamOrderByInput = {
   logoUrl?: SortOrder;
   metadata?: SortOrder;
   name?: SortOrder;
+  orgUsers?: SortOrder;
   parentId?: SortOrder;
   pendingPayment?: SortOrder;
   slug?: SortOrder;

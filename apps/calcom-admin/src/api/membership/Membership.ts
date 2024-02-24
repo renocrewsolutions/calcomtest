@@ -1,5 +1,4 @@
 import { Team } from "../team/Team";
-import { User } from "../user/User";
 
 export type Membership = {
   accepted: boolean;
@@ -7,5 +6,5 @@ export type Membership = {
   id: number;
   role?: "MEMBER" | "ADMIN" | "OWNER";
   team?: Team;
-  user?: User;
+  userId: number;
 };

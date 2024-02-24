@@ -22,7 +22,6 @@ import { InstantMeetingTokenTitle } from "../instantMeetingToken/InstantMeetingT
 import { VerificationTokenTitle } from "../verificationToken/VerificationTokenTitle";
 import { MembershipTitle } from "../membership/MembershipTitle";
 import { ProfileTitle } from "../profile/ProfileTitle";
-import { UserTitle } from "../user/UserTitle";
 import { AppRoutingFormsFormTitle } from "../appRoutingFormsForm/AppRoutingFormsFormTitle";
 import { VerifiedNumberTitle } from "../verifiedNumber/VerifiedNumberTitle";
 import { WebhookTitle } from "../webhook/WebhookTitle";
@@ -120,14 +119,7 @@ export const TeamCreate = (props: CreateProps): React.ReactElement => {
         >
           <SelectArrayInput optionText={ProfileTitle} />
         </ReferenceArrayInput>
-        <ReferenceArrayInput
-          source="orgUsers"
-          reference="User"
-          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
-          format={(value: any) => value && value.map((v: any) => v.id)}
-        >
-          <SelectArrayInput optionText={UserTitle} />
-        </ReferenceArrayInput>
+        <div />
         <ReferenceInput source="parent.id" reference="Team" label="Parent">
           <SelectInput optionText={TeamTitle} />
         </ReferenceInput>

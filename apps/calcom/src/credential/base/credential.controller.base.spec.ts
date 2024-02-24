@@ -24,6 +24,7 @@ const CREATE_INPUT = {
   paymentStatus: "examplePaymentStatus",
   subscriptionId: "exampleSubscriptionId",
   typeField: "exampleTypeField",
+  userId: 42,
 };
 const CREATE_RESULT = {
   billingCycleStart: 42,
@@ -32,6 +33,7 @@ const CREATE_RESULT = {
   paymentStatus: "examplePaymentStatus",
   subscriptionId: "exampleSubscriptionId",
   typeField: "exampleTypeField",
+  userId: 42,
 };
 const FIND_MANY_RESULT = [
   {
@@ -41,6 +43,7 @@ const FIND_MANY_RESULT = [
     paymentStatus: "examplePaymentStatus",
     subscriptionId: "exampleSubscriptionId",
     typeField: "exampleTypeField",
+    userId: 42,
   },
 ];
 const FIND_ONE_RESULT = {
@@ -50,6 +53,7 @@ const FIND_ONE_RESULT = {
   paymentStatus: "examplePaymentStatus",
   subscriptionId: "exampleSubscriptionId",
   typeField: "exampleTypeField",
+  userId: 42,
 };
 
 const service = {

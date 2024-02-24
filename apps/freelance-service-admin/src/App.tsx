@@ -37,6 +37,10 @@ import { MsgbrokerList } from "./msgbroker/MsgbrokerList";
 import { MsgbrokerCreate } from "./msgbroker/MsgbrokerCreate";
 import { MsgbrokerEdit } from "./msgbroker/MsgbrokerEdit";
 import { MsgbrokerShow } from "./msgbroker/MsgbrokerShow";
+import { UserList } from "./user/UserList";
+import { UserCreate } from "./user/UserCreate";
+import { UserEdit } from "./user/UserEdit";
+import { UserShow } from "./user/UserShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -118,6 +122,13 @@ const App = (): React.ReactElement => {
           edit={MsgbrokerEdit}
           create={MsgbrokerCreate}
           show={MsgbrokerShow}
+        />
+        <Resource
+          name="User"
+          list={UserList}
+          edit={UserEdit}
+          create={UserCreate}
+          show={UserShow}
         />
       </Admin>
     </div>

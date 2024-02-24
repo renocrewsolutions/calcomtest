@@ -20,7 +20,7 @@ import { BidFindUniqueArgs } from "./BidFindUniqueArgs";
 import { CreateBidArgs } from "./CreateBidArgs";
 import { UpdateBidArgs } from "./UpdateBidArgs";
 import { DeleteBidArgs } from "./DeleteBidArgs";
-import { User1 } from "../../user1/base/User1";
+import { User } from "../../user/base/User";
 import { Job } from "../../job/base/Job";
 import { BidService } from "../bid.service";
 @graphql.Resolver(() => Bid)
@@ -109,11 +109,11 @@ export class BidResolverBase {
     }
   }
 
-  @graphql.ResolveField(() => User1, {
+  @graphql.ResolveField(() => User, {
     nullable: true,
     name: "freelancer",
   })
-  async getFreelancer(@graphql.Parent() parent: Bid): Promise<User1 | null> {
+  async getFreelancer(@graphql.Parent() parent: Bid): Promise<User | null> {
     const result = await this.service.getFreelancer(parent.id);
 
     if (!result) {

@@ -14,7 +14,7 @@ import { PrismaService } from "../../prisma/prisma.service";
 import {
   Prisma,
   Bid, // @ts-ignore
-  User1, // @ts-ignore
+  User, // @ts-ignore
   Job,
 } from "@prisma/client";
 
@@ -53,7 +53,7 @@ export class BidServiceBase {
     return this.prisma.bid.delete(args);
   }
 
-  async getFreelancer(parentId: number): Promise<User1 | null> {
+  async getFreelancer(parentId: number): Promise<User | null> {
     return this.prisma.bid
       .findUnique({
         where: { id: parentId },

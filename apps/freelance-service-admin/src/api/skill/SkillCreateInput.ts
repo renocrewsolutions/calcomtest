@@ -1,7 +1,7 @@
-import { User1CreateNestedManyWithoutSkillsInput } from "./User1CreateNestedManyWithoutSkillsInput";
+import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 
 export type SkillCreateInput = {
   description?: string | null;
   name: string;
-  users?: User1CreateNestedManyWithoutSkillsInput;
+  user?: UserWhereUniqueInput | null;
 };

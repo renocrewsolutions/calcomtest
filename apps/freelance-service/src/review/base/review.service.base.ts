@@ -14,7 +14,7 @@ import { PrismaService } from "../../prisma/prisma.service";
 import {
   Prisma,
   Review, // @ts-ignore
-  User1, // @ts-ignore
+  User, // @ts-ignore
   Job,
 } from "@prisma/client";
 
@@ -53,7 +53,7 @@ export class ReviewServiceBase {
     return this.prisma.review.delete(args);
   }
 
-  async getClient(parentId: number): Promise<User1 | null> {
+  async getClient(parentId: number): Promise<User | null> {
     return this.prisma.review
       .findUnique({
         where: { id: parentId },
@@ -61,7 +61,7 @@ export class ReviewServiceBase {
       .client();
   }
 
-  async getFreelancer(parentId: number): Promise<User1 | null> {
+  async getFreelancer(parentId: number): Promise<User | null> {
     return this.prisma.review
       .findUnique({
         where: { id: parentId },

@@ -12,7 +12,7 @@ https://docs.amplication.com/how-to/custom-code
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { IsNumber, ValidateNested } from "class-validator";
-import { User1WhereUniqueInput } from "../../user1/base/User1WhereUniqueInput";
+import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { Type } from "class-transformer";
 import { JobWhereUniqueInput } from "../../job/base/JobWhereUniqueInput";
 
@@ -28,21 +28,21 @@ class TransactionCreateInput {
 
   @ApiProperty({
     required: true,
-    type: () => User1WhereUniqueInput,
+    type: () => UserWhereUniqueInput,
   })
   @ValidateNested()
-  @Type(() => User1WhereUniqueInput)
-  @Field(() => User1WhereUniqueInput)
-  client!: User1WhereUniqueInput;
+  @Type(() => UserWhereUniqueInput)
+  @Field(() => UserWhereUniqueInput)
+  client!: UserWhereUniqueInput;
 
   @ApiProperty({
     required: true,
-    type: () => User1WhereUniqueInput,
+    type: () => UserWhereUniqueInput,
   })
   @ValidateNested()
-  @Type(() => User1WhereUniqueInput)
-  @Field(() => User1WhereUniqueInput)
-  freelancer!: User1WhereUniqueInput;
+  @Type(() => UserWhereUniqueInput)
+  @Field(() => UserWhereUniqueInput)
+  freelancer!: UserWhereUniqueInput;
 
   @ApiProperty({
     required: true,

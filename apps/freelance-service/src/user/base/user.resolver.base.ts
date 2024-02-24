@@ -20,6 +20,18 @@ import { UserFindUniqueArgs } from "./UserFindUniqueArgs";
 import { CreateUserArgs } from "./CreateUserArgs";
 import { UpdateUserArgs } from "./UpdateUserArgs";
 import { DeleteUserArgs } from "./DeleteUserArgs";
+import { BidFindManyArgs } from "../../bid/base/BidFindManyArgs";
+import { Bid } from "../../bid/base/Bid";
+import { JobFindManyArgs } from "../../job/base/JobFindManyArgs";
+import { Job } from "../../job/base/Job";
+import { MessageFindManyArgs } from "../../message/base/MessageFindManyArgs";
+import { Message } from "../../message/base/Message";
+import { ReviewFindManyArgs } from "../../review/base/ReviewFindManyArgs";
+import { Review } from "../../review/base/Review";
+import { SkillFindManyArgs } from "../../skill/base/SkillFindManyArgs";
+import { Skill } from "../../skill/base/Skill";
+import { TransactionFindManyArgs } from "../../transaction/base/TransactionFindManyArgs";
+import { Transaction } from "../../transaction/base/Transaction";
 import { UserService } from "../user.service";
 @graphql.Resolver(() => User)
 export class UserResolverBase {
@@ -85,5 +97,139 @@ export class UserResolverBase {
       }
       throw error;
     }
+  }
+
+  @graphql.ResolveField(() => [Bid], { name: "bids" })
+  async findBids(
+    @graphql.Parent() parent: User,
+    @graphql.Args() args: BidFindManyArgs
+  ): Promise<Bid[]> {
+    const results = await this.service.findBids(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
+  @graphql.ResolveField(() => [Job], { name: "jobs" })
+  async findJobs(
+    @graphql.Parent() parent: User,
+    @graphql.Args() args: JobFindManyArgs
+  ): Promise<Job[]> {
+    const results = await this.service.findJobs(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
+  @graphql.ResolveField(() => [Message], { name: "receivedMessages" })
+  async findReceivedMessages(
+    @graphql.Parent() parent: User,
+    @graphql.Args() args: MessageFindManyArgs
+  ): Promise<Message[]> {
+    const results = await this.service.findReceivedMessages(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
+  @graphql.ResolveField(() => [Review], { name: "reviewsAsClient" })
+  async findReviewsAsClient(
+    @graphql.Parent() parent: User,
+    @graphql.Args() args: ReviewFindManyArgs
+  ): Promise<Review[]> {
+    const results = await this.service.findReviewsAsClient(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
+  @graphql.ResolveField(() => [Review], { name: "reviewsAsFreelancer" })
+  async findReviewsAsFreelancer(
+    @graphql.Parent() parent: User,
+    @graphql.Args() args: ReviewFindManyArgs
+  ): Promise<Review[]> {
+    const results = await this.service.findReviewsAsFreelancer(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
+  @graphql.ResolveField(() => [Message], { name: "sentMessages" })
+  async findSentMessages(
+    @graphql.Parent() parent: User,
+    @graphql.Args() args: MessageFindManyArgs
+  ): Promise<Message[]> {
+    const results = await this.service.findSentMessages(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
+  @graphql.ResolveField(() => [Skill], { name: "skills" })
+  async findSkills(
+    @graphql.Parent() parent: User,
+    @graphql.Args() args: SkillFindManyArgs
+  ): Promise<Skill[]> {
+    const results = await this.service.findSkills(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
+  @graphql.ResolveField(() => [Transaction], { name: "transactionsAsClient" })
+  async findTransactionsAsClient(
+    @graphql.Parent() parent: User,
+    @graphql.Args() args: TransactionFindManyArgs
+  ): Promise<Transaction[]> {
+    const results = await this.service.findTransactionsAsClient(
+      parent.id,
+      args
+    );
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
+  @graphql.ResolveField(() => [Transaction], {
+    name: "transactionsAsFreelancer",
+  })
+  async findTransactionsAsFreelancer(
+    @graphql.Parent() parent: User,
+    @graphql.Args() args: TransactionFindManyArgs
+  ): Promise<Transaction[]> {
+    const results = await this.service.findTransactionsAsFreelancer(
+      parent.id,
+      args
+    );
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
   }
 }

@@ -1,17 +1,14 @@
 import { Module } from "@nestjs/common";
-import { User1Module } from "./user1/user1.module";
+import { UserModule } from "./user/user.module";
 import { SkillModule } from "./skill/skill.module";
 import { JobModule } from "./job/job.module";
 import { BidModule } from "./bid/bid.module";
 import { MessageModule } from "./message/message.module";
 import { ReviewModule } from "./review/review.module";
 import { TransactionModule } from "./transaction/transaction.module";
-import { MsgbrokerModule } from "./msgbroker/msgbroker.module";
-import { UserModule } from "./user/user.module";
 import { HealthModule } from "./health/health.module";
 import { PrismaModule } from "./prisma/prisma.module";
 import { SecretsManagerModule } from "./providers/secrets/secretsManager.module";
-import { KafkaModule } from "./kafka/kafka.module";
 import { ServeStaticModule } from "@nestjs/serve-static";
 import { ServeStaticOptionsService } from "./serveStaticOptions.service";
 import { ConfigModule, ConfigService } from "@nestjs/config";
@@ -21,16 +18,13 @@ import { ApolloDriver, ApolloDriverConfig } from "@nestjs/apollo";
 @Module({
   controllers: [],
   imports: [
-    KafkaModule,
-    User1Module,
+    UserModule,
     SkillModule,
     JobModule,
     BidModule,
     MessageModule,
     ReviewModule,
     TransactionModule,
-    MsgbrokerModule,
-    UserModule,
     HealthModule,
     PrismaModule,
     SecretsManagerModule,

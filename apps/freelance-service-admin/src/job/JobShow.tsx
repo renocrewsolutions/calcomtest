@@ -11,7 +11,7 @@ import {
   Datagrid,
 } from "react-admin";
 
-import { USER1_TITLE_FIELD } from "../user1/User1Title";
+import { USER_TITLE_FIELD } from "../user/UserTitle";
 import { JOB_TITLE_FIELD } from "./JobTitle";
 
 export const JobShow = (props: ShowProps): React.ReactElement => {
@@ -19,8 +19,8 @@ export const JobShow = (props: ShowProps): React.ReactElement => {
     <Show {...props}>
       <SimpleShowLayout>
         <TextField label="Budget" source="budget" />
-        <ReferenceField label="Client" source="user1.id" reference="User1">
-          <TextField source={USER1_TITLE_FIELD} />
+        <ReferenceField label="Client" source="user.id" reference="User">
+          <TextField source={USER_TITLE_FIELD} />
         </ReferenceField>
         <DateField source="createdAt" label="Created At" />
         <TextField label="Description" source="description" />
@@ -32,10 +32,10 @@ export const JobShow = (props: ShowProps): React.ReactElement => {
             <DateField source="createdAt" label="Created At" />
             <ReferenceField
               label="Freelancer"
-              source="user1.id"
-              reference="User1"
+              source="user.id"
+              reference="User"
             >
-              <TextField source={USER1_TITLE_FIELD} />
+              <TextField source={USER_TITLE_FIELD} />
             </ReferenceField>
             <TextField label="ID" source="id" />
             <ReferenceField label="Job" source="job.id" reference="Job">
@@ -46,17 +46,17 @@ export const JobShow = (props: ShowProps): React.ReactElement => {
         </ReferenceManyField>
         <ReferenceManyField reference="Review" target="jobId" label="Reviews">
           <Datagrid rowClick="show">
-            <ReferenceField label="Client" source="user1.id" reference="User1">
-              <TextField source={USER1_TITLE_FIELD} />
+            <ReferenceField label="Client" source="user.id" reference="User">
+              <TextField source={USER_TITLE_FIELD} />
             </ReferenceField>
             <TextField label="Content" source="content" />
             <DateField source="createdAt" label="Created At" />
             <ReferenceField
               label="Freelancer"
-              source="user1.id"
-              reference="User1"
+              source="user.id"
+              reference="User"
             >
-              <TextField source={USER1_TITLE_FIELD} />
+              <TextField source={USER_TITLE_FIELD} />
             </ReferenceField>
             <TextField label="ID" source="id" />
             <ReferenceField label="Job" source="job.id" reference="Job">
@@ -72,15 +72,15 @@ export const JobShow = (props: ShowProps): React.ReactElement => {
         >
           <Datagrid rowClick="show">
             <TextField label="Amount" source="amount" />
-            <ReferenceField label="Client" source="user1.id" reference="User1">
-              <TextField source={USER1_TITLE_FIELD} />
+            <ReferenceField label="Client" source="user.id" reference="User">
+              <TextField source={USER_TITLE_FIELD} />
             </ReferenceField>
             <ReferenceField
               label="Freelancer"
-              source="user1.id"
-              reference="User1"
+              source="user.id"
+              reference="User"
             >
-              <TextField source={USER1_TITLE_FIELD} />
+              <TextField source={USER_TITLE_FIELD} />
             </ReferenceField>
             <TextField label="ID" source="id" />
             <ReferenceField label="Job" source="job.id" reference="Job">

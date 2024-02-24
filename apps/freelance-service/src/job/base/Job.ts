@@ -21,7 +21,7 @@ import {
   IsInt,
 } from "class-validator";
 import { Type } from "class-transformer";
-import { User1 } from "../../user1/base/User1";
+import { User } from "../../user/base/User";
 import { Review } from "../../review/base/Review";
 import { Transaction } from "../../transaction/base/Transaction";
 
@@ -46,11 +46,11 @@ class Job {
 
   @ApiProperty({
     required: true,
-    type: () => User1,
+    type: () => User,
   })
   @ValidateNested()
-  @Type(() => User1)
-  client?: User1;
+  @Type(() => User)
+  client?: User;
 
   @ApiProperty({
     required: true,

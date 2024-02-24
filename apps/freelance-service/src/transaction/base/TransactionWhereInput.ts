@@ -14,7 +14,7 @@ import { ApiProperty } from "@nestjs/swagger";
 import { FloatFilter } from "../../util/FloatFilter";
 import { Type } from "class-transformer";
 import { IsOptional, ValidateNested } from "class-validator";
-import { User1WhereUniqueInput } from "../../user1/base/User1WhereUniqueInput";
+import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { IntFilter } from "../../util/IntFilter";
 import { JobWhereUniqueInput } from "../../job/base/JobWhereUniqueInput";
 import { DateTimeFilter } from "../../util/DateTimeFilter";
@@ -34,27 +34,27 @@ class TransactionWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => User1WhereUniqueInput,
+    type: () => UserWhereUniqueInput,
   })
   @ValidateNested()
-  @Type(() => User1WhereUniqueInput)
+  @Type(() => UserWhereUniqueInput)
   @IsOptional()
-  @Field(() => User1WhereUniqueInput, {
+  @Field(() => UserWhereUniqueInput, {
     nullable: true,
   })
-  client?: User1WhereUniqueInput;
+  client?: UserWhereUniqueInput;
 
   @ApiProperty({
     required: false,
-    type: () => User1WhereUniqueInput,
+    type: () => UserWhereUniqueInput,
   })
   @ValidateNested()
-  @Type(() => User1WhereUniqueInput)
+  @Type(() => UserWhereUniqueInput)
   @IsOptional()
-  @Field(() => User1WhereUniqueInput, {
+  @Field(() => UserWhereUniqueInput, {
     nullable: true,
   })
-  freelancer?: User1WhereUniqueInput;
+  freelancer?: UserWhereUniqueInput;
 
   @ApiProperty({
     required: false,

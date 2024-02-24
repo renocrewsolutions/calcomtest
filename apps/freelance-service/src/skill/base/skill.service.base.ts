@@ -14,7 +14,7 @@ import { PrismaService } from "../../prisma/prisma.service";
 import {
   Prisma,
   Skill, // @ts-ignore
-  User1,
+  User,
 } from "@prisma/client";
 
 export class SkillServiceBase {
@@ -52,14 +52,11 @@ export class SkillServiceBase {
     return this.prisma.skill.delete(args);
   }
 
-  async findUsers(
-    parentId: number,
-    args: Prisma.User1FindManyArgs
-  ): Promise<User1[]> {
+  async getUser(parentId: number): Promise<User | null> {
     return this.prisma.skill
-      .findUniqueOrThrow({
+      .findUnique({
         where: { id: parentId },
       })
-      .users(args);
+      .user();
   }
 }

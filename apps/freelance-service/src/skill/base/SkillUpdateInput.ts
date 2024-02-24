@@ -12,7 +12,7 @@ https://docs.amplication.com/how-to/custom-code
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { IsString, IsOptional, ValidateNested } from "class-validator";
-import { User1UpdateManyWithoutSkillsInput } from "./User1UpdateManyWithoutSkillsInput";
+import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { Type } from "class-transformer";
 
 @InputType()
@@ -41,15 +41,15 @@ class SkillUpdateInput {
 
   @ApiProperty({
     required: false,
-    type: () => User1UpdateManyWithoutSkillsInput,
+    type: () => UserWhereUniqueInput,
   })
   @ValidateNested()
-  @Type(() => User1UpdateManyWithoutSkillsInput)
+  @Type(() => UserWhereUniqueInput)
   @IsOptional()
-  @Field(() => User1UpdateManyWithoutSkillsInput, {
+  @Field(() => UserWhereUniqueInput, {
     nullable: true,
   })
-  users?: User1UpdateManyWithoutSkillsInput;
+  user?: UserWhereUniqueInput | null;
 }
 
 export { SkillUpdateInput as SkillUpdateInput };

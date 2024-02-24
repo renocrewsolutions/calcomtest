@@ -12,7 +12,7 @@ https://docs.amplication.com/how-to/custom-code
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { IsString, IsInt, ValidateNested, IsDate } from "class-validator";
-import { User1 } from "../../user1/base/User1";
+import { User } from "../../user/base/User";
 import { Type } from "class-transformer";
 
 @ObjectType()
@@ -35,19 +35,19 @@ class Message {
 
   @ApiProperty({
     required: true,
-    type: () => User1,
+    type: () => User,
   })
   @ValidateNested()
-  @Type(() => User1)
-  receiver?: User1;
+  @Type(() => User)
+  receiver?: User;
 
   @ApiProperty({
     required: true,
-    type: () => User1,
+    type: () => User,
   })
   @ValidateNested()
-  @Type(() => User1)
-  sender?: User1;
+  @Type(() => User)
+  sender?: User;
 
   @ApiProperty({
     required: true,

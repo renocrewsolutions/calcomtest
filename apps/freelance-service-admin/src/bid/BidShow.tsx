@@ -7,7 +7,7 @@ import {
   DateField,
   ReferenceField,
 } from "react-admin";
-import { USER1_TITLE_FIELD } from "../user1/User1Title";
+import { USER_TITLE_FIELD } from "../user/UserTitle";
 import { JOB_TITLE_FIELD } from "../job/JobTitle";
 
 export const BidShow = (props: ShowProps): React.ReactElement => {
@@ -16,8 +16,8 @@ export const BidShow = (props: ShowProps): React.ReactElement => {
       <SimpleShowLayout>
         <TextField label="Amount" source="amount" />
         <DateField source="createdAt" label="Created At" />
-        <ReferenceField label="Freelancer" source="user1.id" reference="User1">
-          <TextField source={USER1_TITLE_FIELD} />
+        <ReferenceField label="Freelancer" source="user.id" reference="User">
+          <TextField source={USER_TITLE_FIELD} />
         </ReferenceField>
         <TextField label="ID" source="id" />
         <ReferenceField label="Job" source="job.id" reference="Job">

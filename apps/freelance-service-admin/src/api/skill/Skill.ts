@@ -1,8 +1,8 @@
-import { User1 } from "../user1/User1";
+import { User } from "../user/User";
 
 export type Skill = {
   description: string | null;
   id: number;
   name: string;
-  users?: Array<User1>;
+  user?: User | null;
 };

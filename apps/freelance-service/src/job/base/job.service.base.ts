@@ -17,7 +17,7 @@ import {
   Bid, // @ts-ignore
   Review, // @ts-ignore
   Transaction, // @ts-ignore
-  User1,
+  User,
 } from "@prisma/client";
 
 export class JobServiceBase {
@@ -88,7 +88,7 @@ export class JobServiceBase {
       .transactions(args);
   }
 
-  async getClient(parentId: number): Promise<User1 | null> {
+  async getClient(parentId: number): Promise<User | null> {
     return this.prisma.job
       .findUnique({
         where: { id: parentId },

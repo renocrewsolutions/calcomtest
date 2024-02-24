@@ -19,7 +19,7 @@ import {
   IsString,
 } from "class-validator";
 import { Type } from "class-transformer";
-import { User1WhereUniqueInput } from "../../user1/base/User1WhereUniqueInput";
+import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { ReviewCreateNestedManyWithoutJobsInput } from "./ReviewCreateNestedManyWithoutJobsInput";
 import { TransactionCreateNestedManyWithoutJobsInput } from "./TransactionCreateNestedManyWithoutJobsInput";
 
@@ -47,12 +47,12 @@ class JobCreateInput {
 
   @ApiProperty({
     required: true,
-    type: () => User1WhereUniqueInput,
+    type: () => UserWhereUniqueInput,
   })
   @ValidateNested()
-  @Type(() => User1WhereUniqueInput)
-  @Field(() => User1WhereUniqueInput)
-  client!: User1WhereUniqueInput;
+  @Type(() => UserWhereUniqueInput)
+  @Field(() => UserWhereUniqueInput)
+  client!: UserWhereUniqueInput;
 
   @ApiProperty({
     required: true,

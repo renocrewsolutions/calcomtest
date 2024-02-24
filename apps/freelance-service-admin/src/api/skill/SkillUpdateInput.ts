@@ -1,7 +1,7 @@
-import { User1UpdateManyWithoutSkillsInput } from "./User1UpdateManyWithoutSkillsInput";
+import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 
 export type SkillUpdateInput = {
   description?: string | null;
   name?: string;
-  users?: User1UpdateManyWithoutSkillsInput;
+  user?: UserWhereUniqueInput | null;
 };

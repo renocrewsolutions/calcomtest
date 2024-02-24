@@ -1,12 +1,12 @@
 import { BidUpdateManyWithoutJobsInput } from "./BidUpdateManyWithoutJobsInput";
-import { User1WhereUniqueInput } from "../user1/User1WhereUniqueInput";
+import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 import { ReviewUpdateManyWithoutJobsInput } from "./ReviewUpdateManyWithoutJobsInput";
 import { TransactionUpdateManyWithoutJobsInput } from "./TransactionUpdateManyWithoutJobsInput";
 
 export type JobUpdateInput = {
   bids?: BidUpdateManyWithoutJobsInput;
   budget?: number;
-  client?: User1WhereUniqueInput;
+  client?: UserWhereUniqueInput;
   description?: string;
   reviews?: ReviewUpdateManyWithoutJobsInput;
   title?: string;

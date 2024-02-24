@@ -7,7 +7,7 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model User1 {
+model User {
   bids                     Bid[]
   bio                      String?
   createdAt                DateTime      @default(now())
@@ -20,7 +20,7 @@ model User1 {
   receivedMessages         Message[]     @relation(name: "receivedMessages")
   reviewsAsClient          Review[]      @relation(name: "reviewsAsClient")
   reviewsAsFreelancer      Review[]      @relation(name: "reviewsAsFreelancer")
-  role                     EnumUser1Role
+  role                     EnumUserRole
   sentMessages             Message[]     @relation(name: "sender")
   skills                   Skill[]
   transactionsAsClient     Transaction[] @relation(name: "transactionsAsClient")
@@ -32,13 +32,14 @@ model Skill {
   description String?
   id          Int     @id @default(autoincrement())
   name        String
-  users       User1[]
+  user        User?   @relation(fields: [userId], references: [id])
+  userId      Int?
 }
 
 model Job {
   bids         Bid[]
   budget       Float
-  client       User1         @relation(fields: [clientId], references: [id])
+  client       User          @relation(fields: [clientId], references: [id])
   clientId     Int
   createdAt    DateTime      @default(now())
   description  String
@@ -51,7 +52,7 @@ model Job {
 model Bid {
   amount       Float
   createdAt    DateTime @default(now())
-  freelancer   User1    @relation(fields: [freelancerId], references: [id])
+  freelancer   User     @relation(fields: [freelancerId], references: [id])
   freelancerId Int
   id           Int      @id @default(autoincrement())
   job          Job      @relation(fields: [jobId], references: [id])
@@ -62,19 +63,19 @@ model Bid {
 model Message {
   content    String
   id         Int      @id @default(autoincrement())
-  receiver   User1    @relation(name: "receivedMessages", fields: [receiverId], references: [id])
+  receiver   User     @relation(name: "receivedMessages", fields: [receiverId], references: [id])
   receiverId Int
-  sender     User1    @relation(name: "sender", fields: [senderId], references: [id])
+  sender     User     @relation(name: "sender", fields: [senderId], references: [id])
   senderId   Int
   sentAt     DateTime @default(now())
 }
 
 model Review {
-  client       User1    @relation(name: "reviewsAsClient", fields: [clientId], references: [id])
+  client       User     @relation(name: "reviewsAsClient", fields: [clientId], references: [id])
   clientId     Int
   content      String
   createdAt    DateTime @default(now())
-  freelancer   User1    @relation(name: "reviewsAsFreelancer", fields: [freelancerId], references: [id])
+  freelancer   User     @relation(name: "reviewsAsFreelancer", fields: [freelancerId], references: [id])
   freelancerId Int
   id           Int      @id @default(autoincrement())
   job          Job      @relation(fields: [jobId], references: [id])
@@ -84,9 +85,9 @@ model Review {
 
 model Transaction {
   amount          Float
-  client          User1    @relation(name: "transactionsAsClient", fields: [clientId], references: [id])
+  client          User     @relation(name: "transactionsAsClient", fields: [clientId], references: [id])
   clientId        Int
-  freelancer      User1    @relation(name: "transactionsAsFreelancer", fields: [freelancerId], references: [id])
+  freelancer      User     @relation(name: "transactionsAsFreelancer", fields: [freelancerId], references: [id])
   freelancerId    Int
   id              Int      @id @default(autoincrement())
   job             Job      @relation(fields: [jobId], references: [id])
@@ -94,102 +95,7 @@ model Transaction {
   transactionDate DateTime @default(now())
 }
 
-model Msgbroker {
-  createdAt DateTime @default(now())
-  id        String   @id @default(cuid())
-  updatedAt DateTime @updatedAt
-}
-
-model User {
-  accessCodes               Json?
-  accounts                  Json?
-  allowDynamicBooking       Boolean?                 @default(true)
-  allowSEOIndexing          Boolean?                 @default(true)
-  apiKeys                   Json?
-  appTheme                  String?
-  availability              Json?
-  avatar                    String?
-  avatarUrl                 String?
-  away                      Boolean                  @default(false)
-  backupCodes               String?
-  bio                       String?
-  bookingRedirects          Json?
-  bookingRedirectsTo        Json?
-  bookings                  Json?
-  brandColor                String?
-  bufferTime                Int                      @default(0)
-  completedOnboarding       Boolean                  @default(false)
-  createdDate               DateTime                 @default(now()) @map(name: "created")
-  credentials               Json?
-  darkBrandColor            String?
-  defaultScheduleId         Int?
-  destinationCalendarId     Int?
-  disableImpersonation      Boolean                  @default(false)
-  email                     String
-  emailVerified             DateTime?
-  endTime                   Int                      @default(1440)
-  feedback                  Json?
-  hideBranding              Boolean                  @default(false)
-  hosts                     Json?
-  id                        Int                      @id @default(autoincrement())
-  identityProvider          EnumUserIdentityProvider @default(CAL)
-  identityProviderId        String?
-  impersonatedBy            Json?
-  impersonatedUsers         Json?
-  invitedTo                 Int?
-  locale                    String?
-  locked                    Boolean                  @default(false)
-  metadata                  Json?
-  movedToProfileId          Int?
-  name                      String?
-  organizationId            Int?
-  ownedEventTypes           Json?
-  passwordId                Int?
-  profiles                  Json?
-  receiveMonthlyDigestEmail Boolean?                 @default(true)
-  role                      EnumUserRole             @default(USER)
-  routingForms              Json?
-  schedules                 Json?
-  selectedCalendars         Json?
-  sessions                  Json?
-  startTime                 Int                      @default(0)
-  teams                     Json?
-  theme                     String?
-  timeFormat                Int?                     @default(12)
-  timeZone                  String                   @default("Europe/London")
-  trialEndsAt               DateTime?
-  twoFactorEnabled          Boolean                  @default(false)
-  twoFactorSecret           String?
-  username                  String?
-  verified                  Boolean?                 @default(false)
-  verifiedNumbers           Json?
-  webhooks                  Json?
-  weekStart                 String                   @default("Sunday")
-  workflows                 Json?
-
-  @@unique([email])
-  @@unique([email, username])
-  @@unique([username, organizationId])
-  @@unique([movedToProfileId])
-  @@index([username])
-  @@index([emailVerified])
-  @@index([identityProvider])
-  @@index([identityProviderId])
-  @@map(name: "users")
-}
-
-enum EnumUser1Role {
+enum EnumUserRole {
   CLIENT
   FREELANCER
-}
-
-enum EnumUserIdentityProvider {
-  CAL
-  GOOGLE
-  SAML
-}
-
-enum EnumUserRole {
-  USER
-  ADMIN
 }

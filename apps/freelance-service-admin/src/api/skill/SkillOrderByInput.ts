@@ -4,4 +4,5 @@ export type SkillOrderByInput = {
   description?: SortOrder;
   id?: SortOrder;
   name?: SortOrder;
+  userId?: SortOrder;
 };

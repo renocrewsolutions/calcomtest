@@ -16,7 +16,7 @@ import { Type } from "class-transformer";
 import { IsOptional, ValidateNested } from "class-validator";
 import { IntFilter } from "../../util/IntFilter";
 import { StringFilter } from "../../util/StringFilter";
-import { User1ListRelationFilter } from "../../user1/base/User1ListRelationFilter";
+import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
 class SkillWhereInput {
@@ -55,15 +55,15 @@ class SkillWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => User1ListRelationFilter,
+    type: () => UserWhereUniqueInput,
   })
   @ValidateNested()
-  @Type(() => User1ListRelationFilter)
+  @Type(() => UserWhereUniqueInput)
   @IsOptional()
-  @Field(() => User1ListRelationFilter, {
+  @Field(() => UserWhereUniqueInput, {
     nullable: true,
   })
-  users?: User1ListRelationFilter;
+  user?: UserWhereUniqueInput;
 }
 
 export { SkillWhereInput as SkillWhereInput };

@@ -12,7 +12,7 @@ https://docs.amplication.com/how-to/custom-code
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { IsString, IsOptional, ValidateNested } from "class-validator";
-import { User1WhereUniqueInput } from "../../user1/base/User1WhereUniqueInput";
+import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { Type } from "class-transformer";
 
 @InputType()
@@ -30,27 +30,27 @@ class MessageUpdateInput {
 
   @ApiProperty({
     required: false,
-    type: () => User1WhereUniqueInput,
+    type: () => UserWhereUniqueInput,
   })
   @ValidateNested()
-  @Type(() => User1WhereUniqueInput)
+  @Type(() => UserWhereUniqueInput)
   @IsOptional()
-  @Field(() => User1WhereUniqueInput, {
+  @Field(() => UserWhereUniqueInput, {
     nullable: true,
   })
-  receiver?: User1WhereUniqueInput;
+  receiver?: UserWhereUniqueInput;
 
   @ApiProperty({
     required: false,
-    type: () => User1WhereUniqueInput,
+    type: () => UserWhereUniqueInput,
   })
   @ValidateNested()
-  @Type(() => User1WhereUniqueInput)
+  @Type(() => UserWhereUniqueInput)
   @IsOptional()
-  @Field(() => User1WhereUniqueInput, {
+  @Field(() => UserWhereUniqueInput, {
     nullable: true,
   })
-  sender?: User1WhereUniqueInput;
+  sender?: UserWhereUniqueInput;
 }
 
 export { MessageUpdateInput as MessageUpdateInput };

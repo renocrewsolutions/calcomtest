@@ -19,7 +19,7 @@ import {
   IsString,
 } from "class-validator";
 import { Type } from "class-transformer";
-import { User1 } from "../../user1/base/User1";
+import { User } from "../../user/base/User";
 import { Job } from "../../job/base/Job";
 
 @ObjectType()
@@ -42,11 +42,11 @@ class Bid {
 
   @ApiProperty({
     required: true,
-    type: () => User1,
+    type: () => User,
   })
   @ValidateNested()
-  @Type(() => User1)
-  freelancer?: User1;
+  @Type(() => User)
+  freelancer?: User;
 
   @ApiProperty({
     required: true,
